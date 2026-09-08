@@ -243,7 +243,13 @@ function resetWorld(newSeed=false){
  tick=0;hiddenPhase=0;demonBits=demonResets=0;demonProxyCost=0;eventLog=[];worldEventLog=[];observedEventLog=[];memoryTotals={maintenance:0,rewrite:0,erase:0,write:0,flips:0};choiceHistory=[];lastChoice=null;choiceCount=0;choiceVector={x:0,y:0};choiceMetrics={n:0,entropy:0,maxEntropy:0,confidence:0,uncertainty:0,density:0,samplesPer:0,evidence:0};
  seamAgeH.fill(0);seamAgeV.fill(0);seamFluxH.fill(0);seamFluxV.fill(0);seamGreenH.fill(0);seamGreenV.fill(0);cellGreenSum.fill(0);cellGreenWeight.fill(0);seamStats={seamEdges:0,greenEdges:0,meanGreen:0,maxGreen:0,opportunityGreen:0,opportunityOrdinary:0,weBirthGreen:0,weBirthOrdinary:0};
  centers=[];centerRegistry.clear();nextCenterId=1;selectedCenterId=null;centerOwner.fill(0);previousCenterOwner.fill(0);centerEventLog=[];centerStats={births:0,established:0,neoTransitions:0};weBirthRecords=[];nextWeBirthId=1;auditHistory=[];auditDomains={count:0,mean:0,largestRed:0,largestBlue:0};auditSurvival={s100:{eligible:0,survived:0,rate:0},s500:{eligible:0,survived:0,rate:0},s1000:{eligible:0,survived:0,rate:0}};
- buildMask();initField();initParticles();detectCenters(true);updateRelativeRoles(true);snapshot(true);updateLabels();
+ buildMask();initField();initParticles();detectCenters(true);updateRelativeRoles(true);snapshot(true);
+ // v9.1.1 instrumentation patch: compute and record the real tick-0 baseline immediately.
+ // This keeps the HUD/audit synchronized with the actual seeded field and exact balanced particles
+ // instead of displaying the empty startup lastMetrics object until the first scheduled audit tick.
+ lastMetrics={...fieldMetrics(),we:stableRelations().length,groups:cachedGroups.length,families:cachedFamilies.length};
+ auditSnapshot(lastMetrics);
+ updateLabels();
 }
 
 function externalBias(gx,gy){
