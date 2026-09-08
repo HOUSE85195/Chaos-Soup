@@ -2,267 +2,1490 @@ from pathlib import Path
 
 readme = r"""# Chaos Soup
 
-**An interactive computational laboratory for testing difference, memory, adaptive boundaries, relational persistence, and higher-order emergence.**
+**HOUSE'S EXPERIMENT · UNIVERSAL FUSIONISM**
 
-Chaos Soup is an evolving simulation project developed within **Universal Fusionism**. It is designed as a sandbox for turning philosophical intuitions about identity, observation, memory, relationship, and emergence into explicit rules that can be inspected, varied, and tested.
+## v9.2 — HISTORY SUBSTRATES / *Where Does the Past Live?*
 
-The goal is not to make the simulation prove a worldview. The goal is to make ideas **falsifiable enough to fail**.
+Chaos Soup is a controlled digital laboratory for studying how **difference becomes history**, how history becomes distributed through a system, and when a perturbation changes only a trajectory versus changing the system's eventual attractor.
 
----
+The core experimental move is simple:
 
-## Current Version
+1. Let one world develop under fixed local rules.
+2. Freeze its complete state at a predeclared condition.
+3. Clone that state into two synchronized realities.
+4. Change exactly one selected historical substrate in Reality B.
+5. Give both realities the same subsequent random tape.
+6. Measure what differences disappear, what differences propagate, and what differences persist.
 
-### Chaos Soup v8.4 — RELATIVE CENTER / The Genealogy of Normality
+The project is not built to force a preferred conclusion. Its governing design rule is:
 
-The current version asks:
-
-> **Can the same unchanged orientation become “Red” solely because a new center has formed around it?**
-
-v8.4 separates four concepts that were previously easy to confuse:
-
-- **Identity** — the persistent token itself.
-- **Orientation** — the token's raw Red/Blue state.
-- **Relational polarity** — whether that state is aligned or divergent relative to a selected center.
-- **Observer frame** — the local HINENI/GOLD point from which information is received.
-
-A particle can therefore remain physically unchanged while its relational role changes.
-
-Example:
-
-**Blue relative to Center A → crosses a Green seam → participates in persistent Purple relations → becomes Red relative to Center B**
-
-The particle did not necessarily change.
-
-**The frame did.**
+> **Do not program the conclusion. Program the difference and measure what survives it.**
 
 ---
 
-## Core Experimental Grammar
+# Current Version
 
-Chaos Soup uses a deliberately simple symbolic language:
+## Chaos Soup v9.2 — HISTORY SUBSTRATES
 
-| Color | Model role |
+v9.2 extends the v9.1 **Balanced Genesis** experiment by decomposing "history" into independently testable substrates.
+
+Reality A remains the untouched control.
+
+Reality B receives one selected intervention at the split:
+
+| Intervention | Reality B change |
 |---|---|
-| **Red** | committed / aligned state relative to a frame or center |
-| **Blue** | divergent / possible / anomalous state relative to a frame or center |
-| **Green** | viable interface: difference remains while persistence, transfer, and plasticity remain possible |
-| **Purple** | persistent cross-orientation relationship — a **WE** |
-| **Gold** | HINENI: the selected embedded observer frame |
+| **MEMORY ONLY** | Erase retained particle memory |
+| **RELATION ONLY** | Erase accumulated pair/group relationship history |
+| **TRAJECTORY ONLY** | Restore genesis position and velocity |
+| **MEMORY + RELATION** | Erase retained memory and relational history |
+| **MEMORY + TRAJECTORY** | Erase retained memory and restore genesis trajectory state |
+| **FULL PARTICLE HISTORY** | Restore particles to genesis state and clear particle relational/history records while retaining the current shared field/environment |
 
-These colors are **model variables and visualization conventions**. They are not claims about literal particle colors, electric charge, political parties, biological sex, or fundamental physics.
+The purpose is no longer merely to ask:
 
----
+> Does memory matter?
 
-## The Current Recursive Hypothesis
+The v9.2 question is:
 
-The project is testing a recurring pattern:
-
-**Difference → Interface → Relationship → Memory → Identity → New Center → New Difference**
-
-In the current symbolic notation:
-
-**Rₙ → Gₙ → Bₙ₊₁ → Pₙ₊₁ → Rₙ₊₁**
-
-A new or anomalous state may begin as Blue relative to an established Red center. If it survives contact, develops persistent relationships, and becomes a stable organizing center, that same state can become the new Red.
-
-This creates a testable question:
-
-> **Under what conditions does yesterday's anomaly become tomorrow's normality?**
+> **Which substrate of history actually carries future constraint?**
 
 ---
 
-## Green Seam
+# Why v9.2 Exists
 
-Not every boundary is Green.
+Earlier versions treated retained particle memory as the principal historical variable.
 
-A boundary can merely separate two regions. A Green seam is intended to represent a boundary where difference remains active long enough for meaningful interaction and persistence.
+The v9.0 Reality Fork experiments showed that erasing that explicit memory could produce large divergences in particle trajectories, orientations, and relationships while the two realities later returned to nearly the same aggregate polarization.
 
-A simplified conceptual form is:
+The first clean v9.1 Balanced Genesis run strengthened that result.
 
-**Green Seam ≈ Difference × Persistence × Transfer × Plasticity**
+A world that began with:
 
-Three regimes are therefore possible:
+\[
+m_p(0)=0
+\]
 
-- **Frozen wall** — high difference and persistence, but little exchange.
-- **Chaotic contact** — high interaction, but too little persistence.
-- **Green seam** — enough difference for novelty and enough continuity for relationship.
+and:
 
-The simulation then asks whether persistent Purple relationships are born preferentially at Green seams.
+\[
+M(0)=0
+\]
 
----
+was allowed to create its own history.
 
-## Memory Has a Cost
+At the automatic split, the system had reached only moderate collective polarization but very strong earned retained memory.
 
-v8.2 introduced explicit memory accounting.
+Erasing that explicit memory changed the future substantially at first, but did not permanently change the final macro basin.
 
-Each relational token carries:
+The strongest surviving difference was spatial.
 
-- retained orientation memory,
-- a finite abstract memory-work reserve,
-- a persistence barrier,
-- maintenance cost,
-- rewrite / erase cost,
-- memory plasticity,
-- relational memory subsidy.
+That result changed the interpretation of the experiment:
 
-Memory is not treated as free.
+> **History is not identical to memory. Memory is one way history can be represented.**
 
-The working idea is:
+The intervention began in one substrate and propagated into others.
 
-> **Memory is possibility converted into continuity, and continuity requires a mechanism that pays for persistence.**
+Conceptually:
 
-The current **Green memory score** is not raw memory capacity. It rewards a balance between:
+\[
+M \rightarrow O \rightarrow R \rightarrow X
+\]
 
-**retention + plasticity**
+where:
 
-Too little retention produces instability.
+- \(M\) = retained memory,
+- \(O\) = orientation,
+- \(R\) = relational structure,
+- \(X\) = spatial trajectory/configuration.
 
-Too much retention produces rigidity.
-
----
-
-## Relational Emergence
-
-Chaos Soup distinguishes a collection of nearby tokens from a persistent higher-order relationship.
-
-A sustained cross-orientation relation can be labeled:
-
-**I ↔ U → WE**
-
-Connected WE structures may then be coarse-grained as higher-order identity candidates.
-
-This does **not** mean the simulation has discovered consciousness.
-
-The model is asking a narrower question:
-
-> **When does a persistent relationship become organized enough to behave as a new unit at the next scale?**
+v9.2 exists to test those substrates independently.
 
 ---
 
-## HINENI — Embedded Observation
+# Core Experimental Architecture
 
-The Gold observer represents a local observational frame.
+## One World, Two Counterfactual Futures
 
-HINENI means:
+Before a split, there is one evolving simulation state:
+
+\[
+S_t
+\]
+
+At the fork condition, the state is cloned:
+
+\[
+S_t \rightarrow A_t,\ B_t
+\]
+
+Reality A preserves the complete state.
+
+Reality B receives one controlled intervention:
+
+\[
+B_t' = I(B_t)
+\]
+
+Both branches then receive the same paired random sequence:
+
+\[
+R_A(\tau)=R_B(\tau)
+\]
+
+as long as their execution paths consume the same number of random calls.
+
+The experiment measures:
+
+\[
+D(\tau)=A(\tau)-B(\tau)
+\]
+
+across multiple channels rather than collapsing all divergence into one number.
+
+---
+
+# Balanced Genesis
+
+v9.1 introduced **Balanced Genesis**, retained in v9.2.
+
+Every reset begins with:
+
+\[
+120R + 120B
+\]
+
+for the default 240 relational tokens, giving:
+
+\[
+\boxed{m_p(0)=0}
+\]
+
+exactly.
+
+Particles begin with:
+
+\[
+\boxed{M_i(0)=0}
+\]
+
+rather than being born with an inherited retained-memory prior.
+
+The initial field is still seeded by the simulation's field-generation rules. It is **not artificially forced to perfect neutrality**.
+
+This distinction matters:
+
+- particle balance is controlled,
+- particle retained memory starts at zero,
+- field state is generated by the seeded environment,
+- history must be earned after tick 0.
+
+The system therefore begins **before the history being measured exists**.
+
+---
+
+# Current Auto-Fork Logic
+
+The current reference configuration uses:
+
+\[
+|m_f|\le0.10
+\]
+
+while simultaneously requiring:
+
+\[
+|m_p|\ge0.20
+\]
+
+for:
+
+\[
+120
+\]
+
+consecutive ticks.
+
+The fork is automatic.
+
+This avoids manually selecting an interesting-looking moment after observing the trajectory.
+
+The split metadata records the actual state at intervention, including:
+
+- seed,
+- split tick,
+- auto/manual split,
+- field polarization,
+- particle polarization,
+- mean retained memory,
+- WE count,
+- center count,
+- qualification dwell,
+- fork thresholds,
+- relevant model parameters,
+- intervention mode.
+
+The **actual split state**, not merely the slider threshold, is the experimental value that matters.
+
+---
+
+# Reference Physics Configuration
+
+The current v9.2 baseline preserves the physics used in the v9.1 Balanced Genesis experiment.
+
+| Parameter | Reference value |
+|---|---:|
+| Temperature / noise | **3.00** |
+| Alignment coupling \(J\) | **1.00** |
+| Field updates | **4,300** |
+| Relational tokens | **240** |
+| Like-orientation affinity | **42%** |
+| Unlike separation | **80%** |
+| Mixing / agitation | **23%** |
+| Fork field neutrality | **10%** |
+| Fork particle polarization | **20%** |
+| Fork dwell | **120 ticks** |
+| Hidden boundary forcing | **OFF** |
+| Demon gate benchmark | **OFF** |
+
+Other memory, WE, Green seam, observer, NEO, and relation controls remain available and should be held fixed during controlled comparisons unless they are themselves the variable under test.
+
+---
+
+# BG-01 — First Clean Balanced Genesis Reference Run
+
+## Experimental identity
+
+**Seed:** `3188496265`
+
+**Genesis:**
+
+\[
+m_p(0)=0
+\]
+
+\[
+M(0)=0
+\]
+
+**Auto split:**
+
+\[
+t=804
+\]
+
+**Split field polarization:**
+
+\[
+m_f\approx-0.0096
+\]
+
+**Split particle polarization:**
+
+\[
+m_p=0.2583
+\]
+
+**Mean earned retained memory:**
+
+\[
+\overline{|M|}=0.9430
+\]
+
+**Intervention:**
+
+\[
+\text{Reality B: retained-memory deletion}
+\]
+
+---
+
+# BG-01 Result
+
+The memory intervention produced a large early causal effect.
+
+The maximum macro polarization separation was approximately:
+
+\[
+\Delta m=0.1833
+\]
+
+around:
+
+\[
+\tau\approx492
+\]
+
+with:
+
+\[
+m_A=0.475
+\]
+
+and:
+
+\[
+m_B=0.292
+\]
+
+Orientation disagreement later reached approximately:
+
+\[
+22.08\%
+\]
+
+around:
+
+\[
+\tau\approx1068
+\]
+
+Reality B also produced a large transient relational reconstruction burst.
+
+Its stable WE count reached approximately:
+
+\[
+298
+\]
+
+very early after the intervention.
+
+Yet the branches later reconverged at the macro scale.
+
+At approximately:
+
+\[
+\tau=10{,}092
+\]
+
+both realities reached:
+
+\[
+m_A=m_B=0.99167
+\]
+
+with:
+
+\[
+WE_A=WE_B=0
+\]
+
+and:
+
+\[
+D_{\text{relation}}=0
+\]
+
+while paired random drift remained:
+
+\[
+\boxed{0}
+\]
+
+throughout the recorded experiment.
+
+The macro basin therefore reconverged.
+
+---
+
+# The Important BG-01 Finding
+
+The spatial states did **not** reconverge.
+
+Final positional divergence was approximately:
+
+\[
+\boxed{99.12\text{ px RMS}}
+\]
+
+with a maximum of approximately:
+
+\[
+99.17\text{ px RMS}
+\]
+
+and a stable late-run separation near that magnitude.
+
+At the same time, explicit retained-memory difference had decayed dramatically.
+
+This means the original difference did not simply disappear.
+
+It migrated.
+
+The intervention produced:
+
+\[
+\text{memory difference}
+\]
+
+which changed:
+
+\[
+\text{orientation}
+\]
+
+which changed:
+
+\[
+\text{relationships}
+\]
+
+which changed:
+
+\[
+\text{movement}
+\]
+
+which changed:
+
+\[
+\text{spatial configuration}
+\]
+
+until the historical difference remained encoded somewhere other than the original memory variable.
+
+The current working interpretation is therefore:
+
+> **The past did not remain in memory. It propagated into state.**
+
+This does **not** imply that information is metaphysically indestructible.
+
+It means only that deleting one local representation does not necessarily erase correlations and causal consequences that have already propagated into other parts of the modeled system.
+
+---
+
+# Macrostate vs Microstate
+
+Chaos Soup now distinguishes two questions that should not be conflated.
+
+## Macrostate
+
+What broad collective condition has the system reached?
+
+Examples:
+
+- overall Red/Blue polarization,
+- stable WE count,
+- center count,
+- large-scale group structure.
+
+## Microstate / Historical State
+
+Exactly how is the system arranged?
+
+Examples:
+
+- corresponding particle positions,
+- velocities,
+- orientations,
+- relationship identities,
+- stored memories,
+- reserve distributions,
+- trajectories.
+
+Two realities can therefore satisfy:
+
+\[
+\text{same macrostate}
+\]
+
+while still having:
+
+\[
+\text{different microstates}
+\]
+
+and:
+
+\[
+\text{different histories}.
+\]
+
+This is now a central experimental distinction.
+
+---
+
+# Same Valley, Different Footprints
+
+A useful analogy is:
+
+Two travelers can take different roads and still reach the same valley.
+
+The roads matter.
+
+Their experiences differ.
+
+Their positions along the way differ.
+
+Their relationships and intermediate choices differ.
+
+But the final broad destination may still be the same.
+
+Chaos Soup therefore distinguishes:
+
+\[
+\boxed{\text{trajectory shift}}
+\]
+
+from:
+
+\[
+\boxed{\text{basin shift}}
+\]
+
+A trajectory shift means the intervention changes the path.
+
+A basin shift means the intervention changes the stable future region toward which the system evolves.
+
+The current strongest classification for BG-01 is:
+
+\[
+\boxed{
+\textbf{SAME MACRO BASIN / PERSISTENT HISTORICAL MICROSTATE}
+}
+\]
+
+---
+
+# Where Does the Past Live?
+
+v9.2 turns this into an operational question.
+
+The answer may not be a single variable.
+
+Historical influence may be distributed across:
+
+\[
+M_{\text{system}}
+=
+\{
+M_{\text{internal}},
+O,
+R,
+X,
+V,
+E,
+C,\ldots
+\}
+\]
+
+where, conceptually:
+
+- \(M_{\text{internal}}\) = explicit retained memory,
+- \(O\) = orientation,
+- \(R\) = relationships,
+- \(X\) = position,
+- \(V\) = velocity / trajectory,
+- \(E\) = reserve / energetic state,
+- \(C\) = center/group structure.
+
+This expression is conceptual, not a claim that these variables are independent additive quantities.
+
+The experimental question is:
+
+> **Which of these state channels carries enough historical information to constrain the future basin?**
+
+---
+
+# Current v9.2 Intervention Matrix
+
+## 1. MEMORY ONLY
+
+Erase explicit retained particle memory.
+
+Tests:
+
+> How much future constraint exists in explicit memory itself?
+
+---
+
+## 2. RELATION ONLY
+
+Erase accumulated relational history while preserving particle memory and current particle state.
+
+Tests:
+
+> Does the network carry historical constraint independently of internal memory?
+
+---
+
+## 3. TRAJECTORY ONLY
+
+Restore genesis position and velocity while preserving current orientation, memory, and other retained state.
+
+Tests:
+
+> How much of the past is encoded in where the system has physically traveled?
+
+---
+
+## 4. MEMORY + RELATION
+
+Erase retained memory and accumulated relational history.
+
+Tests:
+
+> Can the system reconstruct its historical organization from trajectory and remaining state alone?
+
+---
+
+## 5. MEMORY + TRAJECTORY
+
+Erase retained memory and reset genesis position/velocity.
+
+Tests:
+
+> Can relational structure alone preserve enough history to recover the previous basin?
+
+---
+
+## 6. FULL PARTICLE HISTORY
+
+Restore particle-level historically accumulated state toward its genesis reference while retaining the current common field/environment.
+
+Tests:
+
+> If the surrounding environment is held constant, how much of the future basin is carried specifically by accumulated particle history?
+
+This is the strongest current intervention and must be interpreted carefully because it changes several state channels at once.
+
+---
+
+# Measurements
+
+The fork CSV records multiple divergence channels.
+
+## Population polarization
+
+\[
+\Delta m
+=
+|m_A-m_B|
+\]
+
+Measures broad collective identity difference.
+
+---
+
+## Orientation difference
+
+Fraction of corresponding particles whose raw orientation differs.
+
+---
+
+## Position RMS
+
+Root-mean-square distance between corresponding particle positions:
+
+\[
+D_x
+=
+\sqrt{
+\frac{1}{N}
+\sum_i
+\left[
+(x_i^A-x_i^B)^2
++
+(y_i^A-y_i^B)^2
+\right]
+}
+\]
+
+---
+
+## Velocity divergence
+
+Difference between corresponding particle velocity states.
+
+---
+
+## Trajectory divergence
+
+Combined historical movement difference as represented by current positional/velocity separation.
+
+---
+
+## Relationship divergence
+
+Difference between the relational networks present in A and B.
+
+---
+
+## Memory divergence
+
+Mean absolute difference between corresponding retained-memory states.
+
+---
+
+## Reserve divergence
+
+Difference in corresponding particle reserve states.
+
+---
+
+## Field Hamming distance
+
+Fraction of field cells that differ between branches.
+
+In the current one-way architecture, paired branches commonly retain identical raw field evolution because particles do not yet modify the field state.
+
+That makes the field an experimental control rather than evidence that particle divergence failed to affect an environment.
+
+Reciprocal particle-to-field feedback is intentionally deferred until the present baseline is better characterized.
+
+---
+
+# Paired Randomness
+
+Both branches receive a paired deterministic random stream after the split.
+
+The UI and CSV report:
+
+- random calls A,
+- random calls B,
+- random call drift.
+
+A valid controlled run should preserve:
+
+\[
+\boxed{\text{RNG drift}=0}
+\]
+
+unless divergent execution paths cause unequal random consumption.
+
+Zero drift does not make the realities identical.
+
+It removes one major confound:
+
+\[
+\text{different futures}
+\neq
+\text{different random tapes}
+\]
+
+for the measured run.
+
+---
+
+# What "Reality Shift" Means Here
+
+The old v9 composite `observableD` indicator remains useful as a visible divergence alarm, but it should **not** be treated as proof of a distinct attractor.
+
+Position alone can keep the composite divergence high after the macrostate has reconverged.
+
+The project therefore now distinguishes:
+
+### Trajectory divergence
+
+The two branches occupy measurably different historical microstates.
+
+### Macro reconvergence
+
+Broad aggregate observables return to approximately the same regime.
+
+### Basin divergence
+
+The branches remain in meaningfully different long-run macro regimes.
+
+The phrase **reality shift** should be reserved for a clearly defined experimental criterion rather than any temporary nonzero divergence.
+
+A future version should formalize rolling attractor classification.
+
+---
+
+# Model Grammar
+
+Chaos Soup uses a symbolic Red / Blue / Green / Purple grammar.
+
+These are **model labels**, not claims that physical particles, social groups, genders, political identities, or electric charges literally correspond to these colors.
+
+## Red
+
+Current commitment, alignment, outward action, or center-relative normality.
+
+## Blue
+
+Alternative possibility, divergence, inward return, or center-relative anomaly.
+
+## Green
+
+A viable interface where difference persists while information can cross and adaptation remains possible.
+
+A wall merely separates.
+
+A Green seam must support some combination of:
+
+- persistence,
+- transfer,
+- memory,
+- plasticity.
+
+## Purple
+
+An emergent relational state produced by persistent coordination across difference.
+
+The color grammar is intentionally relational:
+
+> **Red is not a substance. Blue is not a substance. Their meaning depends on the frame and relationship.**
+
+---
+
+# Green Seam
+
+Not every Red/Blue boundary is Green.
+
+A Green seam is a persistent interface where:
+
+\[
+\text{difference}
++
+\text{persistence}
++
+\text{transfer}
++
+\text{plasticity}
+\]
+
+remain simultaneously viable.
+
+Conceptually:
+
+- too little persistence → structure dissolves,
+- too much rigidity → structure cannot adapt,
+- too little transfer → isolated wall,
+- too much uncontrolled transfer → distinction disappears.
+
+Green therefore represents an intermediate regime:
+
+> **I remember who I have been without requiring that I remain who I was.**
+
+---
+
+# Relative Centers
+
+Earlier versions introduced center-relative polarity.
+
+For a particle with raw orientation:
+
+\[
+s_i\in\{-1,+1\}
+\]
+
+and a local center with dominant orientation:
+
+\[
+c_k\in\{-1,+1\}
+\]
+
+define relational polarity:
+
+\[
+\rho_{ik}=s_i c_k
+\]
+
+Then:
+
+\[
+\rho=+1
+\]
+
+means aligned with the current center, while:
+
+\[
+\rho=-1
+\]
+
+means divergent from that center.
+
+This permits an important transition:
+
+A raw Blue particle can remain raw Blue while:
+
+1. being Blue/divergent relative to an old Red center,
+2. crossing a viable seam,
+3. participating in the formation of a new Blue-oriented center,
+4. becoming Red/aligned relative to that new center.
+
+The particle did not change.
+
+The frame did.
+
+---
+
+# HINENI Observer
+
+Chaos Soup includes a finite embedded observer model called **HINENI**.
+
+HINENI does not see the entire field.
+
+Its knowledge is constrained by:
+
+- local position,
+- finite horizon,
+- signal delay,
+- attention radius,
+- attention budget,
+- portal resolution.
+
+The observer therefore operates on:
+
+\[
+Y_i(t)=O_i[\Omega(t)]+\eta_i
+\]
+
+rather than direct omniscient access to the full world.
+
+The design principle is:
 
 > **Here I am. This is what has reached me. Now I respond.**
 
-The observer does not receive the full world state instantaneously. The simulation includes finite:
-
-- observational horizon,
-- signal speed,
-- causal delay,
-- local perspective.
-
-This allows a distinction between:
-
-**WORLD event time** and **RECEIVED observation time**.
-
-The rule is:
-
-> **No observer may react to information that has not physically reached it within the model.**
+The observer is deliberately separated from the underlying world state.
 
 ---
 
-## NEO Transition
+# World → Observation → Interpretation
 
-v8.4 introduces an observer-side classification for a specific relational transition.
+Chaos Soup maintains three conceptual layers:
 
-A **NEO transition** occurs when a token can be tracked through something like:
+\[
+\boxed{
+\text{WORLD}
+\rightarrow
+\text{OBSERVATION}
+\rightarrow
+\text{INTERPRETATION}
+}
+\]
 
-**old center: divergent → Green crossing → persistent relationship → new center: aligned**
+## WORLD
 
-while its raw orientation may remain unchanged.
+The simulation state and update rules.
 
-This is intended to test **frame-relative polarity**, not to label any particle as inherently heroic, revolutionary, religious, political, or conscious.
+## OBSERVATION
 
-The classification is descriptive only. Calling something a NEO event does not alter the simulation's forces.
+Metrics extracted from that state.
 
----
+## INTERPRETATION
 
-## World First, Observation Second, Interpretation Third
+Labels such as:
 
-This is the methodological rule governing Chaos Soup:
+- WE,
+- Green,
+- center,
+- NEO,
+- reality-shift candidate,
+- basin classification.
 
-1. **WORLD** — local rules evolve the simulated field.
-2. **OBSERVATION** — embedded and external observers measure what happened.
-3. **INTERPRETATION** — labels such as Green seam, WE, FAMILY, CENTER, or NEO are applied afterward.
+Interpretive labels should not secretly modify the underlying physics.
 
-Interpretive labels should not secretly cause the behaviors they are intended to describe.
-
----
-
-## What Chaos Soup Is Not
-
-Chaos Soup is currently a **qualitative computational prototype**.
-
-It is not:
-
-- a validated model of quantum field theory,
-- a cosmological simulation,
-- a model of literal dark matter,
-- a validated model of human political behavior,
-- a neuroscience model,
-- an abiogenesis result,
-- evidence of machine or particle consciousness,
-- proof of Universal Fusionism.
-
-Red and Blue are not electric charges.
-
-Temperature/noise is an Ising-like disorder parameter, not literal quantum temperature.
-
-Memory-work values are abstract accounting units, not calibrated joules.
-
-The purpose of the project is to move progressively from metaphor toward measurable, reproducible computational claims.
+This is an explicit anti-circularity rule.
 
 ---
 
-## What We Are Testing Next
+# Experimental Discipline
 
-Near-term experiments include:
+Chaos Soup is intended to behave like a digital petri dish.
 
-- multi-seed parameter sweeps,
-- Green-seam birth-rate measurements,
-- Green versus ordinary seam controls,
-- memory-off null models,
-- relational-subsidy-off controls,
-- center persistence thresholds,
-- NEO-transition frequency,
-- center genealogy across long runs,
-- tests for whether successful new centers eventually suppress later anomalies,
-- finite-size and lattice-resolution sensitivity,
-- automated export of seeds and experimental metrics.
+A useful experiment should state:
 
-The larger question is whether a reproducible **Green Window** exists:
+### 1. Initial state
 
-> **A parameter regime where difference remains large enough to generate novelty while memory and persistence remain strong enough to preserve useful relationships.**
+What exactly existed at genesis?
 
----
+### 2. Rules
 
-## Run the Experiment
+What interactions are allowed?
 
-Open `index.html` in a modern browser, or use the GitHub Pages deployment for this repository.
+### 3. Intervention
 
-No build system or external dependencies are required.
+What one thing differs between A and B?
 
-Suggested first experiment:
+### 4. Controls
 
-1. Start with lower temperature/noise and observe large coherent Red/Blue domains.
-2. Increase stochasticity gradually.
-3. Watch ordinary boundaries fragment.
-4. Observe where Green seams appear.
-5. Track whether Purple WE relationships persist near those seams.
-6. Switch to **CENTER FRAME** and **NEO TRACE** to inspect frame-relative polarity.
-7. Record the **seed, parameter values, tick, and observation** for anything interesting.
+What is held identical?
 
-Reproducibility matters more than interpretation.
+### 5. Measurements
+
+What divergence channels are recorded?
+
+### 6. Replication
+
+Does the result survive replay and multiple seeds?
+
+### 7. Falsification
+
+What result would contradict the current hypothesis?
+
+The simulation should not reward the behavior the experiment hopes to discover.
 
 ---
 
-## Repository Structure
+# What Chaos Soup Does Not Yet Establish
+
+Current results are toy-model results.
+
+They do **not** establish that:
+
+- real societies behave like this simulation,
+- biological memory works like `particle.mem`,
+- human history can be predicted from the current model,
+- the universe literally uses Red/Blue/Green/Purple states,
+- consciousness has emerged in the simulation,
+- the Big Bang, quantum mechanics, politics, religion, or social conflict have been physically explained by Chaos Soup,
+- historical information is indestructible,
+- paired toy simulations constitute proof about real-world causal systems.
+
+The purpose is narrower:
+
+> Create explicit local rules, intervene cleanly, and determine what follows **inside the model**.
+
+Any mapping to a real system would require independent validation.
+
+---
+
+# Prediction and Attractor Mapping
+
+The long-term scientific direction is not perfect prediction of one exact future.
+
+It is probabilistic mapping of possible futures.
+
+For a state:
+
+\[
+S_t
+\]
+
+and intervention:
+
+\[
+\Delta X
+\]
+
+a mature system could estimate:
+
+\[
+P(B_j\mid S_t,\Delta X)
+\]
+
+where \(B_j\) is a possible future basin.
+
+This changes the forecasting question from:
+
+> What exactly will happen?
+
+to:
+
+> **Which futures are reachable, how likely are they, and how difficult is it to move from one to another?**
+
+A future research program would therefore map:
+
+\[
+\text{STATE}
+\rightarrow
+\text{INTERVENTION}
+\rightarrow
+\text{ENSEMBLE OF FUTURES}
+\rightarrow
+\text{PROBABILITY DISTRIBUTION}
+\rightarrow
+\text{ATTRACTOR MAP}
+\]
+
+across many seeds and parameter regimes.
+
+---
+
+# Multiscale Causal Laboratory
+
+The same paired-intervention architecture can eventually be generalized across scales.
+
+A single information-bearing object may be represented as a node.
+
+A person-like active agent would require a much richer node with:
+
+- internal state,
+- sensing,
+- memory,
+- relationships,
+- choice,
+- action.
+
+A group would be represented not merely as many nodes, but as:
+
+\[
+G
+=
+\text{nodes}
++
+\text{relations}
++
+\text{shared memory}
++
+\text{coordination}
++
+\text{boundary}
+\]
+
+The key methodological principle remains:
+
+> **Remove or modify the modeled structure. Do not pre-program the social meaning of the intervention. Measure the resulting state changes.**
+
+This is important because a perturbation is not automatically polarizing, stabilizing, destructive, or beneficial.
+
+Those are possible system responses, not assumptions to encode in advance.
+
+---
+
+# Jacob's Ladder
+
+Chaos Soup is the experimental engine inside the larger **Jacob's Ladder** project.
+
+The long-term target is a bottom-up hierarchy:
+
+\[
+\text{Difference}
+\rightarrow
+\text{Interaction}
+\rightarrow
+\text{History}
+\rightarrow
+\text{Structure}
+\rightarrow
+\text{Chemistry}
+\rightarrow
+\text{Environment}
+\rightarrow
+\text{Life}
+\rightarrow
+\text{Agency}
+\]
+
+The governing rule is:
+
+> **Do not program the desired structure. Program the conditions under which structure could emerge.**
+
+---
+
+# Long-Term Development Plan
+
+## Phase 0 — Reference Baseline
+
+Freeze reproducible seeds, parameter vectors, metrics, and current behavior.
+
+## Phase 1 — Controlled Reality Splits
+
+Completed in initial form.
+
+Test one controlled difference under paired randomness.
+
+## Phase 2 — History Substrates
+
+**Current phase — v9.2.**
+
+Decompose historical information into independently manipulable channels.
+
+## Phase 3 — Multi-Seed Attractor Audit
+
+Run controlled substrate interventions across many seeds.
+
+Estimate:
+
+\[
+P(\text{same basin})
+\]
+
+and:
+
+\[
+P(\text{different basin})
+\]
+
+for each intervention and split state.
+
+## Phase 4 — Reciprocal Environment
+
+Introduce carefully controlled particle-to-field feedback only after the one-way baseline is replicated.
+
+## Phase 5 — Property-Based Matter
+
+Move from symbolic orientation tokens toward simplified property-based atomic interactions.
+
+## Phase 6 — Planetary Environment
+
+Add coarse:
+
+- earth,
+- water,
+- atmosphere,
+- heat,
+- gradients,
+- magnetic environment,
+- weather,
+- geology.
+
+## Phase 7 — Primordial Chemistry
+
+Add locally conserved materials, reaction opportunities, amphiphilic self-assembly, degradation, catalysis, and gradients.
+
+## Phase 8 — Persistence and Heredity
+
+Search for systems that:
+
+- maintain boundaries,
+- sustain reaction networks,
+- copy with variation,
+- partition physically,
+- influence descendant organization.
+
+## Phase 9 — Sensing and Agency
+
+A sense exists only when:
+
+> **A local environmental difference is detected internally and that detection can alter subsequent behavior.**
+
+Potential sensing channels include:
+
+- chemical gradients,
+- photons/light,
+- mechanical pressure,
+- collision,
+- strain,
+- flow.
+
+Then test:
+
+\[
+\text{sensing}
+\rightarrow
+\text{memory}
+\rightarrow
+\text{prediction}
+\rightarrow
+\text{choice}
+\]
+
+without introducing a consciousness switch.
+
+## Phase 10 — Game Layer
+
+Expose the model as a multiscale interactive world where the player can move upward through increasingly complex levels only after understanding the current layer.
+
+---
+
+# Emergence Criteria
+
+The model should not call something "life" simply because it moves or persists.
+
+Candidate progression includes:
+
+\[
+\text{persistence}
+\]
+
+\[
+\text{maintained organization}
+\]
+
+\[
+\text{reproduction}
+\]
+
+\[
+\text{heredity}
+\]
+
+\[
+\text{adaptation}
+\]
+
+\[
+\text{sensing}
+\]
+
+\[
+\text{memory}
+\]
+
+\[
+\text{flexible control}
+\]
+
+\[
+\text{learning-like behavior}
+\]
+
+\[
+\text{prediction-like behavior}
+\]
+
+\[
+\text{recursive observer candidate}
+\]
+
+No single hard-coded consciousness threshold is currently assumed.
+
+---
+
+# Information Framework
+
+A working Chaos Soup / Universal Fusionism informational sequence is:
+
+\[
+\text{Difference}
+\rightarrow
+\text{Interaction}
+\rightarrow
+\text{Correlation}
+\rightarrow
+\text{Persistence}
+\rightarrow
+\text{Information}
+\]
+
+A practical definition used by the project is:
+
+> **Information is what difference leaves behind when interaction creates a persistent correlation.**
+
+This can then continue toward:
+
+\[
+\text{Memory}
+\rightarrow
+\text{Structure}
+\rightarrow
+\text{Identity}
+\]
+
+without claiming that every persistent physical correlation is semantic information or consciousness.
+
+---
+
+# Identity
+
+The project treats identity as an emergent persistent organization rather than a primitive label.
+
+A working formulation is:
+
+> **Identity is the boundary around a stable relationship.**
+
+At higher scales:
+
+> **Every stable WE is a candidate I at the next scale.**
+
+This remains a hypothesis-generating model principle, not a demonstrated universal law.
+
+---
+
+# Current Key Findings
+
+### 1. Macrostate and history can separate
+
+Two realities can reconverge in aggregate polarization while retaining large spatial divergence.
+
+### 2. Explicit memory is not equivalent to total history
+
+Deleting `particle.mem` does not erase all history already distributed through the system.
+
+### 3. Historical influence can migrate between substrates
+
+Memory perturbation can become orientation, relational, and spatial divergence.
+
+### 4. Paired randomness can isolate intervention effects
+
+The current valid fork experiments maintained RNG drift at zero.
+
+### 5. A neutral field does not guarantee a neutral population
+
+The particle population can develop persistent collective orientation while the global field remains comparatively weakly polarized.
+
+### 6. Same macro count does not imply same relational structure
+
+Two branches may contain the same number of relationships while containing different relationships.
+
+### 7. A large intervention need not produce a different basin
+
+Near a stable attractor, even severe local memory deletion may change the path without changing the destination.
+
+### 8. The timing and state of an intervention matter
+
+The same nominal intervention can have different consequences depending on how much distributed history already exists.
+
+---
+
+# Current Research Questions
+
+v9.2 is designed around several immediate questions:
+
+1. **Which historical substrate carries the strongest future constraint?**
+2. **Can a basin survive explicit memory deletion but fail after trajectory deletion?**
+3. **Can relational structure reconstruct erased memory?**
+4. **Can trajectory state reconstruct erased relationships?**
+5. **At what split state does a perturbation first change the macro basin?**
+6. **Are some historical substrates redundant?**
+7. **Does the system contain distributed error-correcting behavior?**
+8. **How much state must be reset before the future becomes statistically independent of the pre-split history?**
+
+---
+
+# Recommended v9.2 Experiment Order
+
+For the current reference seed:
+
+`3188496265`
+
+use the same physics and automatic split conditions whenever deterministic replay permits.
+
+Run:
+
+1. **MEMORY ONLY**
+2. **RELATION ONLY**
+3. **TRAJECTORY ONLY**
+4. **MEMORY + RELATION**
+5. **MEMORY + TRAJECTORY**
+6. **FULL PARTICLE HISTORY**
+
+Run each fork long enough to determine whether:
+
+- macro polarization reconverges,
+- relationships reconverge,
+- memory reconverges,
+- position/trajectory reconverges,
+- the final attractor remains the same.
+
+Then repeat the intervention matrix across additional seeds.
+
+The objective is not to find one spectacular screenshot.
+
+The objective is to construct a reproducible causal map.
+
+---
+
+# Reproducibility
+
+For every serious run, preserve:
+
+\[
+\boxed{
+(\text{version},
+\text{seed},
+\text{parameter vector},
+\text{intervention},
+\text{split tick},
+\text{split state})
+}
+\]
+
+A seed alone is **not** a complete experimental identity.
+
+A reproducible experiment should also retain its exported CSV.
+
+---
+
+# Running Locally
+
+Chaos Soup is currently distributed as a self-contained HTML file.
+
+Open:
 
 ```text
-Chaos-Soup/
-├── index.html          # Current public experiment
-├── README.md           # Project documentation
-└── versions/           # Planned archive of prior releases
+index.html
