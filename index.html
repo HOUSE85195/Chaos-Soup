@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
-<title>Chaos Soup v9.0 — THE SPLIT / Where Does the Past Live?</title>
+<title>Chaos Soup v9.1 — BALANCED GENESIS / When Does History Become a Basin?</title>
 <style>
 :root{
   color-scheme:dark;
@@ -39,8 +39,8 @@ select{width:100%;padding:7px;margin-top:5px}input[type=range]{width:100%;margin
   <div class="header">
     <div>
       <div class="kicker">HOUSE’S EXPERIMENT · UNIVERSAL FUSIONISM</div>
-      <h1>Chaos Soup v9.0 — THE SPLIT / Where Does the Past Live?</h1>
-      <div class="sub">v9.0 keeps the v8.5 symmetry and persistence audit and adds a controlled counterfactual experiment. When the population is strongly polarized while the field remains near neutral, the complete simulation state can be frozen and cloned into two synchronized realities. Reality A retains particle memory. Reality B begins from the same field, positions, velocities, orientations, relationships, reserves, and settings, but retained particle-memory content is erased. Both branches then receive a paired random tape. The experiment measures whether one hidden difference in retained history produces different futures.</div>
+      <h1>Chaos Soup v9.1 — BALANCED GENESIS / When Does History Become a Basin?</h1>
+      <div class="sub">v9.1 keeps the v9.0 paired-reality experiment but removes an inherited-history confound at genesis. Every reset now begins with an exactly balanced relational population (equal R/B counts) and zero retained particle memory. Memory must be written by interaction after tick 0. Auto-fork can therefore scan progressively later collective polarization thresholds while the field remains near neutral, asking when accumulated history becomes sufficient to constrain the future basin.</div>
     </div>
     <div class="badge">WORLD → OBSERVATION → INTERPRETATION</div>
   </div>
@@ -69,44 +69,44 @@ select{width:100%;padding:7px;margin-top:5px}input[type=range]{width:100%;margin
   </div>
 
   <div class="controls">
-    <button id="toggle">Pause</button>
+    <button id="toggle">Run</button>
     <button id="reset">Reset same seed</button>
     <button id="newSeed">New universe seed</button>
     <button id="quench">Quench heat</button>
     <button id="forkNow">FREEZE & SPLIT</button>
-    <button id="forkAuto" class="warn">Auto-fork: OFF</button>
-    <div class="control"><label>Fork field neutrality <span id="forkFieldVal"></span></label><input id="forkFieldMax" type="range" min="1" max="20" value="5"><small>Auto-fork requires |field polarization| at or below this percentage.</small></div>
-    <div class="control"><label>Fork particle polarization <span id="forkParticleVal"></span></label><input id="forkParticleMin" type="range" min="50" max="99" value="90"><small>Auto-fork requires |particle polarization| at or above this percentage.</small></div>
+    <button id="forkAuto" class="warn active">Auto-fork: ON</button>
+    <div class="control"><label>Fork field neutrality <span id="forkFieldVal"></span></label><input id="forkFieldMax" type="range" min="1" max="20" value="10"><small>Auto-fork requires |field polarization| at or below this percentage.</small></div>
+    <div class="control"><label>Fork particle polarization <span id="forkParticleVal"></span></label><input id="forkParticleMin" type="range" min="5" max="99" step="5" value="20"><small>Auto-fork requires |particle polarization| at or above this percentage. v9.1 starts at exactly 0, so this threshold now measures history earned after genesis.</small></div>
     <div class="control"><label>Fork condition dwell <span id="forkDwellVal"></span></label><input id="forkDwell" type="range" min="24" max="600" step="12" value="120"><small>Condition must persist this many ticks before automatic splitting.</small></div>
 
     <div class="control"><label>View <span id="viewVal"></span></label><select id="view"><option value="world">WORLD — full state</option><option value="hineni">HINENI — embedded observer</option><option value="choice">CHOICE — possibility portal</option><option value="frame">FRAME — identity / orientation audit</option><option value="memory">MEMORY — field retention</option><option value="green">GREEN MEMORY — cost / plasticity</option><option value="relations">WE — relational hierarchy</option><option value="seam">SEAM — difference boundary</option><option value="greenseam">GREEN SEAM — viable interface</option><option value="center">CENTER FRAME — relative polarity</option><option value="neo">NEO TRACE — same self / new center</option><option value="genealogy">GENEALOGY — centers over time</option><option value="audit">AUDIT — symmetry / persistence</option></select><small>CHOICE uses only the selected observer’s finite causal view.</small></div>
-    <div class="control"><label>Temperature / noise <span id="tempVal"></span></label><input id="temp" type="range" min="20" max="500" value="235"><small>Ising-like disorder parameter, not literal “quantum heat.”</small></div>
+    <div class="control"><label>Temperature / noise <span id="tempVal"></span></label><input id="temp" type="range" min="20" max="500" value="300"><small>Ising-like disorder parameter, not literal “quantum heat.”</small></div>
     <div class="control"><label>Alignment coupling J <span id="jVal"></span></label><input id="coupling" type="range" min="0" max="200" value="100"><small>Higher J favors neighboring agreement.</small></div>
     <div class="control"><label>Field updates <span id="fieldRateVal"></span></label><input id="fieldRate" type="range" min="200" max="9000" step="100" value="4300"><small>Local updates per model tick.</small></div>
 
-    <div class="control"><label>Relational tokens <span id="particleVal"></span></label><input id="particleCount" type="range" min="40" max="240" step="10" value="130"><small>Tokens sample and react to the same field; they are not organisms.</small></div>
+    <div class="control"><label>Relational tokens <span id="particleVal"></span></label><input id="particleCount" type="range" min="40" max="240" step="10" value="240"><small>Tokens sample and react to the same field; they are not organisms.</small></div>
     <div class="control"><label>Like-orientation affinity <span id="affVal"></span></label><input id="affinity" type="range" min="0" max="100" value="42"><small>Model coupling; red/blue are not electric charge.</small></div>
-    <div class="control"><label>Unlike separation <span id="repVal"></span></label><input id="repulsion" type="range" min="0" max="100" value="38"><small>Creates domains while allowing persistent interfaces.</small></div>
+    <div class="control"><label>Unlike separation <span id="repVal"></span></label><input id="repulsion" type="range" min="0" max="100" value="80"><small>Creates domains while allowing persistent interfaces.</small></div>
     <div class="control"><label>Mixing / agitation <span id="mixVal"></span></label><input id="mixing" type="range" min="0" max="100" value="23"><small>Brownian-like motion of relational tokens.</small></div>
 
-    <div class="control"><label>WE persistence threshold <span id="weVal"></span></label><input id="weThreshold" type="range" min="20" max="260" value="95"><small>Observer label only: sustained cross-stratum relation.</small></div>
-    <div class="control"><label>Relation range <span id="rangeVal"></span></label><input id="relationRange" type="range" min="22" max="90" value="54"><small>Distance within which relation can accumulate.</small></div>
+    <div class="control"><label>WE persistence threshold <span id="weVal"></span></label><input id="weThreshold" type="range" min="20" max="260" value="28"><small>Observer label only: sustained cross-stratum relation.</small></div>
+    <div class="control"><label>Relation range <span id="rangeVal"></span></label><input id="relationRange" type="range" min="22" max="90" value="74"><small>Distance within which relation can accumulate.</small></div>
     <div class="control"><label>Observer horizon <span id="horizonVal"></span></label><input id="horizon" type="range" min="100" max="520" value="300"><small>HINENI cannot directly inspect beyond this local radius.</small></div>
     <div class="control"><label>Causal channel speed <span id="signalVal"></span></label><input id="signalSpeed" type="range" min="2" max="34" value="12"><small>Model pixels/tick. It is a finite information speed, not physical c.</small></div>
 
     <div class="control"><label>Portal resolution <span id="portalVal"></span></label><input id="portalDeg" type="range" min="5" max="60" value="18"><small>Angular width per possible action. Smaller portal → more distinguishable directions.</small></div>
-    <div class="control"><label>Attention radius <span id="attentionRadiusVal"></span></label><input id="attentionRadius" type="range" min="60" max="320" value="180"><small>Larger field gives more context but dilutes a fixed attention budget.</small></div>
+    <div class="control"><label>Attention radius <span id="attentionRadiusVal"></span></label><input id="attentionRadius" type="range" min="60" max="320" value="278"><small>Larger field gives more context but dilutes a fixed attention budget.</small></div>
     <div class="control"><label>Attention budget <span id="attentionBudgetVal"></span></label><input id="attentionBudget" type="range" min="24" max="720" step="12" value="180"><small>Finite samples distributed across the possibility field.</small></div>
     <div class="control"><label>Choice interval <span id="choiceIntervalVal"></span></label><input id="choiceInterval" type="range" min="4" max="60" value="18"><small>Ticks between committed actions when the chooser benchmark is active.</small></div>
 
     <div class="control"><label>Choice force <span id="choiceStrengthVal"></span></label><input id="choiceStrength" type="range" min="0" max="100" value="38"><small>Physical steering applied only after one possibility is committed.</small></div>
-    <div class="control"><label>Choice temperature <span id="choiceTempVal"></span></label><input id="choiceTemp" type="range" min="5" max="200" value="45"><small>Lower = more concentrated choice; higher = more exploration among alternatives.</small></div>
-    <div class="control"><label>Attention objective <span id="objectiveVal"></span></label><select id="choiceObjective"><option value="balanced">BALANCED — coherence + difference + relation</option><option value="alignment">ALIGNMENT — own orientation coherence</option><option value="difference">DIFFERENCE — seam / novelty</option><option value="relation">RELATION — cross-orientation encounter</option></select><small>Explicit benchmark objective, not an emergent survival command.</small></div>
+    <div class="control"><label>Choice temperature <span id="choiceTempVal"></span></label><input id="choiceTemp" type="range" min="5" max="200" value="130"><small>Lower = more concentrated choice; higher = more exploration among alternatives.</small></div>
+    <div class="control"><label>Attention objective <span id="objectiveVal"></span></label><select id="choiceObjective"><option value="balanced">BALANCED — coherence + difference + relation</option><option value="alignment" selected>ALIGNMENT — own orientation coherence</option><option value="difference">DIFFERENCE — seam / novelty</option><option value="relation">RELATION — cross-orientation encounter</option></select><small>Explicit benchmark objective, not an emergent survival command.</small></div>
     <div class="control"><label>Choice memory <span id="choiceMemoryVal"></span></label><input id="choiceMemory" type="range" min="8" max="120" value="48"><small>Recent committed choices retained for path and directional bias analysis.</small></div>
 
     <div class="control"><label>Memory persistence barrier <span id="memoryStrengthVal"></span></label><input id="memoryStrength" type="range" min="0" max="100" value="58"><small>Retained history resists reorientation. Higher = more hysteresis / less easy rewriting.</small></div>
-    <div class="control"><label>Memory plasticity <span id="memoryPlasticityVal"></span></label><input id="memoryPlasticity" type="range" min="1" max="100" value="46"><small>Rate at which stored orientation can learn a newly persistent state.</small></div>
-    <div class="control"><label>Maintenance cost <span id="memoryMaintenanceVal"></span></label><input id="memoryMaintenance" type="range" min="0" max="100" value="34"><small>Abstract work spent to keep retained state from dissolving into noise.</small></div>
+    <div class="control"><label>Memory plasticity <span id="memoryPlasticityVal"></span></label><input id="memoryPlasticity" type="range" min="1" max="100" value="82"><small>Rate at which stored orientation can learn a newly persistent state.</small></div>
+    <div class="control"><label>Maintenance cost <span id="memoryMaintenanceVal"></span></label><input id="memoryMaintenance" type="range" min="0" max="100" value="80"><small>Abstract work spent to keep retained state from dissolving into noise.</small></div>
     <div class="control"><label>Rewrite / erase cost <span id="memoryRewriteVal"></span></label><input id="memoryRewrite" type="range" min="0" max="100" value="58"><small>Additional work required when stored orientation is overwritten. Model units, not joules.</small></div>
     <div class="control"><label>Memory work inflow <span id="memoryInflowVal"></span></label><input id="memoryInflow" type="range" min="0" max="100" value="28"><small>Explicit abstract work source for this benchmark. Without it, costly memories eventually fade.</small></div>
     <div class="control"><label>Relational memory subsidy <span id="memorySubsidyVal"></span></label><input id="memorySubsidy" type="range" min="0" max="100" value="62"><small>Same-oriented local relations reduce the individual maintenance bill; group structure can carry part of continuity.</small></div>
@@ -156,7 +156,8 @@ select{width:100%;padding:7px;margin-top:5px}input[type=range]{width:100%;margin
     <div class="panel"><h2>Choice layer</h2><p>The selected HINENI observer samples only what can reach it, divides its circular local field into angular possibilities, assigns finite evidence to each, and commits one physical action. Smaller portal width increases candidate count; larger radius spreads the same attention budget thinner.</p><div class="equation">Ωseen → attention → {a₁…aₙ}<br>{a₁…aₙ} → CHOICE VERTEX → a*<br>a* → history → memory → Ω′</div></div>
     <div class="panel"><h2>Relative CENTER layer</h2><p>Centers are observer-side labels over persistent connected field domains. Raw state never changes merely because a center is named. Relative polarity is computed against the selected center: aligned states render RED; divergent states render BLUE. A raw Blue domain can therefore become the new RED center when viewed from its own frame.</p><div class="equation">raw state sᵢ ∈ {−1,+1}<br>CENTER orientation cₖ ∈ {−1,+1}<br>relative polarity ρᵢₖ = sᵢcₖ<br>ρ=+1 → RED/aligned · ρ=−1 → BLUE/divergent</div></div>
     <div class="panel"><h2>NEO recursion</h2><p>A NEO candidate is a token that is BLUE/DIVERGENT relative to one established center while preserving its raw orientation. If it crosses a GREEN seam and later becomes RED/ALIGNED inside a different established center without changing raw orientation, the observer records a NEO transition. This tests frame change rather than particle conversion.</p><div class="equation">Rₙ center → Bₙ₊₁ anomaly → GREEN crossing → new CENTER → Rₙ₊₁ role<br>same identity · same raw orientation · different relational frame</div></div>
-    <div class="panel"><h2>Reality split layer</h2><p>The fork is an intervention test, not a second visualization. At split time the engine deep-copies the causal state. A keeps retained particle memory. B keeps the same raw orientations, field, positions, velocities, reserves, relationships, centers, and settings but sets retained particle-memory content to neutral. Both branches receive the same paired random tape by call index; any random-call-count drift is reported.</p><div class="equation">same present configuration + different retained past → different future ?<br>D<sub>memory</sub>(τ)=|m<sub>A</sub>(τ)−m<sub>B</sub>(τ)|<br>WORLD A ↔ paired randomness ↔ WORLD B</div></div>
+    <div class="panel"><h2>Balanced Genesis</h2><p>Every reset begins with exact R/B particle balance and zero retained particle memory. Positions, velocities, reserves, and the field are still generated from the seeded model. The system must create polarization and write memory through subsequent interaction; history is not supplied at birth.</p><div class="equation">tick 0: N<sub>R</sub> = N<sub>B</sub> · m<sub>particles</sub> = 0 · mean |memory| = 0<br>difference → interaction → written history → possible basin commitment</div></div>
+    <div class="panel"><h2>Reality split layer</h2><p>The fork is an intervention test, not a second visualization. At split time the engine deep-copies the causal state. A keeps retained particle memory. B keeps the same raw orientations, field, positions, velocities, reserves, relationships, centers, and settings but sets retained particle-memory content to neutral. Both branches receive the same paired random tape by call index; any random-call-count drift is reported. v9.1 records the actual split state and qualification metadata so slider thresholds cannot be mistaken for the state that actually forked.</p><div class="equation">same present configuration + different retained past → different future ?<br>D<sub>memory</sub>(τ)=|m<sub>A</sub>(τ)−m<sub>B</sub>(τ)|<br>WORLD A ↔ paired randomness ↔ WORLD B</div></div>
     <div class="panel"><h2>Identity / frame layer</h2><p>A sphere keeps the same identity number while its orientation may flip. GOLD is not a third orientation: it marks which sphere is the local observer. The observer can therefore distinguish “it changed,” “I changed,” “we changed relation,” and “information about change just arrived.”</p><div class="equation">SELF-ID ≠ ORIENTATION ≠ OBSERVER FRAME<br>Sᵢ=(id, o, x, y, memory, reserve, history)<br>GOLD = frame(Sᵢ), not o(Sᵢ)</div></div>
   </div>
 
@@ -191,8 +192,8 @@ const val={view:$('viewVal'),temp:$('tempVal'),j:$('jVal'),fieldRate:$('fieldRat
  seamMemory:$('seamMemoryVal'),seamFlux:$('seamFluxVal'),greenSeamThreshold:$('greenSeamThresholdVal'),centerMinCells:$('centerMinCellsVal'),centerPersistence:$('centerPersistenceVal'),neoLifetime:$('neoLifetimeVal'),neoCenterMaturity:$('neoCenterMaturityVal'),neoDivergentDwell:$('neoDivergentDwellVal'),neoArrivalDwell:$('neoArrivalDwellVal'),forkField:$('forkFieldVal'),forkParticle:$('forkParticleVal'),forkDwell:$('forkDwellVal')};
 const W=c.width,H=c.height,CX=W/2,CY=H/2+18,R=Math.min(W*.43,H*.48);
 const GW=82,GH=58,cellW=(R*2)/GW,cellH=(R*2)/GH,N=GW*GH;
-let seed=Date.now()>>>0,rngState=seed>>>0,tick=0,running=true,hiddenOn=false,demonOn=false,showLabels=true,pickMode=false,targetPickMode=false,choiceOn=false;
-let forkMode=false,forkRunning=false,forkAutoOn=false,forkReadyTicks=0,forkCheckpoint=null,forkAState=null,forkBState=null,forkHistory=[],forkSplitTick=0,forkPairIndex=0,forkBaseSeed=0,forkRandomCallsA=0,forkRandomCallsB=0,forkShiftTick=null,forkShiftDwell=0,forkStepping=false,pairedRandomMode=false,pairedRandomIndex=0,pairedRandomPair=0;
+let seed=Date.now()>>>0,rngState=seed>>>0,tick=0,running=false,hiddenOn=false,demonOn=false,showLabels=true,pickMode=false,targetPickMode=false,choiceOn=false;
+let forkMode=false,forkRunning=false,forkAutoOn=true,forkReadyTicks=0,forkMeta=null,forkCheckpoint=null,forkAState=null,forkBState=null,forkHistory=[],forkSplitTick=0,forkPairIndex=0,forkBaseSeed=0,forkRandomCallsA=0,forkRandomCallsB=0,forkShiftTick=null,forkShiftDwell=0,forkStepping=false,pairedRandomMode=false,pairedRandomIndex=0,pairedRandomPair=0;
 let sigma=new Int8Array(N),mask=new Uint8Array(N),fieldSnapshots=[],particleSnapshots=[];
 let seamAgeH=new Float32Array(N),seamAgeV=new Float32Array(N),seamFluxH=new Float32Array(N),seamFluxV=new Float32Array(N),seamGreenH=new Float32Array(N),seamGreenV=new Float32Array(N);
 let cellGreenSum=new Float32Array(N),cellGreenWeight=new Float32Array(N);
@@ -229,9 +230,15 @@ function randomPoint(){
  for(let k=0;k<500;k++){const a=rnd()*Math.PI*2,r=Math.sqrt(rnd())*(R-16),x=CX+Math.cos(a)*r,y=CY+Math.sin(a)*r;if(insideWorld(x,y))return{x,y}}
  return{x:CX,y:CY};
 }
-function newParticle(id){const p=randomPoint(),o=rnd()<.5?-1:1,g=gridFromWorld(p.x,p.y);return{id,x:p.x,y:p.y,vx:rand(-.18,.18),vy:rand(-.18,.18),o,age:0,mem:o*rand(.42,.78),memoryReserve:rand(62,92),memoryGreen:.5,sameSupport:0,oppSupport:0,socialBias:0,lastMemSign:o,reserveBand:2,memoryWrite:0,memoryMaintenance:0,memoryRewrite:0,memoryErase:0,lastSeamGX:g.gx,lastSeamGY:g.gy,centerId:0,relativePolarity:0,roleKey:'',roleDwell:0,neoCandidate:null,neoTrail:[],neoTransitions:[]}}
-function initParticles(){particles=[];const n=+ctl.particleCount.value;for(let i=0;i<n;i++)particles.push(newParticle(i));observerId=particles.length?particles[Math.floor(particles.length/2)].id:0;targetId=particles.find(p=>p.id!==observerId)?.id??null;particleSnapshots=[];relations.clear();groupRelations.clear();cachedGroups=[];cachedFamilies=[];eventAnchors.clear();for(const p of particles)eventAnchors.set(p.id,{x:p.x,y:p.y,o:p.o});lastRelationSignature=null}
+function newParticle(id,o){const p=randomPoint(),g=gridFromWorld(p.x,p.y);return{id,x:p.x,y:p.y,vx:rand(-.18,.18),vy:rand(-.18,.18),o,age:0,mem:0,memoryReserve:rand(62,92),memoryGreen:0,sameSupport:0,oppSupport:0,socialBias:0,lastMemSign:o,reserveBand:2,memoryWrite:0,memoryMaintenance:0,memoryRewrite:0,memoryErase:0,lastSeamGX:g.gx,lastSeamGY:g.gy,centerId:0,relativePolarity:0,roleKey:'',roleDwell:0,neoCandidate:null,neoTrail:[],neoTransitions:[]}}
+function balancedOrientations(n){
+ const a=[];const red=Math.floor(n/2),blue=n-red;for(let i=0;i<red;i++)a.push(1);for(let i=0;i<blue;i++)a.push(-1);
+ // Seeded Fisher-Yates shuffle: exact counts, randomized identity assignment.
+ for(let i=a.length-1;i>0;i--){const j=Math.floor(rnd()*(i+1));const t=a[i];a[i]=a[j];a[j]=t}return a;
+}
+function initParticles(){particles=[];const n=+ctl.particleCount.value,orientations=balancedOrientations(n);for(let i=0;i<n;i++)particles.push(newParticle(i,orientations[i]));observerId=particles.length?particles[Math.floor(particles.length/2)].id:0;targetId=particles.find(p=>p.id!==observerId)?.id??null;particleSnapshots=[];relations.clear();groupRelations.clear();cachedGroups=[];cachedFamilies=[];eventAnchors.clear();for(const p of particles)eventAnchors.set(p.id,{x:p.x,y:p.y,o:p.o});lastRelationSignature=null}
 function resetWorld(newSeed=false){
+ forkReadyTicks=0;
  if(newSeed){seed=(Date.now()^(Math.random()*0xffffffff))>>>0}rngState=seed>>>0;
  tick=0;hiddenPhase=0;demonBits=demonResets=0;demonProxyCost=0;eventLog=[];worldEventLog=[];observedEventLog=[];memoryTotals={maintenance:0,rewrite:0,erase:0,write:0,flips:0};choiceHistory=[];lastChoice=null;choiceCount=0;choiceVector={x:0,y:0};choiceMetrics={n:0,entropy:0,maxEntropy:0,confidence:0,uncertainty:0,density:0,samplesPer:0,evidence:0};
  seamAgeH.fill(0);seamAgeV.fill(0);seamFluxH.fill(0);seamFluxV.fill(0);seamGreenH.fill(0);seamGreenV.fill(0);cellGreenSum.fill(0);cellGreenWeight.fill(0);seamStats={seamEdges:0,greenEdges:0,meanGreen:0,maxGreen:0,opportunityGreen:0,opportunityOrdinary:0,weBirthGreen:0,weBirthOrdinary:0};
@@ -451,7 +458,7 @@ function auditSnapshot(fm){
 function csvAudit(){
  const cols=['tick','seed','fieldRed','fieldBlue','fieldPolarization','particleRed','particleBlue','particlePolarization','alignment','seam','domains','meanDomain','largestRed','largestBlue','greenSeamFraction','greenLift','stableWE','s100','s500','s1000','centersR','centersB','aligned','divergent','neoTransitions'];const rows=[cols.join(',')];for(const r of auditHistory)rows.push(cols.map(k=>typeof r[k]==='number'?r[k]:String(r[k]??'')).join(','));return rows.join('\n');
 }
-function downloadAuditCSV(){const blob=new Blob([csvAudit()],{type:'text/csv'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`chaos_soup_v8_5_audit_seed_${seed}.csv`;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},0)}
+function downloadAuditCSV(){const blob=new Blob([csvAudit()],{type:'text/csv'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`chaos_soup_v9_1_audit_seed_${seed}.csv`;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},0)}
 function stableRelations(){const th=+ctl.weThreshold.value;return [...relations.values()].filter(r=>r.cross&&r.age>=th)}
 function buildGroups(){
  const stable=stableRelations(),parent=new Map();
@@ -640,14 +647,25 @@ function forkDifference(a,b){
  const posRms=Math.sqrt(pos2/Math.max(1,n)),fieldDiff=fd/Math.max(1,active),orientationDiff=od/Math.max(1,n),relationDiff=sym/Math.max(1,union.size),memoryDiff=memd/Math.max(1,n),posNorm=clamp(posRms/(R*.25),0,1),observable=(fieldDiff+orientationDiff+relationDiff+posNorm)/4;
  return{fieldDiff,orientationDiff,posRms,posNorm,relationDiff,memoryDiff,observable,fieldCells:fd,orientationParticles:od,relationSym:sym};
 }
+function meanAbsMemoryState(s){if(!s.particles.length)return 0;let z=0;for(const p of s.particles)z+=Math.abs(p.mem);return z/s.particles.length}
+function forkSettingsSnapshot(){return{
+ temperature:+ctl.temp.value/100,couplingJ:+ctl.coupling.value/100,fieldUpdates:+ctl.fieldRate.value,relationalTokens:+ctl.particleCount.value,
+ affinity:+ctl.affinity.value/100,unlikeSeparation:+ctl.repulsion.value/100,mixing:+ctl.mixing.value/100,weThreshold:+ctl.weThreshold.value,relationRange:+ctl.relationRange.value,
+ memoryPersistence:+ctl.memoryStrength.value/100,memoryPlasticity:+ctl.memoryPlasticity.value/100,memoryMaintenance:+ctl.memoryMaintenance.value/100,memoryRewrite:+ctl.memoryRewrite.value/100,memoryInflow:+ctl.memoryInflow.value/100,memorySubsidy:+ctl.memorySubsidy.value/100,
+ greenSeamThreshold:+ctl.greenSeamThreshold.value/100,fieldNeutralityThreshold:+ctl.forkFieldMax.value/100,particlePolarizationThreshold:+ctl.forkParticleMin.value/100,forkDwell:+ctl.forkDwell.value,
+ hiddenForcing:hiddenOn?1:0,demonGate:demonOn?1:0
+}}
 function forkCondition(){const fm=fieldMetrics(),fmax=+ctl.forkFieldMax.value/100,pmin=+ctl.forkParticleMin.value/100;return{ok:Math.abs(fm.fieldPolarization)<=fmax&&Math.abs(fm.particlePolarization)>=pmin,fm}}
-function updateForkReadiness(){if(forkMode||forkStepping)return;const q=forkCondition();forkReadyTicks=q.ok?forkReadyTicks+1:0;if(forkAutoOn&&forkReadyTicks>=+ctl.forkDwell.value)startRealityFork()}
+function updateForkReadiness(){if(forkMode||forkStepping)return;const q=forkCondition();forkReadyTicks=q.ok?forkReadyTicks+1:0;if(forkAutoOn&&forkReadyTicks>=+ctl.forkDwell.value)startRealityFork('auto')}
 function lockForkControls(on){
  const ids=['reset','newSeed','quench','view','temp','coupling','fieldRate','particleCount','affinity','repulsion','mixing','weThreshold','relationRange','horizon','signalSpeed','portalDeg','attentionRadius','attentionBudget','choiceInterval','choiceStrength','choiceTemp','choiceObjective','choiceMemory','memoryStrength','memoryPlasticity','memoryMaintenance','memoryRewrite','memoryInflow','memorySubsidy','seamMemory','seamFlux','greenSeamThreshold','centerMinCells','centerPersistence','neoLifetime','neoCenterMaturity','neoDivergentDwell','neoArrivalDwell','hidden','demon','chooser','commitChoice','clearChoices','cycleCenter','forkNow','forkAuto','forkFieldMax','forkParticleMin','forkDwell'];
  for(const id of ids){const el=$(id);if(el)el.disabled=on}
 }
-function startRealityFork(){
- if(forkMode)return;running=false;ctl.toggle.textContent='Run';forkCheckpoint=captureEngineState(true);forkSplitTick=forkCheckpoint.tick;forkBaseSeed=forkCheckpoint.seed;forkAState=structuredClone(forkCheckpoint);forkBState=structuredClone(forkCheckpoint);eraseRetainedParticleMemory(forkBState);forkPairIndex=0;forkHistory=[];forkRandomCallsA=forkRandomCallsB=0;forkShiftTick=null;forkShiftDwell=0;forkMode=true;forkRunning=true;forkReadyTicks=0;mainStage.style.display='none';forkStage.style.display='block';lockForkControls(true);recordForkRow(true);updateForkButtons();drawFork();
+function startRealityFork(mode='manual'){
+ if(forkMode)return;running=false;ctl.toggle.textContent='Run';forkCheckpoint=captureEngineState(true);forkSplitTick=forkCheckpoint.tick;forkBaseSeed=forkCheckpoint.seed;
+ const splitMetrics=forkBasicMetrics(forkCheckpoint),settings=forkSettingsSnapshot();
+ forkMeta={version:'9.1',genesis:'BALANCED_ZERO_MEMORY',intervention:'B_RETAINED_PARTICLE_MEMORY_TO_ZERO',splitMode:mode,seed:forkBaseSeed,splitTick:forkSplitTick,splitFieldM:splitMetrics.mf,splitParticleM:splitMetrics.mp,splitMeanAbsMemory:meanAbsMemoryState(forkCheckpoint),splitStableWE:splitMetrics.stable,splitCenters:splitMetrics.centers,qualificationDwell:forkReadyTicks,...settings};
+ forkAState=structuredClone(forkCheckpoint);forkBState=structuredClone(forkCheckpoint);eraseRetainedParticleMemory(forkBState);forkPairIndex=0;forkHistory=[];forkRandomCallsA=forkRandomCallsB=0;forkShiftTick=null;forkShiftDwell=0;forkMode=true;forkRunning=true;forkReadyTicks=0;mainStage.style.display='none';forkStage.style.display='block';lockForkControls(true);recordForkRow(true);updateForkButtons();drawFork();
 }
 function restoreForkBranch(s){restoreEngineState(s)}
 function runForkBranch(s,pair){restoreForkBranch(s);pairedRandomMode=true;pairedRandomPair=pair;pairedRandomIndex=0;forkStepping=true;step();forkStepping=false;const calls=pairedRandomIndex;pairedRandomMode=false;syncEngineState(s);return calls}
@@ -658,9 +676,9 @@ function recordForkRow(force=false){
  if(!forkAState||!forkBState)return;const A=forkBasicMetrics(forkAState),B=forkBasicMetrics(forkBState),D=forkDifference(forkAState,forkBState),tau=forkAState.tick-forkSplitTick,row={tau,tickA:forkAState.tick,tickB:forkBState.tick,fieldMA:A.mf,fieldMB:B.mf,particleMA:A.mp,particleMB:B.mp,deltaParticle:Math.abs(A.mp-B.mp),fieldDiff:D.fieldDiff,orientationDiff:D.orientationDiff,positionRms:D.posRms,relationDiff:D.relationDiff,memoryDiff:D.memoryDiff,observableD:D.observable,stableWEA:A.stable,stableWEB:B.stable,centersA:A.centers,centersB:B.centers,randomCallsA:forkRandomCallsA,randomCallsB:forkRandomCallsB,randomCallDrift:forkRandomCallsA-forkRandomCallsB};forkHistory.push(row);if(forkHistory.length>1800)forkHistory.shift();if(D.observable>.02)forkShiftDwell+=12;else forkShiftDwell=0;if(forkShiftTick==null&&forkShiftDwell>=120)forkShiftTick=tau;
 }
 function rewindFork(){if(!forkCheckpoint)return;forkAState=structuredClone(forkCheckpoint);forkBState=structuredClone(forkCheckpoint);eraseRetainedParticleMemory(forkBState);forkPairIndex=0;forkHistory=[];forkRandomCallsA=forkRandomCallsB=0;forkShiftTick=null;forkShiftDwell=0;forkRunning=false;recordForkRow(true);updateForkButtons();drawFork()}
-function exitFork(){if(!forkMode)return;forkRunning=false;restoreEngineState(structuredClone(forkCheckpoint));forkMode=false;mainStage.style.display='block';forkStage.style.display='none';lockForkControls(false);forkCheckpoint=forkAState=forkBState=null;forkHistory=[];updateLabels();renderLedger();draw()}
-function forkCsv(){const cols=['tau','tickA','tickB','fieldMA','fieldMB','particleMA','particleMB','deltaParticle','fieldDiff','orientationDiff','positionRms','relationDiff','memoryDiff','observableD','stableWEA','stableWEB','centersA','centersB','randomCallsA','randomCallsB','randomCallDrift'];const out=[cols.join(',')];for(const r of forkHistory)out.push(cols.map(k=>r[k]??'').join(','));return out.join('\n')}
-function downloadForkCsv(){const blob=new Blob([forkCsv()],{type:'text/csv'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`chaos_soup_v9_reality_fork_seed_${forkBaseSeed}_tick_${forkSplitTick}.csv`;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},0)}
+function exitFork(){if(!forkMode)return;forkRunning=false;restoreEngineState(structuredClone(forkCheckpoint));forkMode=false;mainStage.style.display='block';forkStage.style.display='none';lockForkControls(false);forkCheckpoint=forkAState=forkBState=null;forkMeta=null;forkHistory=[];updateLabels();renderLedger();draw()}
+function forkCsv(){const metaCols=['version','genesis','intervention','splitMode','seed','splitTick','splitFieldM','splitParticleM','splitMeanAbsMemory','splitStableWE','splitCenters','qualificationDwell','fieldNeutralityThreshold','particlePolarizationThreshold','forkDwell','temperature','couplingJ','fieldUpdates','relationalTokens','affinity','unlikeSeparation','mixing','weThreshold','relationRange','memoryPersistence','memoryPlasticity','memoryMaintenance','memoryRewrite','memoryInflow','memorySubsidy','greenSeamThreshold','hiddenForcing','demonGate'];const cols=['tau','tickA','tickB','fieldMA','fieldMB','particleMA','particleMB','deltaParticle','fieldDiff','orientationDiff','positionRms','relationDiff','memoryDiff','observableD','stableWEA','stableWEB','centersA','centersB','randomCallsA','randomCallsB','randomCallDrift'];const all=[...metaCols,...cols],out=[all.join(',')],meta=forkMeta||{};for(const r of forkHistory)out.push(all.map(k=>metaCols.includes(k)?(meta[k]??''):(r[k]??'')).join(','));return out.join('\n')}
+function downloadForkCsv(){const blob=new Blob([forkCsv()],{type:'text/csv'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`chaos_soup_v9_1_balanced_genesis_seed_${forkBaseSeed}_tick_${forkSplitTick}.csv`;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},0)}
 function forkCanvasTransform(fctx,canvas){const sx=canvas.width/W,sy=canvas.height/H;fctx.setTransform(sx,0,0,sy,0,0)}
 function drawForkWorld(fctx,canvas,s,label){
  fctx.setTransform(1,0,0,1,0,0);fctx.fillStyle='#02040a';fctx.fillRect(0,0,canvas.width,canvas.height);fctx.save();forkCanvasTransform(fctx,canvas);fctx.beginPath();fctx.arc(CX,CY,R,0,Math.PI*2);fctx.clip();
@@ -680,7 +698,7 @@ function drawForkChart(){
 }
 function updateForkButtons(){ctl.forkToggle.textContent=forkRunning?'Pause fork':'Run fork'}
 function drawFork(){
- if(!forkMode||!forkAState||!forkBState)return;drawForkWorld(forkCtxA,forkCanvasA,forkAState,'A · HISTORY');drawForkWorld(forkCtxB,forkCanvasB,forkBState,'B · MEMORY ERASED');drawForkDifference();drawForkChart();const A=forkBasicMetrics(forkAState),B=forkBasicMetrics(forkBState),D=forkDifference(forkAState,forkBState),tau=forkAState.tick-forkSplitTick,drift=forkRandomCallsA-forkRandomCallsB;forkHeadline.innerHTML=`seed ${forkBaseSeed} · split t${forkSplitTick.toLocaleString()} · τ ${tau.toLocaleString()} · intervention: B retained particle memory → 0`;
+ if(!forkMode||!forkAState||!forkBState)return;drawForkWorld(forkCtxA,forkCanvasA,forkAState,'A · HISTORY');drawForkWorld(forkCtxB,forkCanvasB,forkBState,'B · MEMORY ERASED');drawForkDifference();drawForkChart();const A=forkBasicMetrics(forkAState),B=forkBasicMetrics(forkBState),D=forkDifference(forkAState,forkBState),tau=forkAState.tick-forkSplitTick,drift=forkRandomCallsA-forkRandomCallsB;forkHeadline.innerHTML=`v9.1 · seed ${forkBaseSeed} · ${forkMeta?.splitMode||'manual'} split t${forkSplitTick.toLocaleString()} · τ ${tau.toLocaleString()} · split field m ${(forkMeta?.splitFieldM??A.mf).toFixed(3)} · particle m ${(forkMeta?.splitParticleM??A.mp).toFixed(3)} · mean |M| ${(forkMeta?.splitMeanAbsMemory??0).toFixed(3)}`;
  forkAText.innerHTML=`field m ${A.mf.toFixed(3)} · particle m <b>${A.mp.toFixed(3)}</b><br>WE ${A.stable} · established centers ${A.centers}<br>particle memory retained · raw orientation unchanged at split`;
  forkBText.innerHTML=`field m ${B.mf.toFixed(3)} · particle m <b>${B.mp.toFixed(3)}</b><br>WE ${B.stable} · established centers ${B.centers}<br>memory content erased at split · reserve + raw orientation retained`;
  forkDiffText.innerHTML=`Δ particle m <b>${Math.abs(A.mp-B.mp).toFixed(3)}</b><br>field Hamming ${(D.fieldDiff*100).toFixed(2)}% · orientation diff ${(D.orientationDiff*100).toFixed(2)}%<br>position RMS ${D.posRms.toFixed(2)}px · WE relation diff ${(D.relationDiff*100).toFixed(2)}%<br>mean |Δ memory| ${D.memoryDiff.toFixed(3)} · observable D ${D.observable.toFixed(3)}<br>paired RNG calls A/B ${forkRandomCallsA}/${forkRandomCallsB} · drift ${drift}${forkShiftTick!=null?`<br><span class="forkShift">REALITY-SHIFT CANDIDATE τ=${forkShiftTick}</span>`:''}`;
@@ -802,6 +820,7 @@ function drawHUD(groups,families,o){
  const rateG=seamStats.weBirthGreen/Math.max(1,seamStats.opportunityGreen),rateO=seamStats.weBirthOrdinary/Math.max(1,seamStats.opportunityOrdinary),lift=rateO>0?rateG/rateO:0;
  let targetLine='tracked sphere none';if(t&&a){const received=a.visible&&a.received?`${signName(a.received.o)} @ lag ${a.lag.toFixed(1)}t`:'NOT RECEIVED',tc=centerById(t.centerId);targetLine=`target #${t.id} · raw ${signName(t.o)} · ${roleName(t.relativePolarity)}${tc?' @ C'+tc.id:''} · HINENI sees ${received}${mode==='frame'?` · WORLD now ${signName(t.o)} [audit]`:''}`}
  hud.innerHTML=`<b>tick ${tick.toLocaleString()}</b> · seed ${seed}<br>`+
+ `GENESIS: BALANCED ZERO-MEMORY · exact particle R/B balance at reset · memory earned after tick 0<br>`+
  `Ω field: alignment ${(m.alignment*100).toFixed(1)}% · seam ${(m.seam*100).toFixed(1)}% · field-memory M ${(m.retention).toFixed(3)}<br>`+
  `SYMMETRY: field R ${m.redCells||0} / B ${m.blueCells||0} · m ${(m.fieldPolarization||0).toFixed(3)} · particles R ${m.redParticles||0} / B ${m.blueParticles||0} · m ${(m.particlePolarization||0).toFixed(3)}<br>`+
  `DOMAINS: n ${auditDomains.count} · mean ${auditDomains.mean.toFixed(1)} · largest R ${auditDomains.largestRed} / B ${auditDomains.largestBlue} · WE survival S100 ${(auditSurvival.s100.rate*100).toFixed(1)}% · S500 ${(auditSurvival.s500.rate*100).toFixed(1)}% · S1000 ${(auditSurvival.s1000.rate*100).toFixed(1)}%<br>`+
@@ -843,13 +862,13 @@ function loop(){if(forkMode){if(forkRunning){forkStepPair()}drawFork()}else{if(r
 
 ctl.toggle.onclick=()=>{running=!running;ctl.toggle.textContent=running?'Pause':'Run'};
 
-ctl.forkNow.onclick=startRealityFork;
+ctl.forkNow.onclick=()=>startRealityFork('manual');
 ctl.forkAuto.onclick=()=>{forkAutoOn=!forkAutoOn;ctl.forkAuto.textContent='Auto-fork: '+(forkAutoOn?'ON':'OFF');ctl.forkAuto.classList.toggle('active',forkAutoOn)};
 ctl.forkToggle.onclick=()=>{forkRunning=!forkRunning;updateForkButtons()};
 ctl.forkStep.onclick=()=>{if(!forkMode)return;forkRunning=false;forkStepPair();updateForkButtons();drawFork()};
 ctl.forkRewind.onclick=rewindFork;ctl.forkExport.onclick=downloadForkCsv;ctl.forkExit.onclick=exitFork;
 
-ctl.reset.onclick=()=>resetWorld(false);ctl.newSeed.onclick=()=>resetWorld(true);
+ctl.reset.onclick=()=>{if(forkMode)return;running=false;ctl.toggle.textContent='Run';resetWorld(false)};ctl.newSeed.onclick=()=>{if(forkMode)return;running=false;ctl.toggle.textContent='Run';resetWorld(true)};
 ctl.quench.onclick=()=>{ctl.temp.value=70;updateLabels()};
 ctl.hidden.onclick=()=>{hiddenOn=!hiddenOn;ctl.hidden.textContent='Hidden boundary forcing: '+(hiddenOn?'ON':'OFF');ctl.hidden.classList.toggle('active',hiddenOn)};
 ctl.demon.onclick=()=>{demonOn=!demonOn;ctl.demon.textContent='Demon gate benchmark: '+(demonOn?'ON':'OFF');ctl.demon.classList.toggle('active',demonOn)};
