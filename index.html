@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
-<title>Chaos Soup v8.4 — RELATIVE CENTER / The Genealogy of Normality</title>
+<title>Chaos Soup v8.5 — SYMMETRY & PERSISTENCE AUDIT</title>
 <style>
 :root{
   color-scheme:dark;
@@ -33,8 +33,8 @@ select{width:100%;padding:7px;margin-top:5px}input[type=range]{width:100%;margin
   <div class="header">
     <div>
       <div class="kicker">HOUSE’S EXPERIMENT · UNIVERSAL FUSIONISM</div>
-      <h1>Chaos Soup v8.4 — RELATIVE CENTER / The Genealogy of Normality</h1>
-      <div class="sub">v8.4 keeps every v8.3 mechanism, then separates RAW ORIENTATION from RELATIONAL POLARITY. Persistent field domains are detected as observer-side CENTER candidates. A token can therefore remain the same raw Blue orientation while being BLUE/DIVERGENT relative to an old Red center, cross a viable Green seam, and later become RED/ALIGNED relative to a new Blue-oriented center. Center detection, genealogy, and NEO labels do not feed back into the physical rules.</div>
+      <h1>Chaos Soup v8.5 — SYMMETRY & PERSISTENCE AUDIT</h1>
+      <div class="sub">v8.5 keeps the v8.4 center-relative model, removes two accidental Red tie/fallback biases, and adds a symmetry and persistence audit. The engine now records raw Red/Blue polarization, particle polarization, domain coarsening, Green-seam productivity, WE survival at 100/500/1000 ticks, and stricter NEO transitions that require mature centers, sustained divergence, a Green crossing, a persistent WE relation, and sustained alignment in the new center. Interpretation still does not feed back into the physical rules.</div>
     </div>
     <div class="badge">WORLD → OBSERVATION → INTERPRETATION</div>
   </div>
@@ -51,7 +51,7 @@ select{width:100%;padding:7px;margin-top:5px}input[type=range]{width:100%;margin
     <button id="newSeed">New universe seed</button>
     <button id="quench">Quench heat</button>
 
-    <div class="control"><label>View <span id="viewVal"></span></label><select id="view"><option value="world">WORLD — full state</option><option value="hineni">HINENI — embedded observer</option><option value="choice">CHOICE — possibility portal</option><option value="frame">FRAME — identity / orientation audit</option><option value="memory">MEMORY — field retention</option><option value="green">GREEN MEMORY — cost / plasticity</option><option value="relations">WE — relational hierarchy</option><option value="seam">SEAM — difference boundary</option><option value="greenseam">GREEN SEAM — viable interface</option><option value="center">CENTER FRAME — relative polarity</option><option value="neo">NEO TRACE — same self / new center</option><option value="genealogy">GENEALOGY — centers over time</option></select><small>CHOICE uses only the selected observer’s finite causal view.</small></div>
+    <div class="control"><label>View <span id="viewVal"></span></label><select id="view"><option value="world">WORLD — full state</option><option value="hineni">HINENI — embedded observer</option><option value="choice">CHOICE — possibility portal</option><option value="frame">FRAME — identity / orientation audit</option><option value="memory">MEMORY — field retention</option><option value="green">GREEN MEMORY — cost / plasticity</option><option value="relations">WE — relational hierarchy</option><option value="seam">SEAM — difference boundary</option><option value="greenseam">GREEN SEAM — viable interface</option><option value="center">CENTER FRAME — relative polarity</option><option value="neo">NEO TRACE — same self / new center</option><option value="genealogy">GENEALOGY — centers over time</option><option value="audit">AUDIT — symmetry / persistence</option></select><small>CHOICE uses only the selected observer’s finite causal view.</small></div>
     <div class="control"><label>Temperature / noise <span id="tempVal"></span></label><input id="temp" type="range" min="20" max="500" value="235"><small>Ising-like disorder parameter, not literal “quantum heat.”</small></div>
     <div class="control"><label>Alignment coupling J <span id="jVal"></span></label><input id="coupling" type="range" min="0" max="200" value="100"><small>Higher J favors neighboring agreement.</small></div>
     <div class="control"><label>Field updates <span id="fieldRateVal"></span></label><input id="fieldRate" type="range" min="200" max="9000" step="100" value="4300"><small>Local updates per model tick.</small></div>
@@ -90,7 +90,12 @@ select{width:100%;padding:7px;margin-top:5px}input[type=range]{width:100%;margin
     <div class="control"><label>Center minimum area <span id="centerMinCellsVal"></span></label><input id="centerMinCells" type="range" min="16" max="240" value="52"><small>Minimum connected same-state field cells required for a domain to count as a CENTER candidate.</small></div>
     <div class="control"><label>Center persistence <span id="centerPersistenceVal"></span></label><input id="centerPersistence" type="range" min="24" max="600" value="120"><small>Ticks a candidate must persist before it is labeled an ESTABLISHED center. Classification only; no new force.</small></div>
     <div class="control"><label>NEO trace lifetime <span id="neoLifetimeVal"></span></label><input id="neoLifetime" type="range" min="240" max="3600" step="120" value="1680"><small>Maximum time to retain a candidate transition from BLUE/DIVERGENT in one center to RED/ALIGNED in another.</small></div>
+    <div class="control"><label>NEO center maturity <span id="neoCenterMaturityVal"></span></label><input id="neoCenterMaturity" type="range" min="120" max="1200" step="24" value="240"><small>Both origin and arrival centers must have existed this long before a NEO transition can qualify.</small></div>
+    <div class="control"><label>NEO divergent dwell <span id="neoDivergentDwellVal"></span></label><input id="neoDivergentDwell" type="range" min="24" max="480" step="12" value="60"><small>Minimum sustained BLUE/DIVERGENT time inside the mature origin center before a candidate begins.</small></div>
+    <div class="control"><label>NEO arrival dwell <span id="neoArrivalDwellVal"></span></label><input id="neoArrivalDwell" type="range" min="24" max="720" step="12" value="120"><small>Minimum sustained RED/ALIGNED time inside the mature new center before the transition is counted.</small></div>
 
+    <button id="exportAudit">Download audit CSV</button>
+    <button id="clearAudit">Reset audit history</button>
     <button id="hidden" class="warn">Hidden boundary forcing: OFF</button>
     <button id="demon" class="warn">Demon gate benchmark: OFF</button>
     <button id="labels">Relational labels: ON</button>
@@ -146,12 +151,12 @@ const ctl={
  attentionBudget:$('attentionBudget'),choiceInterval:$('choiceInterval'),choiceStrength:$('choiceStrength'),choiceTemp:$('choiceTemp'),
  choiceObjective:$('choiceObjective'),choiceMemory:$('choiceMemory'),
  memoryStrength:$('memoryStrength'),memoryPlasticity:$('memoryPlasticity'),memoryMaintenance:$('memoryMaintenance'),memoryRewrite:$('memoryRewrite'),memoryInflow:$('memoryInflow'),memorySubsidy:$('memorySubsidy'),
- seamMemory:$('seamMemory'),seamFlux:$('seamFlux'),greenSeamThreshold:$('greenSeamThreshold'),centerMinCells:$('centerMinCells'),centerPersistence:$('centerPersistence'),neoLifetime:$('neoLifetime'),cycleCenter:$('cycleCenter')
+ seamMemory:$('seamMemory'),seamFlux:$('seamFlux'),greenSeamThreshold:$('greenSeamThreshold'),centerMinCells:$('centerMinCells'),centerPersistence:$('centerPersistence'),neoLifetime:$('neoLifetime'),neoCenterMaturity:$('neoCenterMaturity'),neoDivergentDwell:$('neoDivergentDwell'),neoArrivalDwell:$('neoArrivalDwell'),cycleCenter:$('cycleCenter'),exportAudit:$('exportAudit'),clearAudit:$('clearAudit')
 };
 const val={view:$('viewVal'),temp:$('tempVal'),j:$('jVal'),fieldRate:$('fieldRateVal'),particle:$('particleVal'),aff:$('affVal'),rep:$('repVal'),mix:$('mixVal'),we:$('weVal'),range:$('rangeVal'),horizon:$('horizonVal'),signal:$('signalVal'),
  portal:$('portalVal'),attentionRadius:$('attentionRadiusVal'),attentionBudget:$('attentionBudgetVal'),choiceInterval:$('choiceIntervalVal'),choiceStrength:$('choiceStrengthVal'),choiceTemp:$('choiceTempVal'),objective:$('objectiveVal'),choiceMemory:$('choiceMemoryVal'),
  memoryStrength:$('memoryStrengthVal'),memoryPlasticity:$('memoryPlasticityVal'),memoryMaintenance:$('memoryMaintenanceVal'),memoryRewrite:$('memoryRewriteVal'),memoryInflow:$('memoryInflowVal'),memorySubsidy:$('memorySubsidyVal'),
- seamMemory:$('seamMemoryVal'),seamFlux:$('seamFluxVal'),greenSeamThreshold:$('greenSeamThresholdVal'),centerMinCells:$('centerMinCellsVal'),centerPersistence:$('centerPersistenceVal'),neoLifetime:$('neoLifetimeVal')};
+ seamMemory:$('seamMemoryVal'),seamFlux:$('seamFluxVal'),greenSeamThreshold:$('greenSeamThresholdVal'),centerMinCells:$('centerMinCellsVal'),centerPersistence:$('centerPersistenceVal'),neoLifetime:$('neoLifetimeVal'),neoCenterMaturity:$('neoCenterMaturityVal'),neoDivergentDwell:$('neoDivergentDwellVal'),neoArrivalDwell:$('neoArrivalDwellVal')};
 const W=c.width,H=c.height,CX=W/2,CY=H/2+18,R=Math.min(W*.43,H*.48);
 const GW=82,GH=58,cellW=(R*2)/GW,cellH=(R*2)/GH,N=GW*GH;
 let seed=Date.now()>>>0,rng=mulberry32(seed),tick=0,running=true,hiddenOn=false,demonOn=false,showLabels=true,pickMode=false,targetPickMode=false,choiceOn=false;
@@ -162,6 +167,7 @@ let seamStats={seamEdges:0,greenEdges:0,meanGreen:0,maxGreen:0,opportunityGreen:
 let particles=[],relations=new Map(),groupRelations=new Map(),observerId=0,targetId=null,cachedGroups=[],cachedFamilies=[];
 const CENTER_DETECT_INTERVAL=12;
 let centers=[],centerRegistry=new Map(),nextCenterId=1,selectedCenterId=null,centerOwner=new Int32Array(N),previousCenterOwner=new Int32Array(N),centerEventLog=[],centerStats={births:0,established:0,neoTransitions:0};
+let weBirthRecords=[],nextWeBirthId=1,auditHistory=[],auditDomains={count:0,mean:0,largestRed:0,largestBlue:0},auditSurvival={s100:{eligible:0,survived:0,rate:0},s500:{eligible:0,survived:0,rate:0},s1000:{eligible:0,survived:0,rate:0}};
 let demonBits=0,demonResets=0,demonProxyCost=0,hiddenPhase=0,eventLog=[],worldEventLog=[],observedEventLog=[],eventAnchors=new Map(),lastRelationSignature=null;
 let choiceHistory=[],lastChoice=null,choiceCount=0,choiceVector={x:0,y:0},choiceMetrics={n:0,entropy:0,maxEntropy:0,confidence:0,uncertainty:0,density:0,samplesPer:0,evidence:0};
 let lastMetrics={retention:0,seam:0,alignment:0,we:0,families:0,groups:0,avgMemory:0,avgGreen:0,avgReserve:0,maintenanceCost:0,rewriteCost:0,eraseCost:0,greenSeamFraction:0,meanGreenSeam:0,maxGreenSeam:0};
@@ -188,13 +194,13 @@ function randomPoint(){
  for(let k=0;k<500;k++){const a=rnd()*Math.PI*2,r=Math.sqrt(rnd())*(R-16),x=CX+Math.cos(a)*r,y=CY+Math.sin(a)*r;if(insideWorld(x,y))return{x,y}}
  return{x:CX,y:CY};
 }
-function newParticle(id){const p=randomPoint(),o=rnd()<.5?-1:1,g=gridFromWorld(p.x,p.y);return{id,x:p.x,y:p.y,vx:rand(-.18,.18),vy:rand(-.18,.18),o,age:0,mem:o*rand(.42,.78),memoryReserve:rand(62,92),memoryGreen:.5,sameSupport:0,oppSupport:0,socialBias:0,lastMemSign:o,reserveBand:2,memoryWrite:0,memoryMaintenance:0,memoryRewrite:0,memoryErase:0,lastSeamGX:g.gx,lastSeamGY:g.gy,centerId:0,relativePolarity:0,neoCandidate:null,neoTrail:[],neoTransitions:[]}}
+function newParticle(id){const p=randomPoint(),o=rnd()<.5?-1:1,g=gridFromWorld(p.x,p.y);return{id,x:p.x,y:p.y,vx:rand(-.18,.18),vy:rand(-.18,.18),o,age:0,mem:o*rand(.42,.78),memoryReserve:rand(62,92),memoryGreen:.5,sameSupport:0,oppSupport:0,socialBias:0,lastMemSign:o,reserveBand:2,memoryWrite:0,memoryMaintenance:0,memoryRewrite:0,memoryErase:0,lastSeamGX:g.gx,lastSeamGY:g.gy,centerId:0,relativePolarity:0,roleKey:'',roleDwell:0,neoCandidate:null,neoTrail:[],neoTransitions:[]}}
 function initParticles(){particles=[];const n=+ctl.particleCount.value;for(let i=0;i<n;i++)particles.push(newParticle(i));observerId=particles.length?particles[Math.floor(particles.length/2)].id:0;targetId=particles.find(p=>p.id!==observerId)?.id??null;particleSnapshots=[];relations.clear();groupRelations.clear();cachedGroups=[];cachedFamilies=[];eventAnchors.clear();for(const p of particles)eventAnchors.set(p.id,{x:p.x,y:p.y,o:p.o});lastRelationSignature=null}
 function resetWorld(newSeed=false){
  if(newSeed){seed=(Date.now()^(Math.random()*0xffffffff))>>>0;rng=mulberry32(seed)}else rng=mulberry32(seed);
  tick=0;hiddenPhase=0;demonBits=demonResets=0;demonProxyCost=0;eventLog=[];worldEventLog=[];observedEventLog=[];memoryTotals={maintenance:0,rewrite:0,erase:0,write:0,flips:0};choiceHistory=[];lastChoice=null;choiceCount=0;choiceVector={x:0,y:0};choiceMetrics={n:0,entropy:0,maxEntropy:0,confidence:0,uncertainty:0,density:0,samplesPer:0,evidence:0};
  seamAgeH.fill(0);seamAgeV.fill(0);seamFluxH.fill(0);seamFluxV.fill(0);seamGreenH.fill(0);seamGreenV.fill(0);cellGreenSum.fill(0);cellGreenWeight.fill(0);seamStats={seamEdges:0,greenEdges:0,meanGreen:0,maxGreen:0,opportunityGreen:0,opportunityOrdinary:0,weBirthGreen:0,weBirthOrdinary:0};
- centers=[];centerRegistry.clear();nextCenterId=1;selectedCenterId=null;centerOwner.fill(0);previousCenterOwner.fill(0);centerEventLog=[];centerStats={births:0,established:0,neoTransitions:0};
+ centers=[];centerRegistry.clear();nextCenterId=1;selectedCenterId=null;centerOwner.fill(0);previousCenterOwner.fill(0);centerEventLog=[];centerStats={births:0,established:0,neoTransitions:0};weBirthRecords=[];nextWeBirthId=1;auditHistory=[];auditDomains={count:0,mean:0,largestRed:0,largestBlue:0};auditSurvival={s100:{eligible:0,survived:0,rate:0},s500:{eligible:0,survived:0,rate:0},s1000:{eligible:0,survived:0,rate:0}};
  buildMask();initField();initParticles();detectCenters(true);updateRelativeRoles(true);snapshot(true);updateLabels();
 }
 
@@ -253,7 +259,7 @@ function updateField(){
  }
  hiddenPhase+=.005;
 }
-function sampleField(x,y,snap=null){const g=gridFromWorld(x,y),i=idx(g.gx,g.gy);return (snap||sigma)[i]||1}
+function sampleField(x,y,snap=null){if(!insideWorld(x,y))return 0;const g=gridFromWorld(x,y),i=idx(g.gx,g.gy),v=(snap||sigma)[i];return v===1||v===-1?v:0}
 
 function pushWorldEvent(e){e.seenBy={};worldEventLog.push(e);if(worldEventLog.length>160)worldEventLog.shift()}
 function emitParticleEvent(type,p,extra={}){pushWorldEvent({tick,type,id:p.id,x:p.x,y:p.y,o:p.o,...extra})}
@@ -337,11 +343,11 @@ function updateParticles(){
   let f=0;if(d<10)f-=.085*(10-d)/10;else if(a.o===b.o)f+=like*.010*Math.exp(-d/48);else f-=opp*.008*Math.exp(-d/50);
   a.fx+=nx*f;a.fy+=ny*f;b.fx-=nx*f;b.fy-=ny*f;updateRelation(a,b,d,rr);
  }
- for(const [k,r] of relations){if(r.seen!==tick){r.age=Math.max(0,r.age-1.8);if(r.age<=0)relations.delete(k)}}
+ for(const [k,r] of relations){if(r.seen!==tick){const was=r.age>=+ctl.weThreshold.value;r.age=Math.max(0,r.age-1.8);if(was&&r.age<+ctl.weThreshold.value)markWEBirthDeath(r);if(r.age<=0)relations.delete(k)}}
  // Orientation transition now sees three pressures: local field, retained memory, and current relational neighborhood.
  for(const p of particles){
   const local=sampleField(p.x,p.y),mm=updateParticleMemory(p,local,T),strength=+ctl.memoryStrength.value/100;
-  const memoryVote=p.mem*strength*1.10,fieldVote=local,relationVote=p.socialBias*subsidy*.62;const net=fieldVote+memoryVote+relationVote;const desired=net>=0?1:-1;
+  const memoryVote=p.mem*strength*1.10,fieldVote=local,relationVote=p.socialBias*subsidy*.62;const net=fieldVote+memoryVote+relationVote;const desired=Math.abs(net)<1e-12?p.o:(net>0?1:-1);
   if(desired!==p.o){const socialBarrier=.52*subsidy*mm.support;const barrier=mm.internalBarrier+socialBarrier;const pressure=clamp(Math.abs(net)/(1+strength+.62*subsidy),.1,1.4);const flipP=.015*(.38+mix)*pressure*Math.exp(-barrier/T);if(rnd()<flipP){p.o=desired;memoryTotals.flips++}}
  }
  for(const p of particles){
@@ -352,13 +358,20 @@ function updateParticles(){
  }
 }
 function relationKey(a,b){return a.id<b.id?a.id+':'+b.id:b.id+':'+a.id}
+function markWEBirthDeath(r){
+ if(!r||!r.activeBirthId)return;const rec=weBirthRecords.find(x=>x.id===r.activeBirthId);if(rec&&rec.deathTick==null)rec.deathTick=tick;r.activeBirthId=0;
+}
+function registerWEBirth(k,r,a,b,mx,my,green,gs){
+ const rec={id:nextWeBirthId++,key:k,a:a.id,b:b.id,birthTick:tick,green,greenScore:gs,deathTick:null};weBirthRecords.push(rec);if(weBirthRecords.length>12000)weBirthRecords.splice(0,weBirthRecords.length-12000);r.activeBirthId=rec.id;r.wasStable=true;return rec;
+}
 function updateRelation(a,b,d,rr){
  const k=relationKey(a,b),opposite=a.o!==b.o,mx=(a.x+b.x)/2,my=(a.y+b.y)/2,g=gridFromWorld(mx,my),nb=neighborSum(g.gx,g.gy),mixed=nb.n&&Math.abs(nb.s/nb.n)<.75;
- let r=relations.get(k);if(!r)r={a:a.id,b:b.id,age:0,cross:false,seen:tick,stableAnnounced:false};const oldAge=r.age;r.seen=tick;r.cross=opposite;
+ let r=relations.get(k);if(!r)r={a:a.id,b:b.id,age:0,cross:false,seen:tick,stableAnnounced:false,activeBirthId:0,wasStable:false};const oldAge=r.age;r.seen=tick;r.cross=opposite;
  const relSpeed=Math.hypot(a.vx-b.vx,a.vy-b.vy),qualifies=d<rr&&opposite&&mixed&&relSpeed<1.05;
  if(qualifies){r.age+=1.05;const gs=greenScoreAtWorld(mx,my),green=gs>=+ctl.greenSeamThreshold.value/100;if(green)seamStats.opportunityGreen++;else seamStats.opportunityOrdinary++;addFluxNearWorld(mx,my,.028)}else if(d<rr*.75 && !opposite)r.age+=.18;else r.age=Math.max(0,r.age-.75);
  const th=+ctl.weThreshold.value;
- if(!r.stableAnnounced&&oldAge<th&&r.age>=th){const gs=greenScoreAtWorld(mx,my),green=gs>=+ctl.greenSeamThreshold.value/100;r.stableAnnounced=true;r.birthGreen=green;r.birthScore=gs;if(green)seamStats.weBirthGreen++;else seamStats.weBirthOrdinary++;pushWorldEvent({tick,type:'WE_BIRTH',id:a.id,a:a.id,b:b.id,x:mx,y:my,o:a.o,green,greenScore:gs})}
+ if(!r.stableAnnounced&&oldAge<th&&r.age>=th){const gs=greenScoreAtWorld(mx,my),green=gs>=+ctl.greenSeamThreshold.value/100;r.stableAnnounced=true;r.birthGreen=green;r.birthScore=gs;registerWEBirth(k,r,a,b,mx,my,green,gs);if(green)seamStats.weBirthGreen++;else seamStats.weBirthOrdinary++;pushWorldEvent({tick,type:'WE_BIRTH',id:a.id,a:a.id,b:b.id,x:mx,y:my,o:a.o,green,greenScore:gs})}
+ if(oldAge>=th&&r.age<th){markWEBirthDeath(r);r.wasStable=false}
  if(r.age<th*.45)r.stableAnnounced=false;
  relations.set(k,r);
 }
@@ -378,15 +391,32 @@ function historyFieldLag(lag){if(!fieldSnapshots.length)return sigma;const k=cla
 function historyParticlesLag(lag){if(!particleSnapshots.length)return particles;const k=clamp(particleSnapshots.length-1-Math.round(lag/2),0,particleSnapshots.length-1);return particleSnapshots[k]}
 
 function fieldMetrics(){
- let edges=0,seams=0,agree=0,sites=0;
- for(let gy=0;gy<GH;gy++)for(let gx=0;gx<GW;gx++){const i=idx(gx,gy);if(!mask[i])continue;sites++;
+ let edges=0,seams=0,agree=0,sites=0,redCells=0,blueCells=0;
+ for(let gy=0;gy<GH;gy++)for(let gx=0;gx<GW;gx++){const i=idx(gx,gy);if(!mask[i])continue;sites++;if(sigma[i]>0)redCells++;else if(sigma[i]<0)blueCells++;
   if(gx+1<GW&&mask[idx(gx+1,gy)]){edges++;if(sigma[i]===sigma[idx(gx+1,gy)])agree++;else seams++}
   if(gy+1<GH&&mask[idx(gx,gy+1)]){edges++;if(sigma[i]===sigma[idx(gx,gy+1)])agree++;else seams++}
  }
  let retention=0,count=0;if(fieldSnapshots.length>35){const old=fieldSnapshots[Math.max(0,fieldSnapshots.length-36)];for(let i=0;i<N;i++)if(mask[i]){retention+=sigma[i]*old[i];count++}retention=count?retention/count:0}
- let avgMemory=0,avgGreen=0,avgReserve=0;if(particles.length){for(const p of particles){avgMemory+=Math.abs(p.mem);avgGreen+=p.memoryGreen;avgReserve+=p.memoryReserve}avgMemory/=particles.length;avgGreen/=particles.length;avgReserve/=particles.length}
- return {seam:edges?seams/edges:0,alignment:edges?agree/edges:0,retention,avgMemory,avgGreen,avgReserve,maintenanceCost:memoryTotals.maintenance,rewriteCost:memoryTotals.rewrite,eraseCost:memoryTotals.erase,greenSeamFraction:seamStats.seamEdges?seamStats.greenEdges/seamStats.seamEdges:0,meanGreenSeam:seamStats.meanGreen,maxGreenSeam:seamStats.maxGreen};
+ let avgMemory=0,avgGreen=0,avgReserve=0,redParticles=0,blueParticles=0;if(particles.length){for(const p of particles){avgMemory+=Math.abs(p.mem);avgGreen+=p.memoryGreen;avgReserve+=p.memoryReserve;if(p.o>0)redParticles++;else if(p.o<0)blueParticles++}avgMemory/=particles.length;avgGreen/=particles.length;avgReserve/=particles.length}
+ const fieldPolarization=sites?(redCells-blueCells)/sites:0,particlePolarization=particles.length?(redParticles-blueParticles)/particles.length:0;
+ return {seam:edges?seams/edges:0,alignment:edges?agree/edges:0,retention,avgMemory,avgGreen,avgReserve,maintenanceCost:memoryTotals.maintenance,rewriteCost:memoryTotals.rewrite,eraseCost:memoryTotals.erase,greenSeamFraction:seamStats.seamEdges?seamStats.greenEdges/seamStats.seamEdges:0,meanGreenSeam:seamStats.meanGreen,maxGreenSeam:seamStats.maxGreen,redCells,blueCells,fieldPolarization,redParticles,blueParticles,particlePolarization};
 }
+function rawDomainStats(){
+ const seen=new Uint8Array(N);let count=0,total=0,largestRed=0,largestBlue=0;
+ for(let s=0;s<N;s++){if(!mask[s]||seen[s])continue;const o=sigma[s];let size=0,stack=[s];seen[s]=1;while(stack.length){const i=stack.pop();size++;const g=gridXY(i),ns=[[g.x+1,g.y],[g.x-1,g.y],[g.x,g.y+1],[g.x,g.y-1]];for(const [x,y] of ns){if(x<0||x>=GW||y<0||y>=GH)continue;const j=idx(x,y);if(!seen[j]&&mask[j]&&sigma[j]===o){seen[j]=1;stack.push(j)}}}count++;total+=size;if(o>0)largestRed=Math.max(largestRed,size);else largestBlue=Math.max(largestBlue,size)}
+ return {count,mean:count?total/count:0,largestRed,largestBlue};
+}
+function computeWESurvival(){
+ const out={};for(const h of [100,500,1000]){let eligible=0,survived=0;for(const r of weBirthRecords){if(tick-r.birthTick<h)continue;eligible++;if(r.deathTick==null||r.deathTick-r.birthTick>=h)survived++}out['s'+h]={eligible,survived,rate:eligible?survived/eligible:0}}return out;
+}
+function auditSnapshot(fm){
+ auditDomains=rawDomainStats();auditSurvival=computeWESurvival();let centersR=0,centersB=0,aligned=0,divergent=0;for(const c of centers)if(c.established){if(c.o>0)centersR++;else centersB++}for(const p of particles){if(p.relativePolarity>0)aligned++;else if(p.relativePolarity<0)divergent++}const rateG=seamStats.weBirthGreen/Math.max(1,seamStats.opportunityGreen),rateO=seamStats.weBirthOrdinary/Math.max(1,seamStats.opportunityOrdinary),lift=rateO>0?rateG/rateO:0;
+ const row={tick,seed,fieldRed:fm.redCells,fieldBlue:fm.blueCells,fieldPolarization:fm.fieldPolarization,particleRed:fm.redParticles,particleBlue:fm.blueParticles,particlePolarization:fm.particlePolarization,alignment:fm.alignment,seam:fm.seam,domains:auditDomains.count,meanDomain:auditDomains.mean,largestRed:auditDomains.largestRed,largestBlue:auditDomains.largestBlue,greenSeamFraction:fm.greenSeamFraction,greenLift:lift,stableWE:stableRelations().length,s100:auditSurvival.s100.rate,s500:auditSurvival.s500.rate,s1000:auditSurvival.s1000.rate,centersR,centersB,aligned,divergent,neoTransitions:centerStats.neoTransitions};auditHistory.push(row);if(auditHistory.length>1200)auditHistory.shift();return row;
+}
+function csvAudit(){
+ const cols=['tick','seed','fieldRed','fieldBlue','fieldPolarization','particleRed','particleBlue','particlePolarization','alignment','seam','domains','meanDomain','largestRed','largestBlue','greenSeamFraction','greenLift','stableWE','s100','s500','s1000','centersR','centersB','aligned','divergent','neoTransitions'];const rows=[cols.join(',')];for(const r of auditHistory)rows.push(cols.map(k=>typeof r[k]==='number'?r[k]:String(r[k]??'')).join(','));return rows.join('\n');
+}
+function downloadAuditCSV(){const blob=new Blob([csvAudit()],{type:'text/csv'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`chaos_soup_v8_5_audit_seed_${seed}.csv`;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},0)}
 function stableRelations(){const th=+ctl.weThreshold.value;return [...relations.values()].filter(r=>r.cross&&r.age>=th)}
 function buildGroups(){
  const stable=stableRelations(),parent=new Map();
@@ -452,20 +482,29 @@ function detectCenters(silent=false){
  centers=next;if(!centers.some(c=>c.id===selectedCenterId)){const c=centers.filter(x=>x.established).sort((a,b)=>b.area-a.area)[0]||centers[0]||null;selectedCenterId=c?c.id:null}
 }
 function noteNeoGreenCrossing(p,score){if(p.neoCandidate&&score>=+ctl.greenSeamThreshold.value/100){p.neoCandidate.crossedGreen=true;p.neoCandidate.maxGreen=Math.max(p.neoCandidate.maxGreen||0,score);p.neoCandidate.greenTick=tick}}
+function particleHasStableWE(id){const th=+ctl.weThreshold.value;for(const r of relations.values())if(r.cross&&r.age>=th&&(r.a===id||r.b===id))return true;return false}
 function updateRelativeRoles(silent=false){
- const life=+ctl.neoLifetime.value;
+ const life=+ctl.neoLifetime.value,maturity=+ctl.neoCenterMaturity.value,divReq=+ctl.neoDivergentDwell.value,arrReq=+ctl.neoArrivalDwell.value;
  for(const p of particles){
-  const g=gridFromWorld(p.x,p.y),cid=centerOwner[idx(g.gx,g.gy)]||0,c=centerById(cid),role=c?p.o*c.o:0,gs=greenScoreAtWorld(p.x,p.y);
-  if(p.neoCandidate){if(p.o!==p.neoCandidate.rawOrientation||tick-p.neoCandidate.startTick>life)p.neoCandidate=null;else if(gs>=+ctl.greenSeamThreshold.value/100){p.neoCandidate.crossedGreen=true;p.neoCandidate.maxGreen=Math.max(p.neoCandidate.maxGreen||0,gs)}}
-  if(c&&c.established&&role<0&&!p.neoCandidate)p.neoCandidate={originCenterId:c.id,rawOrientation:p.o,startTick:tick,crossedGreen:gs>=+ctl.greenSeamThreshold.value/100,maxGreen:gs,greenTick:gs>=+ctl.greenSeamThreshold.value/100?tick:null};
-  if(p.neoCandidate&&c&&c.established&&role>0&&c.id!==p.neoCandidate.originCenterId&&p.o===p.neoCandidate.rawOrientation&&p.neoCandidate.crossedGreen){
-   const ev={tick,type:'NEO_TRANSITION',particleId:p.id,originCenterId:p.neoCandidate.originCenterId,newCenterId:c.id,rawOrientation:p.o,startTick:p.neoCandidate.startTick,greenScore:p.neoCandidate.maxGreen||0,x:p.x,y:p.y};centerStats.neoTransitions++;p.neoTransitions.push(ev);if(p.neoTransitions.length>12)p.neoTransitions.shift();if(!silent)pushCenterEvent(ev);p.neoCandidate=null;
+  const g=gridFromWorld(p.x,p.y),cid=centerOwner[idx(g.gx,g.gy)]||0,c=centerById(cid),role=c?p.o*c.o:0,gs=greenScoreAtWorld(p.x,p.y),roleKey=c&&c.established?`${c.id}:${role}`:'0:0';
+  if(roleKey===p.roleKey)p.roleDwell+=CENTER_DETECT_INTERVAL;else{p.roleKey=roleKey;p.roleDwell=0}
+  if(p.neoCandidate){
+   if(p.o!==p.neoCandidate.rawOrientation||tick-p.neoCandidate.startTick>life)p.neoCandidate=null;
+   else{
+    if(gs>=+ctl.greenSeamThreshold.value/100){p.neoCandidate.crossedGreen=true;p.neoCandidate.maxGreen=Math.max(p.neoCandidate.maxGreen||0,gs);if(!p.neoCandidate.greenTick)p.neoCandidate.greenTick=tick}
+    if(particleHasStableWE(p.id))p.neoCandidate.weWitnessed=true;
+    if(p.neoCandidate.arrivalCenterId){if(c&&c.established&&c.id===p.neoCandidate.arrivalCenterId&&role>0&&c.age>=maturity)p.neoCandidate.arrivalDwell+=CENTER_DETECT_INTERVAL;else{p.neoCandidate.arrivalCenterId=0;p.neoCandidate.arrivalDwell=0}}
+   }
+  }
+  if(c&&c.established&&c.age>=maturity&&role<0&&p.roleDwell>=divReq&&!p.neoCandidate)p.neoCandidate={originCenterId:c.id,rawOrientation:p.o,startTick:tick,divergentDwell:p.roleDwell,crossedGreen:gs>=+ctl.greenSeamThreshold.value/100,maxGreen:gs,greenTick:gs>=+ctl.greenSeamThreshold.value/100?tick:null,weWitnessed:particleHasStableWE(p.id),arrivalCenterId:0,arrivalDwell:0};
+  if(p.neoCandidate&&c&&c.established&&c.age>=maturity&&role>0&&c.id!==p.neoCandidate.originCenterId&&p.o===p.neoCandidate.rawOrientation&&p.neoCandidate.crossedGreen&&p.neoCandidate.weWitnessed){
+   if(p.neoCandidate.arrivalCenterId!==c.id){p.neoCandidate.arrivalCenterId=c.id;p.neoCandidate.arrivalDwell=0}else p.neoCandidate.arrivalDwell+=CENTER_DETECT_INTERVAL;
+   if(p.neoCandidate.arrivalDwell>=arrReq){const ev={tick,type:'NEO_TRANSITION',particleId:p.id,originCenterId:p.neoCandidate.originCenterId,newCenterId:c.id,rawOrientation:p.o,startTick:p.neoCandidate.startTick,greenScore:p.neoCandidate.maxGreen||0,divergentDwell:p.neoCandidate.divergentDwell,arrivalDwell:p.neoCandidate.arrivalDwell,weWitnessed:true,x:p.x,y:p.y};centerStats.neoTransitions++;p.neoTransitions.push(ev);if(p.neoTransitions.length>12)p.neoTransitions.shift();if(!silent)pushCenterEvent(ev);p.neoCandidate=null}
   }
   if(p.centerId!==cid||p.relativePolarity!==role){if(!silent&&p.id===targetId)pushCenterEvent({tick,type:'ROLE_CHANGE',particleId:p.id,fromCenter:p.centerId,toCenter:cid,fromRole:p.relativePolarity,toRole:role,rawOrientation:p.o,x:p.x,y:p.y});p.centerId=cid;p.relativePolarity=role}
   p.neoTrail.push({tick,x:p.x,y:p.y,centerId:cid,role,raw:p.o,green:gs});if(p.neoTrail.length>180)p.neoTrail.shift();
  }
 }
-
 function observedFieldFor(observer,x,y){
  const d=dist(observer.x,observer.y,x,y),signal=+ctl.signalSpeed.value;
  if(d>+ctl.horizon.value)return null;
@@ -545,7 +584,7 @@ function step(){
  updateGroupRelations(cachedGroups);
  cachedFamilies=buildFamilies(cachedGroups);
  if(tick%CENTER_DETECT_INTERVAL===0){detectCenters(false);updateRelativeRoles(false)}
- if(tick%12===0){const fm=fieldMetrics();lastMetrics={...fm,we:stableRelations().length,groups:cachedGroups.length,families:cachedFamilies.length};if(eventLog.length>80)eventLog.shift();if(cachedFamilies.length)eventLog.push({tick,type:'higher-order',n:cachedFamilies.length})}
+ if(tick%12===0){const fm=fieldMetrics();lastMetrics={...fm,we:stableRelations().length,groups:cachedGroups.length,families:cachedFamilies.length};auditSnapshot(lastMetrics);if(eventLog.length>80)eventLog.shift();if(cachedFamilies.length)eventLog.push({tick,type:'higher-order',n:cachedFamilies.length})}
 }
 
 function colorCell(s,a=.35){return s>0?`rgba(255,69,69,${a})`:`rgba(63,145,255,${a})`}
@@ -635,13 +674,18 @@ function drawCenterGenealogy(){
  for(const r of regs){if(!Number.isFinite(r.lastX))continue;const rr=5+Math.sqrt(Math.max(1,r.lastArea||1))*.28;ctx.fillStyle=r.o>0?'rgba(255,91,91,.72)':'rgba(89,167,255,.72)';ctx.beginPath();ctx.arc(r.lastX,r.lastY,rr,0,Math.PI*2);ctx.fill();ctx.strokeStyle=r.active?'rgba(255,215,106,.86)':'rgba(220,225,235,.28)';ctx.lineWidth=r.active?1.8:1;ctx.stroke();if(showLabels){ctx.fillStyle='rgba(235,239,246,.82)';ctx.font='8px ui-monospace,monospace';ctx.textAlign='center';ctx.fillText(`C${r.id} g${r.generation||0}${r.parentId?' ←C'+r.parentId:''}`,r.lastX,r.lastY-rr-4)}}
  ctx.restore();
 }
+function drawAuditOverlay(){
+ const x=W-360,y=20,w=330,h=205,rows=auditHistory.slice(-180);ctx.save();ctx.fillStyle='rgba(3,7,12,.88)';ctx.strokeStyle='rgba(170,190,220,.35)';ctx.lineWidth=1;ctx.fillRect(x,y,w,h);ctx.strokeRect(x,y,w,h);ctx.fillStyle='rgba(235,242,252,.94)';ctx.font='11px ui-monospace,monospace';ctx.textAlign='left';ctx.fillText('SYMMETRY / PERSISTENCE AUDIT',x+10,y+17);
+ const m=lastMetrics||{},rp=m.redCells||0,bp=m.blueCells||0,tot=Math.max(1,rp+bp),pr=m.redParticles||0,pb=m.blueParticles||0,pt=Math.max(1,pr+pb),s=auditSurvival;ctx.font='10px ui-monospace,monospace';ctx.fillStyle='rgba(210,222,238,.9)';ctx.fillText(`FIELD R ${(100*rp/tot).toFixed(1)}% · B ${(100*bp/tot).toFixed(1)}% · m ${(m.fieldPolarization||0).toFixed(3)}`,x+10,y+36);ctx.fillText(`PART  R ${(100*pr/pt).toFixed(1)}% · B ${(100*pb/pt).toFixed(1)}% · m ${(m.particlePolarization||0).toFixed(3)}`,x+10,y+52);ctx.fillText(`DOMAINS ${auditDomains.count} · mean ${auditDomains.mean.toFixed(1)} · max R ${auditDomains.largestRed} · B ${auditDomains.largestBlue}`,x+10,y+68);ctx.fillText(`WE survival S100 ${(100*s.s100.rate).toFixed(1)}% (${s.s100.eligible}) · S500 ${(100*s.s500.rate).toFixed(1)}% (${s.s500.eligible})`,x+10,y+84);ctx.fillText(`S1000 ${(100*s.s1000.rate).toFixed(1)}% (${s.s1000.eligible}) · strict NEO ${centerStats.neoTransitions}`,x+10,y+100);
+ const gx=x+12,gy=y+116,gw=w-24,gh=76;ctx.strokeStyle='rgba(150,165,185,.25)';ctx.beginPath();ctx.moveTo(gx,gy+gh/2);ctx.lineTo(gx+gw,gy+gh/2);ctx.stroke();if(rows.length>1){const plot=(key,stroke)=>{ctx.strokeStyle=stroke;ctx.lineWidth=1.7;ctx.beginPath();rows.forEach((r,i)=>{const px=gx+i*gw/(rows.length-1),v=clamp(r[key]||0,-1,1),py=gy+gh/2-v*(gh*.43);if(i===0)ctx.moveTo(px,py);else ctx.lineTo(px,py)});ctx.stroke()};plot('fieldPolarization','rgba(255,215,106,.95)');plot('particlePolarization','rgba(199,137,255,.88)')};ctx.fillStyle='rgba(255,215,106,.9)';ctx.fillText('field m',gx,gy+gh+10);ctx.fillStyle='rgba(199,137,255,.9)';ctx.fillText('particle m',gx+62,gy+gh+10);ctx.restore();
+}
 function drawDemon(){if(!demonOn)return;ctx.strokeStyle='rgba(255,226,150,.68)';ctx.lineWidth=3;ctx.setLineDash([8,5]);ctx.beginPath();ctx.moveTo(CX,CY-118);ctx.lineTo(CX,CY+118);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle='rgba(255,226,150,.8)';ctx.font='10px system-ui';ctx.textAlign='center';ctx.fillText('IN-WORLD SORTER',CX,CY-126)}
 function drawHiddenDebug(){if(!hiddenOn||ctl.view.value==='hineni')return;ctx.strokeStyle='rgba(255,255,255,.14)';ctx.lineWidth=4;ctx.setLineDash([2,8]);ctx.beginPath();ctx.arc(CX,CY,R-8,0,Math.PI*2);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle='rgba(255,255,255,.38)';ctx.font='10px system-ui';ctx.textAlign='center';ctx.fillText('hidden boundary forcing active (scientific WORLD view only)',CX,CY-R+20)}
 function drawWorldBoundary(){ctx.strokeStyle='rgba(255,255,255,.32)';ctx.lineWidth=2.2;ctx.beginPath();ctx.arc(CX,CY,R,0,Math.PI*2);ctx.stroke();ctx.fillStyle='rgba(210,220,235,.55)';ctx.font='10px system-ui';ctx.textAlign='center';ctx.fillText('Ω — ONE SHARED FIELD',CX,CY-R-10)}
 function draw(){
- drawBackground();const mode=ctl.view.value,o=currentObserver(),embedded=(mode==='hineni'||mode==='choice'||mode==='frame');drawField(embedded?'hineni':mode,o);if(mode==='seam'||mode==='world'||mode==='greenseam'||mode==='center'||mode==='neo'||embedded)drawSeams(mode==='greenseam');drawHiddenDebug();drawDemon();
- const groups=cachedGroups,families=cachedFamilies;if(mode==='relations'){drawGroupNetwork(groups);drawRelations(groups,families)}else if(mode==='world'||mode==='seam'||mode==='greenseam'||mode==='center'||mode==='neo')drawRelations(groups,families);
- drawParticles(mode==='frame'?'frame':(embedded?'hineni':mode),o);if(mode==='center'||mode==='neo')drawCenterOverlays(mode);if(mode==='neo')drawNeoTrace();if(mode==='genealogy')drawCenterGenealogy();if(embedded)drawObserverMask(o);if(mode==='choice')drawChoicePortal(o);if(mode==='frame')drawFrameAudit(o);drawWorldBoundary();drawHUD(groups,families,o);renderLedger();
+ drawBackground();const mode=ctl.view.value,o=currentObserver(),embedded=(mode==='hineni'||mode==='choice'||mode==='frame');drawField(embedded?'hineni':(mode==='audit'?'world':mode),o);if(mode==='seam'||mode==='world'||mode==='greenseam'||mode==='center'||mode==='neo'||mode==='audit'||embedded)drawSeams(mode==='greenseam');drawHiddenDebug();drawDemon();
+ const groups=cachedGroups,families=cachedFamilies;if(mode==='relations'){drawGroupNetwork(groups);drawRelations(groups,families)}else if(mode==='world'||mode==='seam'||mode==='greenseam'||mode==='center'||mode==='neo'||mode==='audit')drawRelations(groups,families);
+ drawParticles(mode==='frame'?'frame':(embedded?'hineni':mode),o);if(mode==='center'||mode==='neo')drawCenterOverlays(mode);if(mode==='neo')drawNeoTrace();if(mode==='genealogy')drawCenterGenealogy();if(mode==='audit')drawAuditOverlay();if(embedded)drawObserverMask(o);if(mode==='choice')drawChoicePortal(o);if(mode==='frame')drawFrameAudit(o);drawWorldBoundary();drawHUD(groups,families,o);renderLedger();
 }
 function drawHUD(groups,families,o){
  const m=lastMetrics,mode=ctl.view.value,t=currentTarget(),a=o?observedTargetState(o):null,obs=o?`#${o.id} · GOLD frame · core ${signName(o.o)} · mem ${signName(o.mem)} ${Math.abs(o.mem).toFixed(2)} · G ${o.memoryGreen.toFixed(2)} · reserve ${o.memoryReserve.toFixed(1)}`:'none';
@@ -649,13 +693,15 @@ function drawHUD(groups,families,o){
  let targetLine='tracked sphere none';if(t&&a){const received=a.visible&&a.received?`${signName(a.received.o)} @ lag ${a.lag.toFixed(1)}t`:'NOT RECEIVED',tc=centerById(t.centerId);targetLine=`target #${t.id} · raw ${signName(t.o)} · ${roleName(t.relativePolarity)}${tc?' @ C'+tc.id:''} · HINENI sees ${received}${mode==='frame'?` · WORLD now ${signName(t.o)} [audit]`:''}`}
  hud.innerHTML=`<b>tick ${tick.toLocaleString()}</b> · seed ${seed}<br>`+
  `Ω field: alignment ${(m.alignment*100).toFixed(1)}% · seam ${(m.seam*100).toFixed(1)}% · field-memory M ${(m.retention).toFixed(3)}<br>`+
+ `SYMMETRY: field R ${m.redCells||0} / B ${m.blueCells||0} · m ${(m.fieldPolarization||0).toFixed(3)} · particles R ${m.redParticles||0} / B ${m.blueParticles||0} · m ${(m.particlePolarization||0).toFixed(3)}<br>`+
+ `DOMAINS: n ${auditDomains.count} · mean ${auditDomains.mean.toFixed(1)} · largest R ${auditDomains.largestRed} / B ${auditDomains.largestBlue} · WE survival S100 ${(auditSurvival.s100.rate*100).toFixed(1)}% · S500 ${(auditSurvival.s500.rate*100).toFixed(1)}% · S1000 ${(auditSurvival.s1000.rate*100).toFixed(1)}%<br>`+
  `GREEN seam: ${seamStats.greenEdges}/${seamStats.seamEdges} edges (${(m.greenSeamFraction*100).toFixed(1)}%) · mean G ${(m.meanGreenSeam||0).toFixed(2)} · max ${(m.maxGreenSeam||0).toFixed(2)}<br>`+
  `WE births: GREEN ${seamStats.weBirthGreen} / ordinary ${seamStats.weBirthOrdinary} · opportunities G ${seamStats.opportunityGreen.toLocaleString()} / O ${seamStats.opportunityOrdinary.toLocaleString()}<br>`+
  `birth rate/opportunity: G ${(rateG*1000).toFixed(2)}‰ · O ${(rateO*1000).toFixed(2)}‰ · descriptive lift ${lift?lift.toFixed(2):'—'}×<br>`+
  `particle memory: retained ${(m.avgMemory*100).toFixed(1)}% · GREEN ${(m.avgGreen*100).toFixed(1)}% · reserve ${m.avgReserve.toFixed(1)}/100<br>`+
  `memory work: maintain ${m.maintenanceCost.toFixed(1)} · rewrite ${m.rewriteCost.toFixed(1)} · erase/reset ${m.eraseCost.toFixed(1)} · orientation flips ${memoryTotals.flips}<br>`+
  `relations: WE links ${m.we} · WE groups ${groups.length} · higher-order candidates ${families.length}<br>`+
- `CENTERS: ${centers.filter(c=>c.established).length} established / ${centers.length} candidates · births ${centerStats.births} · NEO transitions ${centerStats.neoTransitions}<br>`+
+ `CENTERS: ${centers.filter(c=>c.established).length} established / ${centers.length} candidates · births ${centerStats.births} · STRICT NEO transitions ${centerStats.neoTransitions}<br>`+
  `${(()=>{const sc=currentSelectedCenter();return sc?`CENTER FRAME C${sc.id} · raw ${signName(sc.o)} · age ${sc.age} · area ${sc.area} · gen ${sc.generation}${sc.parentId?' ← C'+sc.parentId:''}`:'CENTER FRAME none'})()}<br>`+
  `HINENI ${obs} · horizon ${ctl.horizon.value}px · signal ${ctl.signalSpeed.value}px/tick<br>`+
  `${targetLine}<br>`+
@@ -668,7 +714,7 @@ function drawHUD(groups,families,o){
 }
 function eventClass(type,label=''){if(type==='ORIENTATION_FLIP')return label.startsWith('I /')?'evSelf':'evFlip';if(type==='MEMORY_REWRITE'||type==='MEMORY_LOW'||type==='WE_BIRTH')return'evRel';if(type==='RELATION_CHANGE')return'evRel';if(type==='MOVE')return label.startsWith('I ')?'evSelf':'evMove';return''}
 function worldEventText(e){if(e.type==='ORIENTATION_FLIP')return `t${e.tick} · FLIP #${e.id} ${signName(e.from)}→${signName(e.to)}`;if(e.type==='MEMORY_REWRITE')return `t${e.tick} · MEMORY #${e.id} ${signName(e.from)}→${signName(e.to)} · cost ${e.cost.toFixed(2)}`;if(e.type==='MEMORY_LOW')return `t${e.tick} · MEMORY LOW #${e.id} · reserve ${e.reserve.toFixed(1)}`;if(e.type==='MOVE')return `t${e.tick} · MOVE #${e.id}`;if(e.type==='RELATION_CHANGE')return `t${e.tick} · RELATION #${e.observerId}↔#${e.targetId} ${e.relation}/${e.band}`;if(e.type==='WE_BIRTH')return `t${e.tick} · WE BIRTH #${e.a}↔#${e.b} · ${e.green?'GREEN':'ordinary'} seam · G ${e.greenScore.toFixed(2)}`;return `t${e.tick} · ${e.type}`}
-function centerEventText(e){if(e.type==='CENTER_BIRTH')return `t${e.tick} · C${e.centerId} BIRTH · raw ${signName(e.o)} · area ${e.area}${e.parentId?' · parent C'+e.parentId:''}`;if(e.type==='CENTER_ESTABLISHED')return `t${e.tick} · C${e.centerId} ESTABLISHED · raw ${signName(e.o)} · gen ${e.generation}`;if(e.type==='ROLE_CHANGE')return `t${e.tick} · TARGET #${e.particleId} · ${roleName(e.fromRole)}@C${e.fromCenter||'—'} → ${roleName(e.toRole)}@C${e.toCenter||'—'} · raw ${signName(e.rawOrientation)}`;if(e.type==='NEO_TRANSITION')return `t${e.tick} · NEO #${e.particleId} · C${e.originCenterId} BLUE → GREEN → C${e.newCenterId} RED · raw ${signName(e.rawOrientation)} unchanged · G ${e.greenScore.toFixed(2)}`;return `t${e.tick} · ${e.type}`}
+function centerEventText(e){if(e.type==='CENTER_BIRTH')return `t${e.tick} · C${e.centerId} BIRTH · raw ${signName(e.o)} · area ${e.area}${e.parentId?' · parent C'+e.parentId:''}`;if(e.type==='CENTER_ESTABLISHED')return `t${e.tick} · C${e.centerId} ESTABLISHED · raw ${signName(e.o)} · gen ${e.generation}`;if(e.type==='ROLE_CHANGE')return `t${e.tick} · TARGET #${e.particleId} · ${roleName(e.fromRole)}@C${e.fromCenter||'—'} → ${roleName(e.toRole)}@C${e.toCenter||'—'} · raw ${signName(e.rawOrientation)}`;if(e.type==='NEO_TRANSITION')return `t${e.tick} · STRICT NEO #${e.particleId} · C${e.originCenterId} BLUE → GREEN → WE → C${e.newCenterId} RED · raw ${signName(e.rawOrientation)} unchanged · G ${e.greenScore.toFixed(2)} · dwell ${e.divergentDwell}/${e.arrivalDwell}`;return `t${e.tick} · ${e.type}`}
 function renderLedger(){
  const w=worldEventLog.slice(-10).reverse(),r=observedEventLog.filter(e=>e.observerId===observerId).slice(-10).reverse(),ce=centerEventLog.slice(-10).reverse();
  worldEventsEl.innerHTML=w.length?w.map(e=>`<div class="event ${eventClass(e.type)}">${worldEventText(e)}</div>`).join(''):'<div class="event">no recorded physical events yet</div>';
@@ -680,7 +726,7 @@ function updateLabels(){
  val.view.textContent=ctl.view.value.toUpperCase();val.temp.textContent=(+ctl.temp.value/100).toFixed(2);val.j.textContent=(+ctl.coupling.value/100).toFixed(2);val.fieldRate.textContent=(+ctl.fieldRate.value).toLocaleString();val.particle.textContent=ctl.particleCount.value;val.aff.textContent=ctl.affinity.value+'%';val.rep.textContent=ctl.repulsion.value+'%';val.mix.textContent=ctl.mixing.value+'%';val.we.textContent=ctl.weThreshold.value+' ticks';val.range.textContent=ctl.relationRange.value+' px';val.horizon.textContent=ctl.horizon.value+' px';val.signal.textContent=ctl.signalSpeed.value+' px/tick';
  val.portal.textContent=ctl.portalDeg.value+'° / '+Math.round(360/+ctl.portalDeg.value)+' dirs';val.attentionRadius.textContent=ctl.attentionRadius.value+' px';val.attentionBudget.textContent=ctl.attentionBudget.value+' samples';val.choiceInterval.textContent=ctl.choiceInterval.value+' ticks';val.choiceStrength.textContent=ctl.choiceStrength.value+'%';val.choiceTemp.textContent=(+ctl.choiceTemp.value/100).toFixed(2);val.objective.textContent=ctl.choiceObjective.value.toUpperCase();val.choiceMemory.textContent=ctl.choiceMemory.value+' commits';
  val.memoryStrength.textContent=ctl.memoryStrength.value+'%';val.memoryPlasticity.textContent=ctl.memoryPlasticity.value+'%';val.memoryMaintenance.textContent=ctl.memoryMaintenance.value+'%';val.memoryRewrite.textContent=ctl.memoryRewrite.value+'%';val.memoryInflow.textContent=ctl.memoryInflow.value+'%';val.memorySubsidy.textContent=ctl.memorySubsidy.value+'%';
- val.seamMemory.textContent=ctl.seamMemory.value+' ticks';val.seamFlux.textContent=ctl.seamFlux.value+'%';val.greenSeamThreshold.textContent=(+ctl.greenSeamThreshold.value/100).toFixed(2);val.centerMinCells.textContent=ctl.centerMinCells.value+' cells';val.centerPersistence.textContent=ctl.centerPersistence.value+' ticks';val.neoLifetime.textContent=ctl.neoLifetime.value+' ticks';
+ val.seamMemory.textContent=ctl.seamMemory.value+' ticks';val.seamFlux.textContent=ctl.seamFlux.value+'%';val.greenSeamThreshold.textContent=(+ctl.greenSeamThreshold.value/100).toFixed(2);val.centerMinCells.textContent=ctl.centerMinCells.value+' cells';val.centerPersistence.textContent=ctl.centerPersistence.value+' ticks';val.neoLifetime.textContent=ctl.neoLifetime.value+' ticks';val.neoCenterMaturity.textContent=ctl.neoCenterMaturity.value+' ticks';val.neoDivergentDwell.textContent=ctl.neoDivergentDwell.value+' ticks';val.neoArrivalDwell.textContent=ctl.neoArrivalDwell.value+' ticks';
 }
 function loop(){if(running){const steps=1;for(let i=0;i<steps;i++)step()}draw();requestAnimationFrame(loop)}
 
@@ -697,9 +743,10 @@ ctl.chooser.onclick=()=>{choiceOn=!choiceOn;ctl.chooser.textContent='Choice vert
 ctl.commitChoice.onclick=()=>{commitChoice(true);ctl.view.value='choice';updateLabels()};
 ctl.clearChoices.onclick=()=>{choiceHistory=[];lastChoice=null;choiceCount=0;choiceVector={x:0,y:0};choiceMetrics={n:0,entropy:0,maxEntropy:0,confidence:0,uncertainty:0,density:0,samplesPer:0,evidence:0}};
 ctl.cycleCenter.onclick=()=>{const list=centers.filter(c=>c.established).length?centers.filter(c=>c.established):centers;if(!list.length)return;const k=list.findIndex(c=>c.id===selectedCenterId);selectedCenterId=list[(k+1+list.length)%list.length].id;ctl.view.value='center';updateLabels()};
+ctl.exportAudit.onclick=downloadAuditCSV;ctl.clearAudit.onclick=()=>{auditHistory=[];weBirthRecords=[];nextWeBirthId=1;auditSurvival=computeWESurvival()};
 ctl.view.onchange=updateLabels;
 ctl.particleCount.onchange=()=>initParticles();
-[ctl.temp,ctl.coupling,ctl.fieldRate,ctl.affinity,ctl.repulsion,ctl.mixing,ctl.weThreshold,ctl.relationRange,ctl.horizon,ctl.signalSpeed,ctl.portalDeg,ctl.attentionRadius,ctl.attentionBudget,ctl.choiceInterval,ctl.choiceStrength,ctl.choiceTemp,ctl.choiceMemory,ctl.memoryStrength,ctl.memoryPlasticity,ctl.memoryMaintenance,ctl.memoryRewrite,ctl.memoryInflow,ctl.memorySubsidy,ctl.seamMemory,ctl.seamFlux,ctl.greenSeamThreshold,ctl.centerMinCells,ctl.centerPersistence,ctl.neoLifetime].forEach(x=>x.addEventListener('input',updateLabels));
+[ctl.temp,ctl.coupling,ctl.fieldRate,ctl.affinity,ctl.repulsion,ctl.mixing,ctl.weThreshold,ctl.relationRange,ctl.horizon,ctl.signalSpeed,ctl.portalDeg,ctl.attentionRadius,ctl.attentionBudget,ctl.choiceInterval,ctl.choiceStrength,ctl.choiceTemp,ctl.choiceMemory,ctl.memoryStrength,ctl.memoryPlasticity,ctl.memoryMaintenance,ctl.memoryRewrite,ctl.memoryInflow,ctl.memorySubsidy,ctl.seamMemory,ctl.seamFlux,ctl.greenSeamThreshold,ctl.centerMinCells,ctl.centerPersistence,ctl.neoLifetime,ctl.neoCenterMaturity,ctl.neoDivergentDwell,ctl.neoArrivalDwell].forEach(x=>x.addEventListener('input',updateLabels));
 ctl.choiceObjective.onchange=()=>{lastChoice=null;updateLabels()};
 c.addEventListener('pointerdown',e=>{const r=c.getBoundingClientRect(),x=(e.clientX-r.left)*W/r.width,y=(e.clientY-r.top)*H/r.height;if(!pickMode&&!targetPickMode){if(ctl.view.value==='center'||ctl.view.value==='genealogy'){let cc=null,cd=60;for(const cen of centers){const d=dist(x,y,cen.x,cen.y);if(d<cd){cc=cen;cd=d}}if(cc){selectedCenterId=cc.id;ctl.view.value='center';updateLabels()}}return}let best=null,bd=28;for(const p of particles){const d=dist(x,y,p.x,p.y);if(d<bd){best=p;bd=d}}if(!best)return;if(pickMode){observerId=best.id;if(targetId===observerId)targetId=particles.find(p=>p.id!==observerId)?.id??null;observedEventLog=[];lastRelationSignature=null;lastChoice=null;choiceVector={x:0,y:0};pickMode=false;ctl.selectObserver.classList.remove('active')}else if(targetPickMode&&best.id!==observerId){targetId=best.id;lastRelationSignature=null;targetPickMode=false;ctl.selectTarget.classList.remove('active')}renderLedger()});
 
