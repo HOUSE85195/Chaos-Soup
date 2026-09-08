@@ -1,0 +1,613 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<title>Chaos Soup v8.3 — GREEN SEAM / Where Difference Becomes Relationship</title>
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#06080d;--panel:#111723;--panel2:#0b1019;--ink:#edf3ff;--muted:#9aa8bd;--line:#273246;
+  --red:#ff5b5b;--blue:#59a7ff;--purple:#c789ff;--green:#8ee6a1;--gold:#ffd76a;
+}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 50% 0,#101725 0,#06080d 45%);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+.wrap{max-width:1240px;margin:auto;padding:12px}
+.header{display:flex;gap:14px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;margin:4px 0 10px}
+h1{font-size:1.22rem;line-height:1.15;margin:0}.kicker{font-size:.72rem;letter-spacing:.12em;color:#b8c5d9;text-transform:uppercase;margin-bottom:5px}
+.sub{max-width:820px;color:var(--muted);font-size:.82rem;line-height:1.46;margin-top:5px}.badge{border:1px solid var(--line);background:#0b111b;border-radius:999px;padding:7px 10px;font-size:.72rem;color:#cbd6e7;white-space:nowrap}
+.stage{position:relative;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#02040a;box-shadow:0 16px 55px rgba(0,0,0,.32)}
+canvas{display:block;width:100%;height:auto;touch-action:none}.hud{position:absolute;left:9px;top:9px;max-width:min(72%,720px);background:rgba(0,0,0,.62);border:1px solid rgba(255,255,255,.08);backdrop-filter:blur(6px);border-radius:11px;padding:8px 10px;font:11px/1.38 ui-monospace,SFMono-Regular,Consolas,monospace;pointer-events:none}
+.hud b{color:white}.status{position:absolute;right:9px;top:9px;text-align:right;background:rgba(0,0,0,.52);border-radius:10px;padding:7px 9px;font:11px/1.35 ui-monospace,SFMono-Regular,Consolas,monospace;pointer-events:none}
+.controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:10px}.control,button,select{border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:11px}.control{padding:8px 9px}.control label{font-size:.72rem;color:#aebbd0;display:flex;justify-content:space-between;gap:8px}.control small{display:block;color:#738198;font-size:.64rem;margin-top:3px;line-height:1.25}
+button{padding:10px;font-weight:700;min-height:43px;cursor:pointer}button:hover{background:#182132}button.active{outline:1px solid #7187a8;background:#192437}button.warn{border-color:#594736}
+select{width:100%;padding:7px;margin-top:5px}input[type=range]{width:100%;margin:7px 0 0;accent-color:#9fb6d9}
+.panels{display:grid;grid-template-columns:1fr;gap:9px;margin-top:10px}.panel{border:1px solid var(--line);background:linear-gradient(180deg,var(--panel),var(--panel2));border-radius:13px;padding:10px 11px}.panel h2{font-size:.82rem;margin:0 0 5px}.panel p{font-size:.74rem;line-height:1.48;color:#9eacc1;margin:4px 0}.equation{font:12px/1.45 ui-monospace,SFMono-Regular,Consolas,monospace;color:#dbe6f6;background:#080c13;border:1px solid #1d2735;border-radius:8px;padding:7px 9px;margin-top:7px}.legend{display:flex;gap:13px;flex-wrap:wrap;margin:9px 3px 2px;color:#8795aa;font-size:.69rem}.sw{width:9px;height:9px;border-radius:50%;display:inline-block;margin-right:4px;vertical-align:-1px}.footer{font-size:.68rem;color:#6f7d91;line-height:1.4;margin:9px 2px 2px}
+.ledger{margin-top:10px;border:1px solid var(--line);border-radius:13px;background:#080c13;overflow:hidden}.ledgerHead{padding:8px 10px;border-bottom:1px solid var(--line);font-size:.75rem;color:#ced9e8;display:flex;justify-content:space-between;gap:10px}.ledgerGrid{display:grid;grid-template-columns:1fr;gap:0}.ledgerCol{padding:8px 10px;min-height:120px}.ledgerCol+ .ledgerCol{border-top:1px solid var(--line)}.ledgerCol h3{font-size:.69rem;letter-spacing:.08em;text-transform:uppercase;color:#8494aa;margin:0 0 6px}.event{font:10px/1.35 ui-monospace,SFMono-Regular,Consolas,monospace;color:#b9c7da;padding:3px 0;border-bottom:1px dotted rgba(255,255,255,.055)}.event:last-child{border-bottom:0}.evFlip{color:#e6c6ff}.evSelf{color:#ffe29a}.evRel{color:#a9efb7}.evMove{color:#b8c7db}.auditNote{color:#75849a;font-size:.63rem}
+@media(min-width:760px){.ledgerGrid{grid-template-columns:1fr 1fr}.ledgerCol+ .ledgerCol{border-top:0;border-left:1px solid var(--line)}}
+@media(min-width:760px){.controls{grid-template-columns:repeat(4,minmax(0,1fr))}.panels{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="header">
+    <div>
+      <div class="kicker">HOUSE’S EXPERIMENT · UNIVERSAL FUSIONISM</div>
+      <h1>Chaos Soup v8.3 — GREEN SEAM / Where Difference Becomes Relationship</h1>
+      <div class="sub">v8.3 keeps Red/Blue orientation, Gold observer framing, Purple persistent WE relations, and Green adaptive memory, then adds a second Green layer to the field itself. A Red/Blue boundary becomes a GREEN SEAM only when difference persists, actual transfer occurs across the interface, and nearby tokens remain adaptively plastic. Ordinary separation stays pale; viable interfaces progressively turn green. The engine now records whether new Purple WE relations are born on Green seams or ordinary seams.</div>
+    </div>
+    <div class="badge">WORLD → OBSERVATION → INTERPRETATION</div>
+  </div>
+
+  <div class="stage">
+    <canvas id="sim" width="1160" height="820"></canvas>
+    <div class="hud" id="hud"></div>
+    <div class="status" id="status"></div>
+  </div>
+
+  <div class="controls">
+    <button id="toggle">Pause</button>
+    <button id="reset">Reset same seed</button>
+    <button id="newSeed">New universe seed</button>
+    <button id="quench">Quench heat</button>
+
+    <div class="control"><label>View <span id="viewVal"></span></label><select id="view"><option value="world">WORLD — full state</option><option value="hineni">HINENI — embedded observer</option><option value="choice">CHOICE — possibility portal</option><option value="frame">FRAME — identity / orientation audit</option><option value="memory">MEMORY — field retention</option><option value="green">GREEN MEMORY — cost / plasticity</option><option value="relations">WE — relational hierarchy</option><option value="seam">SEAM — difference boundary</option><option value="greenseam">GREEN SEAM — viable interface</option></select><small>CHOICE uses only the selected observer’s finite causal view.</small></div>
+    <div class="control"><label>Temperature / noise <span id="tempVal"></span></label><input id="temp" type="range" min="20" max="500" value="235"><small>Ising-like disorder parameter, not literal “quantum heat.”</small></div>
+    <div class="control"><label>Alignment coupling J <span id="jVal"></span></label><input id="coupling" type="range" min="0" max="200" value="100"><small>Higher J favors neighboring agreement.</small></div>
+    <div class="control"><label>Field updates <span id="fieldRateVal"></span></label><input id="fieldRate" type="range" min="200" max="9000" step="100" value="4300"><small>Local updates per model tick.</small></div>
+
+    <div class="control"><label>Relational tokens <span id="particleVal"></span></label><input id="particleCount" type="range" min="40" max="240" step="10" value="130"><small>Tokens sample and react to the same field; they are not organisms.</small></div>
+    <div class="control"><label>Like-orientation affinity <span id="affVal"></span></label><input id="affinity" type="range" min="0" max="100" value="42"><small>Model coupling; red/blue are not electric charge.</small></div>
+    <div class="control"><label>Unlike separation <span id="repVal"></span></label><input id="repulsion" type="range" min="0" max="100" value="38"><small>Creates domains while allowing persistent interfaces.</small></div>
+    <div class="control"><label>Mixing / agitation <span id="mixVal"></span></label><input id="mixing" type="range" min="0" max="100" value="23"><small>Brownian-like motion of relational tokens.</small></div>
+
+    <div class="control"><label>WE persistence threshold <span id="weVal"></span></label><input id="weThreshold" type="range" min="20" max="260" value="95"><small>Observer label only: sustained cross-stratum relation.</small></div>
+    <div class="control"><label>Relation range <span id="rangeVal"></span></label><input id="relationRange" type="range" min="22" max="90" value="54"><small>Distance within which relation can accumulate.</small></div>
+    <div class="control"><label>Observer horizon <span id="horizonVal"></span></label><input id="horizon" type="range" min="100" max="520" value="300"><small>HINENI cannot directly inspect beyond this local radius.</small></div>
+    <div class="control"><label>Causal channel speed <span id="signalVal"></span></label><input id="signalSpeed" type="range" min="2" max="34" value="12"><small>Model pixels/tick. It is a finite information speed, not physical c.</small></div>
+
+    <div class="control"><label>Portal resolution <span id="portalVal"></span></label><input id="portalDeg" type="range" min="5" max="60" value="18"><small>Angular width per possible action. Smaller portal → more distinguishable directions.</small></div>
+    <div class="control"><label>Attention radius <span id="attentionRadiusVal"></span></label><input id="attentionRadius" type="range" min="60" max="320" value="180"><small>Larger field gives more context but dilutes a fixed attention budget.</small></div>
+    <div class="control"><label>Attention budget <span id="attentionBudgetVal"></span></label><input id="attentionBudget" type="range" min="24" max="720" step="12" value="180"><small>Finite samples distributed across the possibility field.</small></div>
+    <div class="control"><label>Choice interval <span id="choiceIntervalVal"></span></label><input id="choiceInterval" type="range" min="4" max="60" value="18"><small>Ticks between committed actions when the chooser benchmark is active.</small></div>
+
+    <div class="control"><label>Choice force <span id="choiceStrengthVal"></span></label><input id="choiceStrength" type="range" min="0" max="100" value="38"><small>Physical steering applied only after one possibility is committed.</small></div>
+    <div class="control"><label>Choice temperature <span id="choiceTempVal"></span></label><input id="choiceTemp" type="range" min="5" max="200" value="45"><small>Lower = more concentrated choice; higher = more exploration among alternatives.</small></div>
+    <div class="control"><label>Attention objective <span id="objectiveVal"></span></label><select id="choiceObjective"><option value="balanced">BALANCED — coherence + difference + relation</option><option value="alignment">ALIGNMENT — own orientation coherence</option><option value="difference">DIFFERENCE — seam / novelty</option><option value="relation">RELATION — cross-orientation encounter</option></select><small>Explicit benchmark objective, not an emergent survival command.</small></div>
+    <div class="control"><label>Choice memory <span id="choiceMemoryVal"></span></label><input id="choiceMemory" type="range" min="8" max="120" value="48"><small>Recent committed choices retained for path and directional bias analysis.</small></div>
+
+    <div class="control"><label>Memory persistence barrier <span id="memoryStrengthVal"></span></label><input id="memoryStrength" type="range" min="0" max="100" value="58"><small>Retained history resists reorientation. Higher = more hysteresis / less easy rewriting.</small></div>
+    <div class="control"><label>Memory plasticity <span id="memoryPlasticityVal"></span></label><input id="memoryPlasticity" type="range" min="1" max="100" value="46"><small>Rate at which stored orientation can learn a newly persistent state.</small></div>
+    <div class="control"><label>Maintenance cost <span id="memoryMaintenanceVal"></span></label><input id="memoryMaintenance" type="range" min="0" max="100" value="34"><small>Abstract work spent to keep retained state from dissolving into noise.</small></div>
+    <div class="control"><label>Rewrite / erase cost <span id="memoryRewriteVal"></span></label><input id="memoryRewrite" type="range" min="0" max="100" value="58"><small>Additional work required when stored orientation is overwritten. Model units, not joules.</small></div>
+    <div class="control"><label>Memory work inflow <span id="memoryInflowVal"></span></label><input id="memoryInflow" type="range" min="0" max="100" value="28"><small>Explicit abstract work source for this benchmark. Without it, costly memories eventually fade.</small></div>
+    <div class="control"><label>Relational memory subsidy <span id="memorySubsidyVal"></span></label><input id="memorySubsidy" type="range" min="0" max="100" value="62"><small>Same-oriented local relations reduce the individual maintenance bill; group structure can carry part of continuity.</small></div>
+
+    <div class="control"><label>Seam persistence scale <span id="seamMemoryVal"></span></label><input id="seamMemory" type="range" min="20" max="360" value="110"><small>Ticks required for a Red/Blue interface to earn substantial persistence. A new border is not automatically Green.</small></div>
+    <div class="control"><label>Cross-seam flux memory <span id="seamFluxVal"></span></label><input id="seamFlux" type="range" min="0" max="100" value="62"><small>How long transfer history remains associated with an interface after crossings and local state changes.</small></div>
+    <div class="control"><label>GREEN seam threshold <span id="greenSeamThresholdVal"></span></label><input id="greenSeamThreshold" type="range" min="10" max="90" value="22"><small>Minimum viability score for an interface to be classified GREEN. Difference alone is insufficient.</small></div>
+
+    <button id="hidden" class="warn">Hidden boundary forcing: OFF</button>
+    <button id="demon" class="warn">Demon gate benchmark: OFF</button>
+    <button id="labels">Relational labels: ON</button>
+    <button id="selectObserver">Pick HINENI observer</button>
+    <button id="selectTarget">Pick tracked sphere</button>
+    <button id="clearLedger">Clear event ledger</button>
+    <button id="chooser" class="warn">Choice vertex benchmark: OFF</button>
+    <button id="commitChoice">Commit one choice</button>
+    <button id="clearChoices">Clear choice memory</button>
+  </div>
+
+  <div class="legend">
+    <span><i class="sw" style="background:var(--red)"></i>R orientation</span>
+    <span><i class="sw" style="background:var(--blue)"></i>B orientation</span>
+    <span><i class="sw" style="background:var(--purple)"></i>persistent WE relation</span>
+    <span><i class="sw" style="background:var(--green)"></i>green halo = adaptive memory balance</span>
+    <span><i class="sw" style="background:#55ef87"></i>green line = viable Red/Blue seam</span><span><i class="sw" style="background:#b8ffd0"></i>dashed mint = higher-order FAMILY candidate</span>
+    <span><i class="sw" style="background:var(--gold)"></i>gold ring = HINENI frame; inner core = R/B orientation</span>
+    <span><i class="sw" style="background:white"></i>counterfactual possibilities</span>
+  </div>
+
+  <div class="panels">
+    <div class="panel"><h2>Physical layer</h2><p>One bounded world Ω evolves from local rules. Red and blue are an Ising-like orientation variable, not separate substances or universes. The external scientific observer never feeds classifications back into physics.</p><div class="equation">R ≠ B · R,B ⊂ Ω<br>difference → interaction → correlation → persistence</div></div>
+    <div class="panel"><h2>GREEN memory / cost layer</h2><p>Memory is retained difference, but persistence is not free. Each token pays abstract write, maintenance, and rewrite/erase costs. A finite work reserve makes memory causally expensive. Green visualizes adaptive retention: enough continuity to remain a self, enough plasticity to update when the field changes.</p><div class="equation">past → retained state → persistence barrier<br>cost = write + maintain + rewrite/reset<br>GREEN ≈ balance(retention, plasticity)</div></div>
+    <div class="panel"><h2>GREEN seam layer</h2><p>A Red/Blue boundary is only separation until it accumulates persistence, cross-boundary transfer, and nearby adaptive memory. The seam score is a geometric conjunction: if any required component collapses, Green collapses with it. New WE relations are tagged by the seam state at their birth so the model can test whether Purple preferentially emerges from Green interfaces.</p><div class="equation">GREEN seam ≈ (persistence × transfer × adaptive plasticity)^(1/3)<br>ordinary wall ≠ GREEN seam<br>test: P(WE birth | GREEN) ? P(WE birth | ordinary seam)<br>birth classification uses the prior-tick seam score to reduce same-tick circularity</div></div>
+    <div class="panel"><h2>Relational layer</h2><p>A persistent cross-stratum relation is labeled WE. Connected WE structures can be coarse-grained into a higher-order FAMILY candidate. This is interpretation over the physical world, not a new force.</p><div class="equation">I ≠ U<br>I ↔ U → WE<br>WE + WE + persistence → higher-order identity candidate</div></div>
+    <div class="panel"><h2>Choice layer</h2><p>The selected HINENI observer samples only what can reach it, divides its circular local field into angular possibilities, assigns finite evidence to each, and commits one physical action. Smaller portal width increases candidate count; larger radius spreads the same attention budget thinner.</p><div class="equation">Ωseen → attention → {a₁…aₙ}<br>{a₁…aₙ} → CHOICE VERTEX → a*<br>a* → history → memory → Ω′</div></div>
+    <div class="panel"><h2>Identity / frame layer</h2><p>A sphere keeps the same identity number while its orientation may flip. GOLD is not a third orientation: it marks which sphere is the local observer. The observer can therefore distinguish “it changed,” “I changed,” “we changed relation,” and “information about change just arrived.”</p><div class="equation">SELF-ID ≠ ORIENTATION ≠ OBSERVER FRAME<br>Sᵢ=(id, o, x, y, memory, reserve, history)<br>GOLD = frame(Sᵢ), not o(Sᵢ)</div></div>
+  </div>
+
+  <div class="ledger" id="ledger"><div class="ledgerHead"><span>CAUSAL EVENT LEDGER</span><span class="auditNote">left = WORLD physical event · right = what reached current HINENI</span></div><div class="ledgerGrid"><div class="ledgerCol"><h3>WORLD EVENTS — external audit</h3><div id="worldEvents"></div></div><div class="ledgerCol"><h3>HINENI RECEIVED — observer record</h3><div id="observedEvents"></div></div></div></div>
+
+  <div class="footer">Scope: qualitative relational-information prototype. Memory-work values are abstract accounting units, not calibrated joules. GREEN MEMORY remains an observer metric for adaptive retention; GREEN SEAM is a derived interface score computed from persistence, measured local transfer, and nearby adaptive memory. Neither is a new particle, force, consciousness flag, or established law of nature. Purple WE and higher-order FAMILY labels remain observer classifications over model dynamics. GREEN/ordinary WE birth rates are descriptive associations; because relational activity contributes to seam flux, they are not by themselves causal evidence. The engine does not simulate validated quantum field theory, abiogenesis chemistry, actual electric charge, subjective consciousness, or a cosmological exterior.</div>
+</div>
+<script>
+(()=>{
+'use strict';
+const c=document.getElementById('sim'),ctx=c.getContext('2d');
+const hud=document.getElementById('hud'),status=document.getElementById('status'),worldEventsEl=document.getElementById('worldEvents'),observedEventsEl=document.getElementById('observedEvents');
+const $=id=>document.getElementById(id);
+const ctl={
+ toggle:$('toggle'),reset:$('reset'),newSeed:$('newSeed'),quench:$('quench'),view:$('view'),
+ temp:$('temp'),coupling:$('coupling'),fieldRate:$('fieldRate'),particleCount:$('particleCount'),
+ affinity:$('affinity'),repulsion:$('repulsion'),mixing:$('mixing'),weThreshold:$('weThreshold'),
+ relationRange:$('relationRange'),horizon:$('horizon'),signalSpeed:$('signalSpeed'),
+ hidden:$('hidden'),demon:$('demon'),labels:$('labels'),selectObserver:$('selectObserver'),selectTarget:$('selectTarget'),clearLedger:$('clearLedger'),
+ chooser:$('chooser'),commitChoice:$('commitChoice'),clearChoices:$('clearChoices'),portalDeg:$('portalDeg'),attentionRadius:$('attentionRadius'),
+ attentionBudget:$('attentionBudget'),choiceInterval:$('choiceInterval'),choiceStrength:$('choiceStrength'),choiceTemp:$('choiceTemp'),
+ choiceObjective:$('choiceObjective'),choiceMemory:$('choiceMemory'),
+ memoryStrength:$('memoryStrength'),memoryPlasticity:$('memoryPlasticity'),memoryMaintenance:$('memoryMaintenance'),memoryRewrite:$('memoryRewrite'),memoryInflow:$('memoryInflow'),memorySubsidy:$('memorySubsidy'),
+ seamMemory:$('seamMemory'),seamFlux:$('seamFlux'),greenSeamThreshold:$('greenSeamThreshold')
+};
+const val={view:$('viewVal'),temp:$('tempVal'),j:$('jVal'),fieldRate:$('fieldRateVal'),particle:$('particleVal'),aff:$('affVal'),rep:$('repVal'),mix:$('mixVal'),we:$('weVal'),range:$('rangeVal'),horizon:$('horizonVal'),signal:$('signalVal'),
+ portal:$('portalVal'),attentionRadius:$('attentionRadiusVal'),attentionBudget:$('attentionBudgetVal'),choiceInterval:$('choiceIntervalVal'),choiceStrength:$('choiceStrengthVal'),choiceTemp:$('choiceTempVal'),objective:$('objectiveVal'),choiceMemory:$('choiceMemoryVal'),
+ memoryStrength:$('memoryStrengthVal'),memoryPlasticity:$('memoryPlasticityVal'),memoryMaintenance:$('memoryMaintenanceVal'),memoryRewrite:$('memoryRewriteVal'),memoryInflow:$('memoryInflowVal'),memorySubsidy:$('memorySubsidyVal'),
+ seamMemory:$('seamMemoryVal'),seamFlux:$('seamFluxVal'),greenSeamThreshold:$('greenSeamThresholdVal')};
+const W=c.width,H=c.height,CX=W/2,CY=H/2+18,R=Math.min(W*.43,H*.48);
+const GW=82,GH=58,cellW=(R*2)/GW,cellH=(R*2)/GH,N=GW*GH;
+let seed=Date.now()>>>0,rng=mulberry32(seed),tick=0,running=true,hiddenOn=false,demonOn=false,showLabels=true,pickMode=false,targetPickMode=false,choiceOn=false;
+let sigma=new Int8Array(N),mask=new Uint8Array(N),fieldSnapshots=[],particleSnapshots=[];
+let seamAgeH=new Float32Array(N),seamAgeV=new Float32Array(N),seamFluxH=new Float32Array(N),seamFluxV=new Float32Array(N),seamGreenH=new Float32Array(N),seamGreenV=new Float32Array(N);
+let cellGreenSum=new Float32Array(N),cellGreenWeight=new Float32Array(N);
+let seamStats={seamEdges:0,greenEdges:0,meanGreen:0,maxGreen:0,opportunityGreen:0,opportunityOrdinary:0,weBirthGreen:0,weBirthOrdinary:0};
+let particles=[],relations=new Map(),groupRelations=new Map(),observerId=0,targetId=null,cachedGroups=[],cachedFamilies=[];
+let demonBits=0,demonResets=0,demonProxyCost=0,hiddenPhase=0,eventLog=[],worldEventLog=[],observedEventLog=[],eventAnchors=new Map(),lastRelationSignature=null;
+let choiceHistory=[],lastChoice=null,choiceCount=0,choiceVector={x:0,y:0},choiceMetrics={n:0,entropy:0,maxEntropy:0,confidence:0,uncertainty:0,density:0,samplesPer:0,evidence:0};
+let lastMetrics={retention:0,seam:0,alignment:0,we:0,families:0,groups:0,avgMemory:0,avgGreen:0,avgReserve:0,maintenanceCost:0,rewriteCost:0,eraseCost:0,greenSeamFraction:0,meanGreenSeam:0,maxGreenSeam:0};
+let memoryTotals={maintenance:0,rewrite:0,erase:0,write:0,flips:0};
+
+function mulberry32(a){return function(){let t=a+=0x6D2B79F5;t=Math.imul(t^t>>>15,t|1);t^=t+Math.imul(t^t>>>7,t|61);return((t^t>>>14)>>>0)/4294967296}}
+function rnd(){return rng()} function rand(a,b){return a+rnd()*(b-a)}
+function randn(){let u=0,v=0;while(!u)u=rnd();while(!v)v=rnd();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v)}
+function clamp(v,a,b){return Math.max(a,Math.min(b,v))} function dist(a,b,c,d){return Math.hypot(a-c,b-d)}
+function idx(x,y){return y*GW+x}
+function gridXY(i){return {x:i%GW,y:Math.floor(i/GW)}}
+function worldFromGrid(gx,gy){return {x:CX-R+(gx+.5)*cellW,y:CY-R+(gy+.5)*cellH}}
+function gridFromWorld(x,y){return {gx:clamp(Math.floor((x-(CX-R))/cellW),0,GW-1),gy:clamp(Math.floor((y-(CY-R))/cellH),0,GH-1)}}
+function insideWorld(x,y){return (x-CX)*(x-CX)+(y-CY)*(y-CY)<=R*R}
+function signName(s){return s>0?'R':'B'}
+
+function buildMask(){
+ for(let gy=0;gy<GH;gy++)for(let gx=0;gx<GW;gx++){
+  const p=worldFromGrid(gx,gy);mask[idx(gx,gy)]=insideWorld(p.x,p.y)?1:0;
+ }
+}
+function initField(){for(let i=0;i<N;i++)sigma[i]=mask[i]?(rnd()<.5?-1:1):0;fieldSnapshots=[]}
+function randomPoint(){
+ for(let k=0;k<500;k++){const a=rnd()*Math.PI*2,r=Math.sqrt(rnd())*(R-16),x=CX+Math.cos(a)*r,y=CY+Math.sin(a)*r;if(insideWorld(x,y))return{x,y}}
+ return{x:CX,y:CY};
+}
+function newParticle(id){const p=randomPoint(),o=rnd()<.5?-1:1,g=gridFromWorld(p.x,p.y);return{id,x:p.x,y:p.y,vx:rand(-.18,.18),vy:rand(-.18,.18),o,age:0,mem:o*rand(.42,.78),memoryReserve:rand(62,92),memoryGreen:.5,sameSupport:0,oppSupport:0,socialBias:0,lastMemSign:o,reserveBand:2,memoryWrite:0,memoryMaintenance:0,memoryRewrite:0,memoryErase:0,lastSeamGX:g.gx,lastSeamGY:g.gy}}
+function initParticles(){particles=[];const n=+ctl.particleCount.value;for(let i=0;i<n;i++)particles.push(newParticle(i));observerId=particles.length?particles[Math.floor(particles.length/2)].id:0;targetId=particles.find(p=>p.id!==observerId)?.id??null;particleSnapshots=[];relations.clear();groupRelations.clear();cachedGroups=[];cachedFamilies=[];eventAnchors.clear();for(const p of particles)eventAnchors.set(p.id,{x:p.x,y:p.y,o:p.o});lastRelationSignature=null}
+function resetWorld(newSeed=false){
+ if(newSeed){seed=(Date.now()^(Math.random()*0xffffffff))>>>0;rng=mulberry32(seed)}else rng=mulberry32(seed);
+ tick=0;hiddenPhase=0;demonBits=demonResets=0;demonProxyCost=0;eventLog=[];worldEventLog=[];observedEventLog=[];memoryTotals={maintenance:0,rewrite:0,erase:0,write:0,flips:0};choiceHistory=[];lastChoice=null;choiceCount=0;choiceVector={x:0,y:0};choiceMetrics={n:0,entropy:0,maxEntropy:0,confidence:0,uncertainty:0,density:0,samplesPer:0,evidence:0};
+ seamAgeH.fill(0);seamAgeV.fill(0);seamFluxH.fill(0);seamFluxV.fill(0);seamGreenH.fill(0);seamGreenV.fill(0);cellGreenSum.fill(0);cellGreenWeight.fill(0);seamStats={seamEdges:0,greenEdges:0,meanGreen:0,maxGreen:0,opportunityGreen:0,opportunityOrdinary:0,weBirthGreen:0,weBirthOrdinary:0};
+ buildMask();initField();initParticles();snapshot(true);updateLabels();
+}
+
+function externalBias(gx,gy){
+ if(!hiddenOn)return 0;
+ const p=worldFromGrid(gx,gy),dx=p.x-CX,dy=p.y-CY,r=Math.hypot(dx,dy),edge=clamp((r-(R-65))/65,0,1);
+ if(edge<=0)return 0;
+ const ang=Math.atan2(dy,dx);return edge*1.35*Math.sin(ang*3-hiddenPhase);
+}
+function neighborSum(gx,gy){let s=0,n=0;const ns=[[1,0],[-1,0],[0,1],[0,-1]];for(const [dx,dy] of ns){const x=gx+dx,y=gy+dy;if(x>=0&&x<GW&&y>=0&&y<GH&&mask[idx(x,y)]){s+=sigma[idx(x,y)];n++}}return {s,n}}
+function addHFlux(gx,gy,w=1){if(gx<0||gx>=GW-1||gy<0||gy>=GH)return;const i=idx(gx,gy),j=idx(gx+1,gy);if(mask[i]&&mask[j])seamFluxH[i]=Math.min(30,seamFluxH[i]+w)}
+function addVFlux(gx,gy,w=1){if(gx<0||gx>=GW||gy<0||gy>=GH-1)return;const i=idx(gx,gy),j=idx(gx,gy+1);if(mask[i]&&mask[j])seamFluxV[i]=Math.min(30,seamFluxV[i]+w)}
+function markFieldTransition(gx,gy,oldS,newS){
+ const ns=[[1,0,'H',gx,gy],[-1,0,'H',gx-1,gy],[0,1,'V',gx,gy],[0,-1,'V',gx,gy-1]];
+ for(const [dx,dy,t,ex,ey] of ns){const x=gx+dx,y=gy+dy;if(x<0||x>=GW||y<0||y>=GH)continue;const j=idx(x,y);if(!mask[j])continue;const w=sigma[j]!==newS?.030:.010;if(t==='H')addHFlux(ex,ey,w);else addVFlux(ex,ey,w)}
+}
+function addCrossingFlux(p){
+ const g=gridFromWorld(p.x,p.y),ox=p.lastSeamGX,oy=p.lastSeamGY;
+ if(Number.isFinite(ox)&&Number.isFinite(oy)){
+  if(g.gy===oy&&Math.abs(g.gx-ox)===1){const ex=Math.min(g.gx,ox),i=idx(ex,g.gy);if(mask[i]&&mask[idx(ex+1,g.gy)]&&sigma[i]!==sigma[idx(ex+1,g.gy)])addHFlux(ex,g.gy,.85)}
+  if(g.gx===ox&&Math.abs(g.gy-oy)===1){const ey=Math.min(g.gy,oy),i=idx(g.gx,ey);if(mask[i]&&mask[idx(g.gx,ey+1)]&&sigma[i]!==sigma[idx(g.gx,ey+1)])addVFlux(g.gx,ey,.85)}
+ }
+ p.lastSeamGX=g.gx;p.lastSeamGY=g.gy;
+}
+function addFluxNearWorld(x,y,w=.035){
+ const g=gridFromWorld(x,y);let best=null,bestScore=Infinity;
+ const candidates=[[g.gx,g.gy,'H'],[g.gx-1,g.gy,'H'],[g.gx,g.gy,'V'],[g.gx,g.gy-1,'V']];
+ for(const [gx,gy,t] of candidates){if(t==='H'){if(gx<0||gx>=GW-1||gy<0||gy>=GH)continue;const i=idx(gx,gy),j=idx(gx+1,gy);if(!mask[i]||!mask[j]||sigma[i]===sigma[j])continue;const wp=worldFromGrid(gx,gy),sx=wp.x+cellW*.5,sy=wp.y;const d=(x-sx)*(x-sx)+(y-sy)*(y-sy);if(d<bestScore){bestScore=d;best=[t,gx,gy]}}else{if(gx<0||gx>=GW||gy<0||gy>=GH-1)continue;const i=idx(gx,gy),j=idx(gx,gy+1);if(!mask[i]||!mask[j]||sigma[i]===sigma[j])continue;const wp=worldFromGrid(gx,gy),sx=wp.x,sy=wp.y+cellH*.5;const d=(x-sx)*(x-sx)+(y-sy)*(y-sy);if(d<bestScore){bestScore=d;best=[t,gx,gy]}}}
+ if(best){if(best[0]==='H')addHFlux(best[1],best[2],w);else addVFlux(best[1],best[2],w)}
+}
+function greenScoreAtWorld(x,y){
+ const g=gridFromWorld(x,y);let best=0;
+ const h=[[g.gx,g.gy],[g.gx-1,g.gy]];for(const [gx,gy] of h)if(gx>=0&&gx<GW-1&&gy>=0&&gy<GH)best=Math.max(best,seamGreenH[idx(gx,gy)]||0);
+ const v=[[g.gx,g.gy],[g.gx,g.gy-1]];for(const [gx,gy] of v)if(gx>=0&&gx<GW&&gy>=0&&gy<GH-1)best=Math.max(best,seamGreenV[idx(gx,gy)]||0);
+ return best;
+}
+function updateGreenSeams(){
+ const ageScale=Math.max(1,+ctl.seamMemory.value),fluxKnob=+ctl.seamFlux.value/100,decay=.90+.0985*fluxKnob,threshold=+ctl.greenSeamThreshold.value/100;
+ cellGreenSum.fill(0);cellGreenWeight.fill(0);
+ for(const p of particles){const g=gridFromWorld(p.x,p.y);for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++){const gx=g.gx+dx,gy=g.gy+dy;if(gx<0||gx>=GW||gy<0||gy>=GH)continue;const i=idx(gx,gy);if(!mask[i])continue;const w=1/(1+Math.abs(dx)+Math.abs(dy));cellGreenSum[i]+=p.memoryGreen*w;cellGreenWeight[i]+=w}addCrossingFlux(p)}
+ const byId=new Map(particles.map(p=>[p.id,p]));for(const r of relations.values())if(r.cross&&r.age>0){const a=byId.get(r.a),b=byId.get(r.b);if(a&&b)addFluxNearWorld((a.x+b.x)/2,(a.y+b.y)/2,.012*Math.min(3,1+r.age/Math.max(1,+ctl.weThreshold.value)))}
+ let seamEdges=0,greenEdges=0,sum=0,maxG=0;
+ for(let gy=0;gy<GH;gy++)for(let gx=0;gx<GW;gx++){const i=idx(gx,gy);if(!mask[i])continue;
+  if(gx+1<GW&&mask[idx(gx+1,gy)]){const j=idx(gx+1,gy),isSeam=sigma[i]!==sigma[j];seamFluxH[i]*=decay;if(isSeam){seamAgeH[i]=Math.min(5000,seamAgeH[i]+1);const persistence=1-Math.exp(-seamAgeH[i]/ageScale),transfer=1-Math.exp(-seamFluxH[i]*.72);const w=cellGreenWeight[i]+cellGreenWeight[j],plastic=w?(cellGreenSum[i]+cellGreenSum[j])/w:0;const score=Math.cbrt(Math.max(0,persistence*transfer*plastic));seamGreenH[i]=score;seamEdges++;sum+=score;maxG=Math.max(maxG,score);if(score>=threshold)greenEdges++}else{seamAgeH[i]*=.90;seamGreenH[i]=0}}
+  if(gy+1<GH&&mask[idx(gx,gy+1)]){const j=idx(gx,gy+1),isSeam=sigma[i]!==sigma[j];seamFluxV[i]*=decay;if(isSeam){seamAgeV[i]=Math.min(5000,seamAgeV[i]+1);const persistence=1-Math.exp(-seamAgeV[i]/ageScale),transfer=1-Math.exp(-seamFluxV[i]*.72);const w=cellGreenWeight[i]+cellGreenWeight[j],plastic=w?(cellGreenSum[i]+cellGreenSum[j])/w:0;const score=Math.cbrt(Math.max(0,persistence*transfer*plastic));seamGreenV[i]=score;seamEdges++;sum+=score;maxG=Math.max(maxG,score);if(score>=threshold)greenEdges++}else{seamAgeV[i]*=.90;seamGreenV[i]=0}}
+ }
+ seamStats.seamEdges=seamEdges;seamStats.greenEdges=greenEdges;seamStats.meanGreen=seamEdges?sum/seamEdges:0;seamStats.maxGreen=maxG;
+}
+function updateField(){
+ const T=+ctl.temp.value/100,J=+ctl.coupling.value/100,updates=+ctl.fieldRate.value;
+ for(let k=0;k<updates;k++){
+  const gx=Math.floor(rnd()*GW),gy=Math.floor(rnd()*GH),i=idx(gx,gy);if(!mask[i])continue;
+  const nb=neighborSum(gx,gy);if(!nb.n)continue;
+  const s=sigma[i],h=externalBias(gx,gy),dE=2*s*(J*nb.s+h);
+  if(dE<=0||rnd()<Math.exp(-dE/Math.max(.06,T))){sigma[i]=-s;markFieldTransition(gx,gy,s,-s);}
+ }
+ hiddenPhase+=.005;
+}
+function sampleField(x,y,snap=null){const g=gridFromWorld(x,y),i=idx(g.gx,g.gy);return (snap||sigma)[i]||1}
+
+function pushWorldEvent(e){e.seenBy={};worldEventLog.push(e);if(worldEventLog.length>160)worldEventLog.shift()}
+function emitParticleEvent(type,p,extra={}){pushWorldEvent({tick,type,id:p.id,x:p.x,y:p.y,o:p.o,...extra})}
+function trackPhysicalEvents(){
+ for(const p of particles){
+  let a=eventAnchors.get(p.id);if(!a){a={x:p.x,y:p.y,o:p.o};eventAnchors.set(p.id,a);continue}
+  if(p.o!==a.o){emitParticleEvent('ORIENTATION_FLIP',p,{from:a.o,to:p.o});a.o=p.o}
+  if((p.id===observerId||p.id===targetId)&&dist(p.x,p.y,a.x,a.y)>=52){emitParticleEvent('MOVE',p,{fromX:a.x,fromY:a.y,toX:p.x,toY:p.y});a.x=p.x;a.y=p.y}
+ }
+}
+function trackTargetRelation(){
+ const o=currentObserver(),t=currentTarget();if(!o||!t)return;
+ const same=o.o===t.o,band=dist(o.x,o.y,t.x,t.y)<=+ctl.relationRange.value?'LOCAL':'DISTANT';const sig=`${o.id}:${o.o}|${t.id}:${t.o}|${same?'SAME':'OPPOSITE'}|${band}`;
+ if(lastRelationSignature===null){lastRelationSignature=sig;return}
+ if(sig!==lastRelationSignature){pushWorldEvent({tick,type:'RELATION_CHANGE',id:t.id,observerId:o.id,targetId:t.id,x:(o.x+t.x)/2,y:(o.y+t.y)/2,o:t.o,relation:same?'SAME':'OPPOSITE',band});lastRelationSignature=sig}
+}
+function observedEventLabel(e,o){
+ if(e.type==='ORIENTATION_FLIP')return e.id===o.id?`I / FRAME ORIENTATION ${signName(e.from)}→${signName(e.to)}`:e.id===targetId?`TARGET #${e.id} ${signName(e.from)}→${signName(e.to)}`:`OTHER #${e.id} ${signName(e.from)}→${signName(e.to)}`;
+ if(e.type==='MOVE')return e.id===o.id?'I MOVED':e.id===targetId?`TARGET #${e.id} MOVED`:`OTHER #${e.id} MOVED`;
+ if(e.type==='RELATION_CHANGE')return `RELATION with #${e.targetId}: ${e.relation} / ${e.band}`;
+ if(e.type==='MEMORY_REWRITE')return e.id===o.id?`I / MEMORY ${signName(e.from)}→${signName(e.to)} · cost ${e.cost.toFixed(2)}`:`MEMORY #${e.id} ${signName(e.from)}→${signName(e.to)} · cost ${e.cost.toFixed(2)}`;
+ if(e.type==='MEMORY_LOW')return e.id===o.id?`I / MEMORY RESERVE LOW ${e.reserve.toFixed(1)}`:`MEMORY #${e.id} RESERVE LOW ${e.reserve.toFixed(1)}`;
+ if(e.type==='WE_BIRTH')return `WE BIRTH #${e.a}↔#${e.b} · ${e.green?'GREEN SEAM':'ordinary seam'} · G ${e.greenScore.toFixed(2)}`;
+ return e.type;
+}
+function deliverWorldEvents(){
+ const o=currentObserver();if(!o)return;const speed=Math.max(.1,+ctl.signalSpeed.value),h=+ctl.horizon.value,key=String(o.id);
+ for(const e of worldEventLog){if(e.seenBy?.[key])continue;const d=dist(o.x,o.y,e.x,e.y);if(d>h)continue;const lag=d/speed;if(tick-e.tick+1e-9<lag)continue;e.seenBy[key]=true;observedEventLog.push({receivedTick:tick,worldTick:e.tick,lag,observerId:o.id,label:observedEventLabel(e,o),type:e.type,id:e.id});if(observedEventLog.length>120)observedEventLog.shift()}
+}
+function currentTarget(){return particles.find(p=>p.id===targetId)||particles.find(p=>p.id!==observerId)||null}
+function observedTargetState(o){
+ const t=currentTarget();if(!o||!t)return null;const d=dist(o.x,o.y,t.x,t.y),h=+ctl.horizon.value,signal=Math.max(.1,+ctl.signalSpeed.value);if(d>h)return {visible:false,d,lag:d/signal,target:t};
+ const hist=historyParticlesLag(d/signal),v=hist.find(z=>z.id===t.id);return {visible:!!v,d,lag:d/signal,target:t,received:v||null};
+}
+
+function confineParticle(p){
+ const dx=p.x-CX,dy=p.y-CY,d=Math.hypot(dx,dy),lim=R-10;
+ if(d>lim){const nx=dx/d,ny=dy/d;p.x=CX+nx*lim;p.y=CY+ny*lim;const dot=p.vx*nx+p.vy*ny;p.vx-=1.65*dot*nx;p.vy-=1.65*dot*ny}
+}
+function memorySupportPass(){
+ for(const p of particles){p.sameSupport=0;p.oppSupport=0;p.socialBias=0}
+ const rr=+ctl.relationRange.value;
+ for(let i=0;i<particles.length;i++)for(let j=i+1;j<particles.length;j++){
+  const a=particles[i],b=particles[j],d=dist(a.x,a.y,b.x,b.y);if(d>rr*1.18||d<.01)continue;
+  const w=Math.exp(-d/Math.max(12,rr*.7));
+  if(a.o===b.o){a.sameSupport+=w;b.sameSupport+=w}else{a.oppSupport+=w;b.oppSupport+=w}
+ }
+ for(const p of particles){const total=p.sameSupport+p.oppSupport;p.socialBias=total?(p.sameSupport-p.oppSupport)/total:0}
+}
+function updateParticleMemory(p,local,T){
+ const strength=+ctl.memoryStrength.value/100,plasticity=+ctl.memoryPlasticity.value/100,maint=+ctl.memoryMaintenance.value/100,rewrite=+ctl.memoryRewrite.value/100,inflow=+ctl.memoryInflow.value/100,subsidy=+ctl.memorySubsidy.value/100;
+ const support=1-Math.exp(-p.sameSupport*.65),reserveFrac=clamp(p.memoryReserve/100,0,1);
+ // Explicit abstract work source. Same-oriented relations can reduce the individual maintenance bill but do not create orientation by label.
+ p.memoryReserve=Math.min(100,p.memoryReserve+inflow*.018);
+ const maintenanceCost=maint*.010*Math.abs(p.mem)*(1-subsidy*.72*support);
+ p.memoryReserve=Math.max(0,p.memoryReserve-maintenanceCost);p.memoryMaintenance+=maintenanceCost;memoryTotals.maintenance+=maintenanceCost;
+ if(p.memoryReserve<=0){p.mem*=.9975-.0015*(+ctl.mixing.value/100)}
+ // Memory learns the actually embodied state slowly. Rewriting an established opposite memory is more expensive than reinforcing it.
+ const target=p.o,delta=(target-p.mem)*(.0015+.0105*plasticity)*(0.30+0.70*clamp(p.memoryReserve/25,0,1));
+ const oldMem=p.mem,oldSign=Math.sign(oldMem)||p.lastMemSign||p.o;
+ const rewriteCost=Math.abs(delta)*rewrite*(1+.9*Math.abs(oldMem));
+ const affordable=clamp(p.memoryReserve/Math.max(.0001,rewriteCost),0,1);
+ const paidDelta=delta*Math.min(1,affordable);p.mem=clamp(p.mem+paidDelta,-1,1);
+ const paid=Math.min(p.memoryReserve,rewriteCost);p.memoryReserve=Math.max(0,p.memoryReserve-paid);p.memoryRewrite+=paid;memoryTotals.rewrite+=paid;
+ if(Math.sign(p.mem)!==0&&Math.sign(p.mem)!==oldSign&&Math.abs(oldMem)>.08){
+  const eraseCost=rewrite*.18*Math.abs(oldMem);const erPaid=Math.min(p.memoryReserve,eraseCost);p.memoryReserve-=erPaid;p.memoryErase+=erPaid;memoryTotals.erase+=erPaid;
+  emitParticleEvent('MEMORY_REWRITE',p,{from:oldSign,to:Math.sign(p.mem),cost:paid+erPaid});p.lastMemSign=Math.sign(p.mem)||p.o;
+ }
+ const newBand=p.memoryReserve<15?0:p.memoryReserve<35?1:2;if(newBand< p.reserveBand){emitParticleEvent('MEMORY_LOW',p,{reserve:p.memoryReserve});p.reserveBand=newBand}else if(newBand>p.reserveBand)p.reserveBand=newBand;
+ // GREEN = adaptive retention, not raw memory. It is high only when retained history and change-capacity remain simultaneously usable.
+ const internalBarrier=2.25*strength*Math.abs(p.mem)*clamp(p.memoryReserve/35,0,1);
+ const flexibility=1/(1+internalBarrier/Math.max(.18,T));const retention=Math.abs(p.mem);const balance=1-Math.abs(retention-flexibility);p.memoryGreen=clamp(balance*Math.sqrt(Math.max(0,retention*flexibility))*1.35,0,1);
+ return {internalBarrier,support,retention,flexibility};
+}
+function updateParticles(){
+ const like=+ctl.affinity.value/100,opp=+ctl.repulsion.value/100,mix=+ctl.mixing.value/100,rr=+ctl.relationRange.value,T=Math.max(.08,+ctl.temp.value/100),subsidy=+ctl.memorySubsidy.value/100;
+ memorySupportPass();
+ for(const p of particles){p.fx=0;p.fy=0;p.age++}
+ for(let i=0;i<particles.length;i++)for(let j=i+1;j<particles.length;j++){
+  const a=particles[i],b=particles[j],dx=b.x-a.x,dy=b.y-a.y,d2=dx*dx+dy*dy;if(d2>110*110||d2<.01)continue;const d=Math.sqrt(d2),nx=dx/d,ny=dy/d;
+  let f=0;if(d<10)f-=.085*(10-d)/10;else if(a.o===b.o)f+=like*.010*Math.exp(-d/48);else f-=opp*.008*Math.exp(-d/50);
+  a.fx+=nx*f;a.fy+=ny*f;b.fx-=nx*f;b.fy-=ny*f;updateRelation(a,b,d,rr);
+ }
+ for(const [k,r] of relations){if(r.seen!==tick){r.age=Math.max(0,r.age-1.8);if(r.age<=0)relations.delete(k)}}
+ // Orientation transition now sees three pressures: local field, retained memory, and current relational neighborhood.
+ for(const p of particles){
+  const local=sampleField(p.x,p.y),mm=updateParticleMemory(p,local,T),strength=+ctl.memoryStrength.value/100;
+  const memoryVote=p.mem*strength*1.10,fieldVote=local,relationVote=p.socialBias*subsidy*.62;const net=fieldVote+memoryVote+relationVote;const desired=net>=0?1:-1;
+  if(desired!==p.o){const socialBarrier=.52*subsidy*mm.support;const barrier=mm.internalBarrier+socialBarrier;const pressure=clamp(Math.abs(net)/(1+strength+.62*subsidy),.1,1.4);const flipP=.015*(.38+mix)*pressure*Math.exp(-barrier/T);if(rnd()<flipP){p.o=desired;memoryTotals.flips++}}
+ }
+ for(const p of particles){
+  const g=gridFromWorld(p.x,p.y);let gx=0,gy=0;const x1=clamp(g.gx+1,0,GW-1),x0=clamp(g.gx-1,0,GW-1),y1=clamp(g.gy+1,0,GH-1),y0=clamp(g.gy-1,0,GH-1);
+  gx=(sigma[idx(x1,g.gy)]-sigma[idx(x0,g.gy)])*.5;gy=(sigma[idx(g.gx,y1)]-sigma[idx(g.gx,y0)])*.5;p.fx+=gx*p.o*.006;p.fy+=gy*p.o*.006;
+  applyChoiceDrive(p);if(demonOn)applyDemon(p);p.vx=(p.vx+p.fx+randn()*mix*.009)*.965;p.vy=(p.vy+p.fy+randn()*mix*.009)*.965;
+  const sp=Math.hypot(p.vx,p.vy),mx=1.18;if(sp>mx){p.vx*=mx/sp;p.vy*=mx/sp}p.x+=p.vx;p.y+=p.vy;confineParticle(p);
+ }
+}
+function relationKey(a,b){return a.id<b.id?a.id+':'+b.id:b.id+':'+a.id}
+function updateRelation(a,b,d,rr){
+ const k=relationKey(a,b),opposite=a.o!==b.o,mx=(a.x+b.x)/2,my=(a.y+b.y)/2,g=gridFromWorld(mx,my),nb=neighborSum(g.gx,g.gy),mixed=nb.n&&Math.abs(nb.s/nb.n)<.75;
+ let r=relations.get(k);if(!r)r={a:a.id,b:b.id,age:0,cross:false,seen:tick,stableAnnounced:false};const oldAge=r.age;r.seen=tick;r.cross=opposite;
+ const relSpeed=Math.hypot(a.vx-b.vx,a.vy-b.vy),qualifies=d<rr&&opposite&&mixed&&relSpeed<1.05;
+ if(qualifies){r.age+=1.05;const gs=greenScoreAtWorld(mx,my),green=gs>=+ctl.greenSeamThreshold.value/100;if(green)seamStats.opportunityGreen++;else seamStats.opportunityOrdinary++;addFluxNearWorld(mx,my,.028)}else if(d<rr*.75 && !opposite)r.age+=.18;else r.age=Math.max(0,r.age-.75);
+ const th=+ctl.weThreshold.value;
+ if(!r.stableAnnounced&&oldAge<th&&r.age>=th){const gs=greenScoreAtWorld(mx,my),green=gs>=+ctl.greenSeamThreshold.value/100;r.stableAnnounced=true;r.birthGreen=green;r.birthScore=gs;if(green)seamStats.weBirthGreen++;else seamStats.weBirthOrdinary++;pushWorldEvent({tick,type:'WE_BIRTH',id:a.id,a:a.id,b:b.id,x:mx,y:my,o:a.o,green,greenScore:gs})}
+ if(r.age<th*.45)r.stableAnnounced=false;
+ relations.set(k,r);
+}
+function applyDemon(p){
+ const gateX=CX,gateHalf=118,dx=p.x-gateX;if(Math.abs(dx)<9&&Math.abs(p.y-CY)<gateHalf){
+  const desired=p.o>0?1:-1;p.vx+=desired*.028;
+  if(!p.gateLatch){p.gateLatch=true;demonBits++;if(demonBits%64===0){demonResets++;const T=+ctl.temp.value/100;demonProxyCost+=64*T*Math.LN2}}
+ }else if(Math.abs(dx)>16)p.gateLatch=false;
+}
+
+function snapshot(force=false){
+ if(!force&&tick%2!==0)return;
+ fieldSnapshots.push(Int8Array.from(sigma));if(fieldSnapshots.length>190)fieldSnapshots.shift();
+ particleSnapshots.push(particles.map(p=>({id:p.id,x:p.x,y:p.y,o:p.o,mem:p.mem,memoryReserve:p.memoryReserve,memoryGreen:p.memoryGreen})));if(particleSnapshots.length>190)particleSnapshots.shift();
+}
+function historyFieldLag(lag){if(!fieldSnapshots.length)return sigma;const k=clamp(fieldSnapshots.length-1-Math.round(lag/2),0,fieldSnapshots.length-1);return fieldSnapshots[k]}
+function historyParticlesLag(lag){if(!particleSnapshots.length)return particles;const k=clamp(particleSnapshots.length-1-Math.round(lag/2),0,particleSnapshots.length-1);return particleSnapshots[k]}
+
+function fieldMetrics(){
+ let edges=0,seams=0,agree=0,sites=0;
+ for(let gy=0;gy<GH;gy++)for(let gx=0;gx<GW;gx++){const i=idx(gx,gy);if(!mask[i])continue;sites++;
+  if(gx+1<GW&&mask[idx(gx+1,gy)]){edges++;if(sigma[i]===sigma[idx(gx+1,gy)])agree++;else seams++}
+  if(gy+1<GH&&mask[idx(gx,gy+1)]){edges++;if(sigma[i]===sigma[idx(gx,gy+1)])agree++;else seams++}
+ }
+ let retention=0,count=0;if(fieldSnapshots.length>35){const old=fieldSnapshots[Math.max(0,fieldSnapshots.length-36)];for(let i=0;i<N;i++)if(mask[i]){retention+=sigma[i]*old[i];count++}retention=count?retention/count:0}
+ let avgMemory=0,avgGreen=0,avgReserve=0;if(particles.length){for(const p of particles){avgMemory+=Math.abs(p.mem);avgGreen+=p.memoryGreen;avgReserve+=p.memoryReserve}avgMemory/=particles.length;avgGreen/=particles.length;avgReserve/=particles.length}
+ return {seam:edges?seams/edges:0,alignment:edges?agree/edges:0,retention,avgMemory,avgGreen,avgReserve,maintenanceCost:memoryTotals.maintenance,rewriteCost:memoryTotals.rewrite,eraseCost:memoryTotals.erase,greenSeamFraction:seamStats.seamEdges?seamStats.greenEdges/seamStats.seamEdges:0,meanGreenSeam:seamStats.meanGreen,maxGreenSeam:seamStats.maxGreen};
+}
+function stableRelations(){const th=+ctl.weThreshold.value;return [...relations.values()].filter(r=>r.cross&&r.age>=th)}
+function buildGroups(){
+ const stable=stableRelations(),parent=new Map();
+ const find=x=>{if(!parent.has(x))parent.set(x,x);let p=parent.get(x);if(p!==x){p=find(p);parent.set(x,p)}return p};
+ const union=(a,b)=>{a=find(a);b=find(b);if(a!==b)parent.set(b,a)};
+ for(const r of stable)union(r.a,r.b);
+ const buckets=new Map();for(const id of parent.keys()){const f=find(id);if(!buckets.has(f))buckets.set(f,[]);buckets.get(f).push(id)}
+ const byId=new Map(particles.map(p=>[p.id,p]));const groups=[];
+ for(const members of buckets.values())if(members.length>=2){let x=0,y=0,o=0;for(const id of members){const p=byId.get(id);if(!p)continue;x+=p.x;y+=p.y;o+=p.o}const sig=members.slice().sort((a,b)=>a-b).join('-');groups.push({sig,members,x:x/members.length,y:y/members.length,o:o/members.length,r:12+Math.sqrt(members.length)*5})}
+ return groups;
+}
+function updateGroupRelations(groups){
+ const seen=new Set();for(let i=0;i<groups.length;i++)for(let j=i+1;j<groups.length;j++){const a=groups[i],b=groups[j],d=dist(a.x,a.y,b.x,b.y);if(d>190)continue;const k=a.sig<b.sig?a.sig+'|'+b.sig:b.sig+'|'+a.sig;seen.add(k);let r=groupRelations.get(k)||{a:a.sig,b:b.sig,age:0};r.age+=d<145?1:.2;r.d=d;r.type=(a.o*b.o>.12?'ALLY':a.o*b.o<-.12?'COMPETITOR':'MIXED');groupRelations.set(k,r)}
+ for(const [k,r] of groupRelations){if(!seen.has(k)){r.age-=1;if(r.age<=0)groupRelations.delete(k)}}
+}
+function buildFamilies(groups){
+ const threshold=Math.max(28,+ctl.weThreshold.value*.62),strong=[...groupRelations.values()].filter(r=>r.age>=threshold);
+ const parent=new Map(),bySig=new Map(groups.map(g=>[g.sig,g]));const find=x=>{if(!parent.has(x))parent.set(x,x);let p=parent.get(x);if(p!==x){p=find(p);parent.set(x,p)}return p};const union=(a,b)=>{a=find(a);b=find(b);if(a!==b)parent.set(b,a)};
+ for(const r of strong)union(r.a,r.b);const bks=new Map();for(const s of parent.keys()){const f=find(s);if(!bks.has(f))bks.set(f,[]);bks.get(f).push(s)}
+ const fam=[];for(const sigs of bks.values())if(sigs.length>=2){let x=0,y=0,n=0,members=0;for(const s of sigs){const g=bySig.get(s);if(!g)continue;x+=g.x;y+=g.y;n++;members+=g.members.length}if(n)fam.push({sigs,x:x/n,y:y/n,members,r:24+Math.sqrt(members)*5})}return fam;
+}
+
+function observedFieldFor(observer,x,y){
+ const d=dist(observer.x,observer.y,x,y),signal=+ctl.signalSpeed.value;
+ if(d>+ctl.horizon.value)return null;
+ const snap=historyFieldLag(d/Math.max(.1,signal));
+ return sampleField(x,y,snap);
+}
+function observedParticlesFor(observer){
+ const out=[],h=+ctl.horizon.value,signal=+ctl.signalSpeed.value;
+ for(const q of particles){
+  const d=dist(observer.x,observer.y,q.x,q.y);if(d>h)continue;
+  const hist=historyParticlesLag(d/Math.max(.1,signal)),v=hist.find(z=>z.id===q.id);if(v)out.push(v);
+ }
+ return out;
+}
+function choiceSoftmax(cands,tau){
+ const t=Math.max(.05,tau),mx=Math.max(...cands.map(c=>c.score));let z=0;
+ for(const c of cands){c.w=Math.exp((c.score-mx)/t);z+=c.w}
+ for(const c of cands)c.p=z?c.w/z:1/cands.length;
+}
+function sampleChoice(cands){let u=rnd(),acc=0;for(const c of cands){acc+=c.p;if(u<=acc)return c}return cands[cands.length-1]}
+function buildChoiceCandidates(observer){
+ if(!observer)return [];
+ const portal=Math.max(1,+ctl.portalDeg.value),n=clamp(Math.round(360/portal),6,72);
+ const radius=Math.min(+ctl.attentionRadius.value,+ctl.horizon.value),budget=+ctl.attentionBudget.value;
+ const samplesPer=Math.max(1,Math.floor(budget/n)),obsTokens=observedParticlesFor(observer),objective=ctl.choiceObjective.value;
+ const evidence=clamp(Math.sqrt(samplesPer)/(1+radius/170),.08,1),density=budget/(Math.PI*radius*radius);
+ const cands=[];
+ for(let j=0;j<n;j++){
+  const ang=(j/n)*Math.PI*2-Math.PI/2;let align=0,seen=0,changes=0,prev=null;
+  for(let k=0;k<samplesPer;k++){
+   const rr=radius*(k+1)/(samplesPer+1),x=observer.x+Math.cos(ang)*rr,y=observer.y+Math.sin(ang)*rr;
+   if(!insideWorld(x,y))continue;const sv=observedFieldFor(observer,x,y);if(sv==null)continue;
+   align+=observer.o*sv;if(prev!==null&&prev!==sv)changes++;prev=sv;seen++;
+  }
+  align=seen?align/seen:0;const seam=seen>1?changes/(seen-1):0;
+  const tx=observer.x+Math.cos(ang)*radius*.72,ty=observer.y+Math.sin(ang)*radius*.72;let opp=0,same=0;
+  for(const q of obsTokens){if(q.id===observer.id)continue;const d=dist(tx,ty,q.x,q.y);if(d<48){if(q.o!==observer.o)opp++;else same++}}
+  const relation=Math.tanh((opp-.35*same)/2.4);
+  let raw=0;
+  if(objective==='alignment')raw=align;
+  else if(objective==='difference')raw=seam*2-0.25*Math.abs(align);
+  else if(objective==='relation')raw=relation;
+  else raw=.34*align+.36*(seam*2-1)+.30*relation;
+  const score=raw*evidence+randn()*(1-evidence)*.42;
+  cands.push({j,ang,align,seam,relation,raw,score,p:0});
+ }
+ choiceSoftmax(cands,+ctl.choiceTemp.value/100);
+ let Hbits=0,conf=0;for(const c of cands){if(c.p>0)Hbits-=c.p*Math.log2(c.p);if(c.p>conf)conf=c.p}
+ const maxH=Math.log2(cands.length),unc=maxH?Hbits/maxH:0;
+ choiceMetrics={n:cands.length,entropy:Hbits,maxEntropy:maxH,confidence:conf,uncertainty:unc,density,samplesPer,evidence};
+ return cands;
+}
+function commitChoice(force=false){
+ const observer=currentObserver();if(!observer)return;
+ const cands=buildChoiceCandidates(observer);if(!cands.length)return;
+ const chosen=sampleChoice(cands),strength=+ctl.choiceStrength.value/100;
+ choiceVector={x:Math.cos(chosen.ang)*strength*.034,y:Math.sin(chosen.ang)*strength*.034};
+ choiceCount++;
+ lastChoice={tick,observerId:observer.id,x:observer.x,y:observer.y,cands,chosen,metrics:{...choiceMetrics},objective:ctl.choiceObjective.value,forced:!!force};
+ choiceHistory.push({tick,x:observer.x,y:observer.y,ang:chosen.ang,p:chosen.p,entropy:choiceMetrics.entropy,uncertainty:choiceMetrics.uncertainty,n:choiceMetrics.n});
+ const keep=+ctl.choiceMemory.value;if(choiceHistory.length>keep)choiceHistory.splice(0,choiceHistory.length-keep);
+ if(eventLog.length>100)eventLog.shift();eventLog.push({tick,type:'choice',n:choiceMetrics.n,entropy:choiceMetrics.entropy,p:chosen.p});
+}
+function updateChoiceBenchmark(){
+ if(!choiceOn)return;const interval=Math.max(1,+ctl.choiceInterval.value);
+ if(!lastChoice||lastChoice.observerId!==observerId||tick-lastChoice.tick>=interval)commitChoice(false);
+}
+function applyChoiceDrive(p){
+ if(!choiceOn||p.id!==observerId||!lastChoice)return;
+ p.fx+=choiceVector.x;p.fy+=choiceVector.y;
+}
+
+function step(){
+ updateChoiceBenchmark();
+ updateField();updateParticles();updateGreenSeams();tick++;trackPhysicalEvents();trackTargetRelation();snapshot();deliverWorldEvents();
+ cachedGroups=buildGroups();
+ updateGroupRelations(cachedGroups);
+ cachedFamilies=buildFamilies(cachedGroups);
+ if(tick%12===0){const fm=fieldMetrics();lastMetrics={...fm,we:stableRelations().length,groups:cachedGroups.length,families:cachedFamilies.length};if(eventLog.length>80)eventLog.shift();if(cachedFamilies.length)eventLog.push({tick,type:'higher-order',n:cachedFamilies.length})}
+}
+
+function colorCell(s,a=.35){return s>0?`rgba(255,69,69,${a})`:`rgba(63,145,255,${a})`}
+function drawBackground(){ctx.fillStyle='#02040a';ctx.fillRect(0,0,W,H);const grd=ctx.createRadialGradient(CX,CY-R*.3,R*.1,CX,CY,R*1.15);grd.addColorStop(0,'#162133');grd.addColorStop(.62,'#08101a');grd.addColorStop(1,'#02040a');ctx.fillStyle=grd;ctx.beginPath();ctx.arc(CX,CY,R,0,Math.PI*2);ctx.fill()}
+function drawField(mode='world',observer=null){
+ ctx.save();ctx.beginPath();ctx.arc(CX,CY,R,0,Math.PI*2);ctx.clip();
+ const signal=+ctl.signalSpeed.value,horizon=+ctl.horizon.value;
+ for(let gy=0;gy<GH;gy++)for(let gx=0;gx<GW;gx++){const i=idx(gx,gy);if(!mask[i])continue;const p=worldFromGrid(gx,gy);let s=sigma[i],alpha=.27;
+  if(mode==='hineni'&&observer){const d=dist(observer.x,observer.y,p.x,p.y);if(d>horizon)continue;const lag=d/signal,snap=historyFieldLag(lag);s=snap[i]||s;alpha=.17+.18*(1-d/horizon)}
+  if(mode==='memory'){const old=historyFieldLag(70);const same=old[i]===sigma[i];ctx.fillStyle=same?'rgba(199,137,255,.34)':'rgba(255,255,255,.035)'}else if(mode==='greenseam')ctx.fillStyle=colorCell(s,.12);else ctx.fillStyle=colorCell(s,alpha);
+  ctx.fillRect(CX-R+gx*cellW,CY-R+gy*cellH,cellW+1,cellH+1);
+ }
+ ctx.restore();
+}
+function drawSeams(greenMode=false){
+ ctx.save();ctx.beginPath();ctx.arc(CX,CY,R,0,Math.PI*2);ctx.clip();const th=+ctl.greenSeamThreshold.value/100;
+ const strokeEdge=(x1,y1,x2,y2,score)=>{const isGreen=score>=th;if(isGreen){ctx.strokeStyle=`rgba(82,239,135,${.34+.62*score})`;ctx.lineWidth=1+3.2*score}else{ctx.strokeStyle=greenMode?'rgba(255,255,255,.12)':'rgba(255,255,255,.31)';ctx.lineWidth=greenMode?.45:.65}ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x2,y2);ctx.stroke()};
+ for(let gy=0;gy<GH;gy++)for(let gx=0;gx<GW;gx++){const i=idx(gx,gy);if(!mask[i])continue;const x=CX-R+gx*cellW,y=CY-R+gy*cellH;
+  if(gx+1<GW&&mask[idx(gx+1,gy)]&&sigma[i]!==sigma[idx(gx+1,gy)])strokeEdge(x+cellW,y,x+cellW,y+cellH,seamGreenH[i]);
+  if(gy+1<GH&&mask[idx(gx,gy+1)]&&sigma[i]!==sigma[idx(gx,gy+1)])strokeEdge(x,y+cellH,x+cellW,y+cellH,seamGreenV[i]);
+ }
+ ctx.restore();
+}
+function currentObserver(){return particles.find(p=>p.id===observerId)||particles[0]}
+function drawParticles(mode,observer){
+ let arr=particles;if((mode==='hineni'||mode==='frame')&&observer){arr=[];const horizon=+ctl.horizon.value,signal=+ctl.signalSpeed.value;for(const q of particles){const d=dist(observer.x,observer.y,q.x,q.y);if(d>horizon)continue;const hist=historyParticlesLag(d/signal),v=hist.find(x=>x.id===q.id);if(v)arr.push(v)}}
+ for(const p of arr){const isObs=observer&&p.id===observer.id,isTarget=p.id===targetId,r=isObs?5.4:4.3,g=p.memoryGreen??0,ret=Math.abs(p.mem??0),reserve=p.memoryReserve??0;
+  if(mode==='green'){ctx.strokeStyle=`rgba(142,230,161,${.10+.80*g})`;ctx.lineWidth=1+4*g;ctx.beginPath();ctx.arc(p.x,p.y,r+4+7*ret,0,Math.PI*2);ctx.stroke();if(reserve<20){ctx.strokeStyle='rgba(255,185,92,.75)';ctx.lineWidth=1.2;ctx.setLineDash([3,3]);ctx.beginPath();ctx.arc(p.x,p.y,r+8+7*ret,0,Math.PI*2);ctx.stroke();ctx.setLineDash([])}}
+  ctx.fillStyle=p.o>0?'rgba(255,91,91,.95)':'rgba(89,167,255,.95)';ctx.beginPath();ctx.arc(p.x,p.y,r,0,Math.PI*2);ctx.fill();
+  if(isObs){ctx.strokeStyle='rgba(255,215,106,.98)';ctx.lineWidth=3;ctx.beginPath();ctx.arc(p.x,p.y,r+5.5,0,Math.PI*2);ctx.stroke();ctx.fillStyle='rgba(255,228,150,.96)';ctx.font='9px ui-monospace,monospace';ctx.textAlign='center';ctx.fillText(`GOLD #${p.id}`,p.x,p.y-13)}else if(isTarget){ctx.strokeStyle='rgba(255,255,255,.84)';ctx.lineWidth=1.8;ctx.beginPath();ctx.arc(p.x,p.y,r+4,0,Math.PI*2);ctx.stroke()}
+  if(showLabels&&!isObs&&mode==='frame'){ctx.fillStyle='rgba(220,230,242,.65)';ctx.font='8px ui-monospace,monospace';ctx.textAlign='center';ctx.fillText(`#${p.id}`,p.x,p.y-8)}
+  if(showLabels&&mode==='green'&&g>.45){ctx.fillStyle='rgba(174,245,191,.76)';ctx.font='8px ui-monospace,monospace';ctx.textAlign='center';ctx.fillText(`G ${g.toFixed(2)} · M ${ret.toFixed(2)}`,p.x,p.y-12-7*ret)}
+ }
+}
+function drawRelations(groups,families){
+ const th=+ctl.weThreshold.value;ctx.lineWidth=1.5;
+ for(const r of relations.values())if(r.cross&&r.age>=th){const a=particles.find(p=>p.id===r.a),b=particles.find(p=>p.id===r.b);if(!a||!b)continue;const q=clamp((r.age-th)/Math.max(1,th),0,1);ctx.strokeStyle=`rgba(199,137,255,${.28+.55*q})`;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke()}
+ for(const g of groups){ctx.strokeStyle='rgba(199,137,255,.7)';ctx.lineWidth=2;ctx.beginPath();ctx.arc(g.x,g.y,g.r,0,Math.PI*2);ctx.stroke();if(showLabels){ctx.fillStyle='rgba(225,201,255,.92)';ctx.font='10px system-ui';ctx.textAlign='center';ctx.fillText('WE '+g.members.length,g.x,g.y-g.r-4)}}
+ for(const f of families){ctx.strokeStyle='rgba(142,230,161,.8)';ctx.lineWidth=2.4;ctx.setLineDash([6,4]);ctx.beginPath();ctx.arc(f.x,f.y,f.r,0,Math.PI*2);ctx.stroke();ctx.setLineDash([]);if(showLabels){ctx.fillStyle='rgba(178,255,197,.95)';ctx.font='11px system-ui';ctx.textAlign='center';ctx.fillText('FAMILY / NEW SELF?',f.x,f.y-f.r-5)}}
+}
+function drawGroupNetwork(groups){
+ const threshold=Math.max(28,+ctl.weThreshold.value*.62);const by=new Map(groups.map(g=>[g.sig,g]));for(const r of groupRelations.values())if(r.age>=threshold){const a=by.get(r.a),b=by.get(r.b);if(!a||!b)continue;ctx.strokeStyle=r.type==='ALLY'?'rgba(142,230,161,.55)':r.type==='COMPETITOR'?'rgba(255,186,90,.55)':'rgba(210,210,220,.34)';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();if(showLabels){ctx.fillStyle='rgba(220,226,235,.75)';ctx.font='9px system-ui';ctx.textAlign='center';ctx.fillText(r.type,(a.x+b.x)/2,(a.y+b.y)/2-3)}}
+}
+function drawObserverMask(o){
+ if(!o)return;const h=+ctl.horizon.value;ctx.save();ctx.fillStyle='rgba(0,0,0,.72)';ctx.beginPath();ctx.rect(0,0,W,H);ctx.arc(o.x,o.y,h,0,Math.PI*2,true);ctx.fill('evenodd');ctx.strokeStyle='rgba(255,215,106,.55)';ctx.lineWidth=1.6;ctx.setLineDash([7,5]);ctx.beginPath();ctx.arc(o.x,o.y,h,0,Math.PI*2);ctx.stroke();ctx.setLineDash([]);ctx.restore();
+}
+function drawChoicePortal(o){
+ if(!o)return;const radius=Math.min(+ctl.attentionRadius.value,+ctl.horizon.value),portal=+ctl.portalDeg.value;
+ ctx.save();
+ ctx.strokeStyle='rgba(255,215,106,.5)';ctx.lineWidth=1.5;ctx.setLineDash([5,5]);ctx.beginPath();ctx.arc(o.x,o.y,radius,0,Math.PI*2);ctx.stroke();ctx.setLineDash([]);
+ const cands=(lastChoice&&lastChoice.observerId===o.id)?lastChoice.cands:[];
+ for(const cand of cands){const rr=radius*(.62+.34*cand.p/Math.max(.0001,choiceMetrics.confidence||1));const x=o.x+Math.cos(cand.ang)*rr,y=o.y+Math.sin(cand.ang)*rr;ctx.strokeStyle=`rgba(255,255,255,${.035+.34*cand.p/Math.max(.02,choiceMetrics.confidence)})`;ctx.lineWidth=.6+2.0*cand.p/Math.max(.02,choiceMetrics.confidence);ctx.beginPath();ctx.moveTo(o.x,o.y);ctx.lineTo(x,y);ctx.stroke()}
+ if(lastChoice&&lastChoice.observerId===o.id){const ch=lastChoice.chosen,x=o.x+Math.cos(ch.ang)*radius,y=o.y+Math.sin(ch.ang)*radius;ctx.strokeStyle='rgba(255,215,106,.96)';ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(o.x,o.y);ctx.lineTo(x,y);ctx.stroke();ctx.fillStyle='rgba(255,215,106,.96)';ctx.beginPath();ctx.arc(x,y,5,0,Math.PI*2);ctx.fill()}
+ if(choiceHistory.length>1){ctx.strokeStyle='rgba(199,137,255,.58)';ctx.lineWidth=1.5;ctx.beginPath();for(let i=0;i<choiceHistory.length;i++){const h=choiceHistory[i];if(i===0)ctx.moveTo(h.x,h.y);else ctx.lineTo(h.x,h.y)}ctx.stroke()}
+ ctx.fillStyle='rgba(255,228,150,.95)';ctx.font='10px system-ui';ctx.textAlign='center';ctx.fillText('CHOICE VERTEX',o.x,o.y-15);ctx.fillStyle='rgba(214,224,239,.72)';ctx.font='9px system-ui';ctx.fillText(`${Math.round(360/Math.max(1,portal))} angular possibilities`,o.x,o.y+19);
+ ctx.restore();
+}
+function drawFrameAudit(o){
+ if(!o)return;const a=observedTargetState(o);if(!a)return;const t=a.target;
+ ctx.save();
+ if(a.visible&&a.received){const v=a.received;ctx.strokeStyle='rgba(255,255,255,.95)';ctx.lineWidth=2.2;ctx.beginPath();ctx.arc(v.x,v.y,10,0,Math.PI*2);ctx.stroke();ctx.fillStyle='rgba(240,245,255,.92)';ctx.font='10px ui-monospace,monospace';ctx.textAlign='left';ctx.fillText(`RECEIVED #${t.id} ${signName(v.o)} · mem ${signName(v.mem||v.o)} ${Math.abs(v.mem||0).toFixed(2)} · G ${(v.memoryGreen||0).toFixed(2)} · lag ${a.lag.toFixed(1)}t`,v.x+13,v.y-7)}
+ else {ctx.fillStyle='rgba(240,245,255,.7)';ctx.font='10px ui-monospace,monospace';ctx.textAlign='left';ctx.fillText(`TARGET #${t.id} OUTSIDE HINENI HORIZON`,o.x+16,o.y+36)}
+ // External audit marker: not available to the embedded observer.
+ ctx.strokeStyle='rgba(190,200,215,.38)';ctx.lineWidth=1.5;ctx.setLineDash([4,5]);ctx.beginPath();ctx.arc(t.x,t.y,14,0,Math.PI*2);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle='rgba(190,200,215,.56)';ctx.font='9px ui-monospace,monospace';ctx.textAlign='left';ctx.fillText(`WORLD NOW #${t.id} ${signName(t.o)} · mem ${signName(t.mem)} ${Math.abs(t.mem).toFixed(2)} · G ${t.memoryGreen.toFixed(2)} · reserve ${t.memoryReserve.toFixed(1)} · AUDIT ONLY`,t.x+17,t.y+9);
+ if(a.visible&&a.received){ctx.strokeStyle='rgba(199,137,255,.34)';ctx.lineWidth=1;ctx.setLineDash([3,5]);ctx.beginPath();ctx.moveTo(a.received.x,a.received.y);ctx.lineTo(t.x,t.y);ctx.stroke();ctx.setLineDash([])}
+ ctx.restore();
+}
+function drawDemon(){if(!demonOn)return;ctx.strokeStyle='rgba(255,226,150,.68)';ctx.lineWidth=3;ctx.setLineDash([8,5]);ctx.beginPath();ctx.moveTo(CX,CY-118);ctx.lineTo(CX,CY+118);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle='rgba(255,226,150,.8)';ctx.font='10px system-ui';ctx.textAlign='center';ctx.fillText('IN-WORLD SORTER',CX,CY-126)}
+function drawHiddenDebug(){if(!hiddenOn||ctl.view.value==='hineni')return;ctx.strokeStyle='rgba(255,255,255,.14)';ctx.lineWidth=4;ctx.setLineDash([2,8]);ctx.beginPath();ctx.arc(CX,CY,R-8,0,Math.PI*2);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle='rgba(255,255,255,.38)';ctx.font='10px system-ui';ctx.textAlign='center';ctx.fillText('hidden boundary forcing active (scientific WORLD view only)',CX,CY-R+20)}
+function drawWorldBoundary(){ctx.strokeStyle='rgba(255,255,255,.32)';ctx.lineWidth=2.2;ctx.beginPath();ctx.arc(CX,CY,R,0,Math.PI*2);ctx.stroke();ctx.fillStyle='rgba(210,220,235,.55)';ctx.font='10px system-ui';ctx.textAlign='center';ctx.fillText('Ω — ONE SHARED FIELD',CX,CY-R-10)}
+function draw(){
+ drawBackground();const mode=ctl.view.value,o=currentObserver(),embedded=(mode==='hineni'||mode==='choice'||mode==='frame');drawField(embedded?'hineni':mode,o);if(mode==='seam'||mode==='world'||mode==='greenseam'||embedded)drawSeams(mode==='greenseam');drawHiddenDebug();drawDemon();
+ const groups=cachedGroups,families=cachedFamilies;if(mode==='relations'){drawGroupNetwork(groups);drawRelations(groups,families)}else if(mode==='world'||mode==='seam'||mode==='greenseam')drawRelations(groups,families);
+ drawParticles(mode==='frame'?'frame':(embedded?'hineni':mode),o);if(embedded)drawObserverMask(o);if(mode==='choice')drawChoicePortal(o);if(mode==='frame')drawFrameAudit(o);drawWorldBoundary();drawHUD(groups,families,o);renderLedger();
+}
+function drawHUD(groups,families,o){
+ const m=lastMetrics,mode=ctl.view.value,t=currentTarget(),a=o?observedTargetState(o):null,obs=o?`#${o.id} · GOLD frame · core ${signName(o.o)} · mem ${signName(o.mem)} ${Math.abs(o.mem).toFixed(2)} · G ${o.memoryGreen.toFixed(2)} · reserve ${o.memoryReserve.toFixed(1)}`:'none';
+ const rateG=seamStats.weBirthGreen/Math.max(1,seamStats.opportunityGreen),rateO=seamStats.weBirthOrdinary/Math.max(1,seamStats.opportunityOrdinary),lift=rateO>0?rateG/rateO:0;
+ let targetLine='tracked sphere none';if(t&&a){const received=a.visible&&a.received?`${signName(a.received.o)} @ lag ${a.lag.toFixed(1)}t`:'NOT RECEIVED';targetLine=`target #${t.id} · HINENI sees ${received}${mode==='frame'?` · WORLD now ${signName(t.o)} [audit]`:''}`}
+ hud.innerHTML=`<b>tick ${tick.toLocaleString()}</b> · seed ${seed}<br>`+
+ `Ω field: alignment ${(m.alignment*100).toFixed(1)}% · seam ${(m.seam*100).toFixed(1)}% · field-memory M ${(m.retention).toFixed(3)}<br>`+
+ `GREEN seam: ${seamStats.greenEdges}/${seamStats.seamEdges} edges (${(m.greenSeamFraction*100).toFixed(1)}%) · mean G ${(m.meanGreenSeam||0).toFixed(2)} · max ${(m.maxGreenSeam||0).toFixed(2)}<br>`+
+ `WE births: GREEN ${seamStats.weBirthGreen} / ordinary ${seamStats.weBirthOrdinary} · opportunities G ${seamStats.opportunityGreen.toLocaleString()} / O ${seamStats.opportunityOrdinary.toLocaleString()}<br>`+
+ `birth rate/opportunity: G ${(rateG*1000).toFixed(2)}‰ · O ${(rateO*1000).toFixed(2)}‰ · descriptive lift ${lift?lift.toFixed(2):'—'}×<br>`+
+ `particle memory: retained ${(m.avgMemory*100).toFixed(1)}% · GREEN ${(m.avgGreen*100).toFixed(1)}% · reserve ${m.avgReserve.toFixed(1)}/100<br>`+
+ `memory work: maintain ${m.maintenanceCost.toFixed(1)} · rewrite ${m.rewriteCost.toFixed(1)} · erase/reset ${m.eraseCost.toFixed(1)} · orientation flips ${memoryTotals.flips}<br>`+
+ `relations: WE links ${m.we} · WE groups ${groups.length} · higher-order candidates ${families.length}<br>`+
+ `HINENI ${obs} · horizon ${ctl.horizon.value}px · signal ${ctl.signalSpeed.value}px/tick<br>`+
+ `${targetLine}<br>`+
+ `ledger: WORLD ${worldEventLog.length} events · RECEIVED ${observedEventLog.filter(e=>e.observerId===observerId).length} for current GOLD<br>`+
+ `${hiddenOn?'hidden forcing ON':'hidden forcing off'} · ${demonOn?`demon bits ${demonBits} · resets ${demonResets} · proxy cost ${demonProxyCost.toFixed(1)}`:'demon off'}<br>`+
+ `${choiceOn?'CHOICE ON':'choice off'} · portal ${ctl.portalDeg.value}° → ${choiceMetrics.n||Math.round(360/+ctl.portalDeg.value)} possibilities · radius ${Math.min(+ctl.attentionRadius.value,+ctl.horizon.value)}px · budget ${ctl.attentionBudget.value}<br>`+
+ `${lastChoice?`choice #${choiceCount} · H ${choiceMetrics.entropy.toFixed(2)}/${choiceMetrics.maxEntropy.toFixed(2)} bits · uncertainty ${(choiceMetrics.uncertainty*100).toFixed(1)}% · confidence ${(choiceMetrics.confidence*100).toFixed(1)}%`:'no committed choice yet'}<br>`+
+ `<b>GREEN SEAM = DIFFERENCE + PERSISTENCE + TRANSFER + PLASTICITY · PURPLE TESTS WHAT PERSISTS</b>`;
+ status.innerHTML=`${mode.toUpperCase()}<br>${running?'RUNNING':'PAUSED'}${pickMode?'<br>PICK GOLD':''}${targetPickMode?'<br>PICK TARGET':''}${choiceOn?'<br>CHOOSER ACTIVE':''}`;
+}
+function eventClass(type,label=''){if(type==='ORIENTATION_FLIP')return label.startsWith('I /')?'evSelf':'evFlip';if(type==='MEMORY_REWRITE'||type==='MEMORY_LOW'||type==='WE_BIRTH')return'evRel';if(type==='RELATION_CHANGE')return'evRel';if(type==='MOVE')return label.startsWith('I ')?'evSelf':'evMove';return''}
+function worldEventText(e){if(e.type==='ORIENTATION_FLIP')return `t${e.tick} · FLIP #${e.id} ${signName(e.from)}→${signName(e.to)}`;if(e.type==='MEMORY_REWRITE')return `t${e.tick} · MEMORY #${e.id} ${signName(e.from)}→${signName(e.to)} · cost ${e.cost.toFixed(2)}`;if(e.type==='MEMORY_LOW')return `t${e.tick} · MEMORY LOW #${e.id} · reserve ${e.reserve.toFixed(1)}`;if(e.type==='MOVE')return `t${e.tick} · MOVE #${e.id}`;if(e.type==='RELATION_CHANGE')return `t${e.tick} · RELATION #${e.observerId}↔#${e.targetId} ${e.relation}/${e.band}`;if(e.type==='WE_BIRTH')return `t${e.tick} · WE BIRTH #${e.a}↔#${e.b} · ${e.green?'GREEN':'ordinary'} seam · G ${e.greenScore.toFixed(2)}`;return `t${e.tick} · ${e.type}`}
+function renderLedger(){
+ const w=worldEventLog.slice(-10).reverse(),r=observedEventLog.filter(e=>e.observerId===observerId).slice(-10).reverse();
+ worldEventsEl.innerHTML=w.length?w.map(e=>`<div class="event ${eventClass(e.type)}">${worldEventText(e)}</div>`).join(''):'<div class="event">no recorded physical events yet</div>';
+ observedEventsEl.innerHTML=r.length?r.map(e=>`<div class="event ${eventClass(e.type,e.label)}">r${e.receivedTick} ← t${e.worldTick} · ${e.label} · Δ${e.lag.toFixed(1)}t</div>`).join(''):'<div class="event">no event has reached current HINENI yet</div>';
+}
+
+function updateLabels(){
+ val.view.textContent=ctl.view.value.toUpperCase();val.temp.textContent=(+ctl.temp.value/100).toFixed(2);val.j.textContent=(+ctl.coupling.value/100).toFixed(2);val.fieldRate.textContent=(+ctl.fieldRate.value).toLocaleString();val.particle.textContent=ctl.particleCount.value;val.aff.textContent=ctl.affinity.value+'%';val.rep.textContent=ctl.repulsion.value+'%';val.mix.textContent=ctl.mixing.value+'%';val.we.textContent=ctl.weThreshold.value+' ticks';val.range.textContent=ctl.relationRange.value+' px';val.horizon.textContent=ctl.horizon.value+' px';val.signal.textContent=ctl.signalSpeed.value+' px/tick';
+ val.portal.textContent=ctl.portalDeg.value+'° / '+Math.round(360/+ctl.portalDeg.value)+' dirs';val.attentionRadius.textContent=ctl.attentionRadius.value+' px';val.attentionBudget.textContent=ctl.attentionBudget.value+' samples';val.choiceInterval.textContent=ctl.choiceInterval.value+' ticks';val.choiceStrength.textContent=ctl.choiceStrength.value+'%';val.choiceTemp.textContent=(+ctl.choiceTemp.value/100).toFixed(2);val.objective.textContent=ctl.choiceObjective.value.toUpperCase();val.choiceMemory.textContent=ctl.choiceMemory.value+' commits';
+ val.memoryStrength.textContent=ctl.memoryStrength.value+'%';val.memoryPlasticity.textContent=ctl.memoryPlasticity.value+'%';val.memoryMaintenance.textContent=ctl.memoryMaintenance.value+'%';val.memoryRewrite.textContent=ctl.memoryRewrite.value+'%';val.memoryInflow.textContent=ctl.memoryInflow.value+'%';val.memorySubsidy.textContent=ctl.memorySubsidy.value+'%';
+ val.seamMemory.textContent=ctl.seamMemory.value+' ticks';val.seamFlux.textContent=ctl.seamFlux.value+'%';val.greenSeamThreshold.textContent=(+ctl.greenSeamThreshold.value/100).toFixed(2);
+}
+function loop(){if(running){const steps=1;for(let i=0;i<steps;i++)step()}draw();requestAnimationFrame(loop)}
+
+ctl.toggle.onclick=()=>{running=!running;ctl.toggle.textContent=running?'Pause':'Run'};
+ctl.reset.onclick=()=>resetWorld(false);ctl.newSeed.onclick=()=>resetWorld(true);
+ctl.quench.onclick=()=>{ctl.temp.value=70;updateLabels()};
+ctl.hidden.onclick=()=>{hiddenOn=!hiddenOn;ctl.hidden.textContent='Hidden boundary forcing: '+(hiddenOn?'ON':'OFF');ctl.hidden.classList.toggle('active',hiddenOn)};
+ctl.demon.onclick=()=>{demonOn=!demonOn;ctl.demon.textContent='Demon gate benchmark: '+(demonOn?'ON':'OFF');ctl.demon.classList.toggle('active',demonOn)};
+ctl.labels.onclick=()=>{showLabels=!showLabels;ctl.labels.textContent='Relational labels: '+(showLabels?'ON':'OFF')};
+ctl.selectObserver.onclick=()=>{pickMode=!pickMode;targetPickMode=false;ctl.selectObserver.classList.toggle('active',pickMode);ctl.selectTarget.classList.remove('active');if(pickMode){ctl.view.value='hineni';updateLabels()}};
+ctl.selectTarget.onclick=()=>{targetPickMode=!targetPickMode;pickMode=false;ctl.selectTarget.classList.toggle('active',targetPickMode);ctl.selectObserver.classList.remove('active');if(targetPickMode){ctl.view.value='frame';updateLabels()}};
+ctl.clearLedger.onclick=()=>{worldEventLog=[];observedEventLog=[];lastRelationSignature=null;renderLedger()};
+ctl.chooser.onclick=()=>{choiceOn=!choiceOn;ctl.chooser.textContent='Choice vertex benchmark: '+(choiceOn?'ON':'OFF');ctl.chooser.classList.toggle('active',choiceOn);if(choiceOn){ctl.view.value='choice';commitChoice(true)}updateLabels()};
+ctl.commitChoice.onclick=()=>{commitChoice(true);ctl.view.value='choice';updateLabels()};
+ctl.clearChoices.onclick=()=>{choiceHistory=[];lastChoice=null;choiceCount=0;choiceVector={x:0,y:0};choiceMetrics={n:0,entropy:0,maxEntropy:0,confidence:0,uncertainty:0,density:0,samplesPer:0,evidence:0}};
+ctl.view.onchange=updateLabels;
+ctl.particleCount.onchange=()=>initParticles();
+[ctl.temp,ctl.coupling,ctl.fieldRate,ctl.affinity,ctl.repulsion,ctl.mixing,ctl.weThreshold,ctl.relationRange,ctl.horizon,ctl.signalSpeed,ctl.portalDeg,ctl.attentionRadius,ctl.attentionBudget,ctl.choiceInterval,ctl.choiceStrength,ctl.choiceTemp,ctl.choiceMemory,ctl.memoryStrength,ctl.memoryPlasticity,ctl.memoryMaintenance,ctl.memoryRewrite,ctl.memoryInflow,ctl.memorySubsidy,ctl.seamMemory,ctl.seamFlux,ctl.greenSeamThreshold].forEach(x=>x.addEventListener('input',updateLabels));
+ctl.choiceObjective.onchange=()=>{lastChoice=null;updateLabels()};
+c.addEventListener('pointerdown',e=>{if(!pickMode&&!targetPickMode)return;const r=c.getBoundingClientRect(),x=(e.clientX-r.left)*W/r.width,y=(e.clientY-r.top)*H/r.height;let best=null,bd=28;for(const p of particles){const d=dist(x,y,p.x,p.y);if(d<bd){best=p;bd=d}}if(!best)return;if(pickMode){observerId=best.id;if(targetId===observerId)targetId=particles.find(p=>p.id!==observerId)?.id??null;observedEventLog=[];lastRelationSignature=null;lastChoice=null;choiceVector={x:0,y:0};pickMode=false;ctl.selectObserver.classList.remove('active')}else if(targetPickMode&&best.id!==observerId){targetId=best.id;lastRelationSignature=null;targetPickMode=false;ctl.selectTarget.classList.remove('active')}renderLedger()});
+
+buildMask();resetWorld(true);updateLabels();renderLedger();loop();
+})();
+</script>
+</body>
+</html>
